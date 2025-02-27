@@ -1,6 +1,19 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import { Train, Building, ShoppingBag } from "lucide-react";
+import { LucideIcon } from "lucide-react";
+
+interface LocationItem {
+  name: string;
+  distance: string;
+}
+
+interface LocationCardProps {
+  title: string;
+  icon: LucideIcon;
+  items: LocationItem[];
+  image: string;
+}
 
 const locations = {
   metro: [
@@ -61,7 +74,7 @@ export default function Location() {
   );
 }
 
-function LocationCard({ title, icon: Icon, items, image }) {
+function LocationCard({ title, icon: Icon, items, image }: LocationCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
