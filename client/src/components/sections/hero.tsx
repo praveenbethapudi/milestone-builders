@@ -2,10 +2,11 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import ImageCarousel from "@/components/ui/image-carousel";
 
+// Update these paths after uploading your images to the public/images folder
 const exteriorImages = [
-  "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1600&h=900&fit=crop",
-  "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&h=900&fit=crop",
-  "https://images.unsplash.com/photo-1460317442991-0ec209397118?w=1600&h=900&fit=crop"
+  "/images/building-1.jpg",  // Replace with your image filename
+  "/images/building-2.jpg",  // Replace with your image filename
+  "/images/building-3.jpg"   // Replace with your image filename
 ];
 
 export default function Hero() {
