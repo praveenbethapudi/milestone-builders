@@ -3,9 +3,9 @@ import { Button } from "@/components/ui/button";
 import ImageCarousel from "@/components/ui/image-carousel";
 
 const exteriorImages = [
-  "https://images.unsplash.com/photo-1549439602-43ebca2327af",
-  "https://images.unsplash.com/photo-1469796466635-455ede028aca",
-  "https://images.unsplash.com/photo-1507652313519-d4e9174996dd"
+  "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1600&h=900&fit=crop",
+  "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&h=900&fit=crop",
+  "https://images.unsplash.com/photo-1460317442991-0ec209397118?w=1600&h=900&fit=crop"
 ];
 
 export default function Hero() {
