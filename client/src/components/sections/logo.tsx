@@ -2,10 +2,10 @@ import { motion } from "framer-motion";
 
 export default function Logo() {
   return (
-    <section className="py-[5px] px-4 bg-accent">
-      <div className="max-w-7xl mx-auto flex justify-center">
+    <section className="min-h-[calc(100vh-100vh)] py-[5px] px-4 bg-accent flex items-center">
+      <div className="max-w-7xl mx-auto flex justify-center w-full">
         <motion.img
-          src="/images/logo.png"
+          src="/images/logo-removebg-preview.png"
           alt="The Meridian Luxury Apartments"
           className="h-24 md:h-32"
           initial={{ opacity: 0, y: 20 }}
