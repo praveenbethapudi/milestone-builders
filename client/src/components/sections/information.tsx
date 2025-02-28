@@ -29,10 +29,19 @@ export default function Information() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-4xl font-bold text-center mb-12"
+          className="text-4xl font-bold text-center mb-6"
         >
           The Meridian Luxury Apartments
         </motion.h2>
+        
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-12 max-w-3xl mx-auto text-muted-foreground"
+        >
+          Unlike ordinary residences, The Meridian sets a new benchmark in luxury living with thoughtfully designed spaces, superior construction quality, and unmatched convenience that truly elevates your lifestyle.
+        </motion.p>
 
         <div className="grid md:grid-cols-3 gap-8">
           {features.map((feature, index) => (

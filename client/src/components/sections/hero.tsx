@@ -23,11 +23,25 @@ export default function Hero() {
           className="text-center px-4"
         >
           <h1 className="text-3xl md:text-5xl font-bold mb-6" style={{ color: '#FFEA57' }}>
-            The Best Luxury Living in Jigani
+            The Meridian Luxury Apartments
           </h1>
-          <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto text-white">
-            Premium apartments crafted for an elite lifestyle
+          <p className="text-xl md:text-2xl mb-5 max-w-2xl mx-auto text-white">
+            Where Excellence Meets Exceptional Living
           </p>
+          <div className="grid grid-cols-3 gap-4 mb-8 max-w-4xl mx-auto">
+            <div className="bg-black/60 p-3 rounded-lg backdrop-blur-sm">
+              <p className="text-primary font-semibold">Prime Location</p>
+              <p className="text-white text-sm">500m from Bommasandra Metro</p>
+            </div>
+            <div className="bg-black/60 p-3 rounded-lg backdrop-blur-sm">
+              <p className="text-primary font-semibold">Modern Design</p>
+              <p className="text-white text-sm">Premium contemporary living</p>
+            </div>
+            <div className="bg-black/60 p-3 rounded-lg backdrop-blur-sm">
+              <p className="text-primary font-semibold">Luxury Amenities</p>
+              <p className="text-white text-sm">Exclusive resident privileges</p>
+            </div>
+          </div>
           <Button 
             size="lg"
             className="bg-primary text-black hover:bg-primary/90"

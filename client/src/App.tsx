@@ -4,6 +4,14 @@ import { queryClient } from "./lib/queryClient";
 import { Toaster } from "@/components/ui/toaster";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/home";
+import Hero from "./components/sections/hero";
+import Logo from "./components/sections/logo";
+import Features from "./components/sections/features";
+import Information from "./components/sections/information";
+import Differentiators from "./components/sections/differentiators";
+import Location from "./components/sections/location";
+import Contact from "./components/sections/contact";
+import Footer from "./components/sections/footer";
 
 function Router() {
   return (
@@ -17,7 +25,14 @@ function Router() {
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <Router />
+      <Logo />
+      <Hero />
+      <Information />
+      <Features />
+      <Differentiators />
+      <Location />
+      <Contact />
+      <Footer />
       <Toaster />
     </QueryClientProvider>
   );
