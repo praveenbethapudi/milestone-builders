@@ -20,17 +20,17 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center text-white px-4"
+          className="text-center px-4"
         >
-          <h1 className="text-5xl md:text-7xl font-bold mb-6">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 text-primary">
             The Best Luxury Living in Jigani
           </h1>
-          <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">
+          <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto text-white">
             Premium apartments crafted for an elite lifestyle
           </p>
           <Button 
             size="lg"
-            className="bg-white text-primary hover:bg-white/90"
+            className="bg-primary text-black hover:bg-primary/90"
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
           >
             Schedule a Visit
