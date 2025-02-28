@@ -4,9 +4,10 @@ import ImageCarousel from "@/components/ui/image-carousel";
 
 // Update these paths after uploading your images to the public/images folder
 const exteriorImages = [
-  "/images/building-1.jpg",  // Replace with your image filename
-  "/images/building-2.jpg",  // Replace with your image filename
-  "/images/building-3.jpg"   // Replace with your image filename
+  "/images/building-1.jpg",
+  "/images/building-2.jpg",
+  "/images/building-3.jpg",
+  "/images/building-3-grayscale.jpg"   // Added grayscale version
 ];
 
 export default function Hero() {
