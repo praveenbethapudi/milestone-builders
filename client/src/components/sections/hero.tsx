@@ -13,7 +13,7 @@ const exteriorImages = [
 
 export default function Hero() {
   return (
-    <section className="relative h-[75vh]">
+    <section className="relative h-[80vh]">
       <ImageCarousel images={exteriorImages} />
       <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
         <motion.div
@@ -29,7 +29,7 @@ export default function Hero() {
             Luxury Redefined
           </h1>
           <p className="text-xl md:text-2xl mb-5 max-w-2xl mx-auto text-white">
-            Where Excellence Meets Exceptional Living
+            #1 Residential Apartment in South Bangalore
           </p>
           <div className="grid grid-cols-3 gap-4 mb-8 max-w-4xl mx-auto">
             <div className="bg-black/60 p-3 rounded-lg backdrop-blur-sm">
