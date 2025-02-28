@@ -40,12 +40,6 @@ const interiorImages = [
   "/images/brown-marble-tiles.jpg",
 ];
 
-const bathroomImages = [
-  "/images/bathrooms/toilet.jpg",
-  "/images/bathrooms/pedestal-basin.jpg",
-  "/images/bathrooms/wall-basin.jpg",
-];
-
 const floorImages = [
   "/images/luxury-living-room-marble-flooring.jpg",
   "/images/white-marble-tiles.jpg",
@@ -86,7 +80,7 @@ export default function Features() {
                   <ImageCarousel images={floorImages} />
                 </div>
                 <div>
-                  <h4 className="text-lg font-medium mb-3">Floor Features</h4>
+                  <h4 className="text-lg font-medium mb-3">Door Features</h4>
                   <ul className="space-y-2">
                     <li>• Polished Galsed Vitrified Tiles (PGVT)</li>
                     <li>• 2x4 large form factor</li>
@@ -137,11 +131,8 @@ export default function Features() {
             <TabsContent key={key} value={key}>
               <Card>
                 <CardContent className="pt-6">
-                  <div className="grid md:grid-cols-2 gap-8">
-                    <div className="w-full h-64 rounded-lg overflow-hidden">
-                      <ImageCarousel images={key === "bathrooms" ? bathroomImages : interiorImages} />
-                    </div>
-                    <div className="grid grid-cols-2 gap-4">
+                  <div className="p-6">
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                       {items.map((item, index) => (
                         <motion.div
                           key={item}
