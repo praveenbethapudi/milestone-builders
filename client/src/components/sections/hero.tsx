@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import ImageCarousel from "@/components/ui/image-carousel";
+import { useEffect, useState } from "react";
 
 const exteriorImages = [
   "/images/building-1.jpg",
@@ -12,10 +13,25 @@ const exteriorImages = [
   "/images/building-7.jpg"
 ];
 
+function shuffleArray<T>(array: T[]): T[] {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+}
+
 export default function Hero() {
+  const [randomizedImages, setRandomizedImages] = useState<string[]>([]);
+
+  useEffect(() => {
+    setRandomizedImages(shuffleArray(exteriorImages));
+  }, []);
+
   return (
     <section className="relative h-[75vh]">
-      <ImageCarousel images={exteriorImages} />
+      <ImageCarousel images={randomizedImages} />
       <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
