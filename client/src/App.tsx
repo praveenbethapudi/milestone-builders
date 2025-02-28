@@ -24,8 +24,8 @@ function Router() {
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <Hero />
       <Logo />
+      <Hero />
       <Information />
       <Features />
       <Differentiators />
