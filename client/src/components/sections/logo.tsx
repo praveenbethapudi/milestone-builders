@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 export default function Logo() {
   return (
-    <section className="h-[20vh] px-4 bg-accent flex items-center">
+    <section className="h-[25vh] px-4 bg-accent flex items-center">
       <div className="max-w-7xl mx-auto flex justify-center">
         <motion.img
           src="/images/logo.png"

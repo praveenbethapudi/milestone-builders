@@ -13,7 +13,7 @@ const exteriorImages = [
 
 export default function Hero() {
   return (
-    <section className="relative h-[80vh]">
+    <section className="relative h-[75vh]">
       <ImageCarousel images={exteriorImages} />
       <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
         <motion.div
