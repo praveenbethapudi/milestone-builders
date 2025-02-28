@@ -10,7 +10,8 @@ const exteriorImages = [
   "/images/building-4.jpg",
   "/images/building-5.jpg",
   "/images/building-6.jpg",
-  "/images/building-7.jpg"
+  "/images/building-7.jpg",
+  "/images/building-8.jpg"
 ];
 
 function shuffleArray<T>(array: T[]): T[] {
