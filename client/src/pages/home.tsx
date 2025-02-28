@@ -1,4 +1,5 @@
 import Hero from "@/components/sections/hero";
+import Logo from "@/components/sections/logo";
 import Information from "@/components/sections/information";
 import Location from "@/components/sections/location";
 import Amenities from "@/components/sections/amenities";
@@ -9,6 +10,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-background">
       <Hero />
+      <Logo />
       <Information />
       <Location />
       <Amenities />
