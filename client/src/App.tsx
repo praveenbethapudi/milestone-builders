@@ -27,8 +27,8 @@ function App() {
       <Hero />
       <Logo />
       <Information />
-      <Features />
       <Differentiators />
+      <Features />
       <Location />
       <Contact />
       <Toaster />
