@@ -11,7 +11,6 @@ import Information from "./components/sections/information";
 import Differentiators from "./components/sections/differentiators";
 import Location from "./components/sections/location";
 import Contact from "./components/sections/contact";
-import Footer from "./components/sections/footer";
 
 function Router() {
   return (
@@ -32,7 +31,6 @@ function App() {
       <Differentiators />
       <Location />
       <Contact />
-      <Footer />
       <Toaster />
     </QueryClientProvider>
   );
