@@ -2,12 +2,12 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import ImageCarousel from "@/components/ui/image-carousel";
 
-// Update these paths after uploading your images to the public/images folder
 const exteriorImages = [
   "/images/building-1.jpg",
   "/images/building-2.jpg",
   "/images/building-3.jpg",
-  "/images/building-3-grayscale.jpg"   // Added grayscale version
+  "/images/building-4.jpg",
+  "/images/building-2-grayscale.jpg"   // Grayscale version of building-2
 ];
 
 export default function Hero() {
