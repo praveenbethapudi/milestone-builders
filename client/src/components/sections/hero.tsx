@@ -10,8 +10,7 @@ const exteriorImages = [
   "/images/building-5.jpg",
   "/images/building-6.jpg",
   "/images/building-7.jpg",
-  "/images/building-8.jpg",
-  "/images/building-2-grayscale.jpg"   // Grayscale version of building-2
+  "/images/building-8.jpg"
 ];
 
 export default function Hero() {
