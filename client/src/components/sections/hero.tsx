@@ -4,12 +4,12 @@ import ImageCarousel from "@/components/ui/image-carousel";
 import { useState, useEffect } from "react";
 
 const exteriorImages = [
-  "/images/building-6.jpg",
+  "/images/building-1.jpg",
   "/images/building-2.jpg",
   "/images/building-3.jpg",
-  "/images/building-4.jpg",
-  "/images/building-5.jpg",
-  "/images/building-1.jpg"
+  // "/images/building-4.jpg",
+  // "/images/building-5.jpg",
+  // "/images/building-6.jpg",
 ];
 
 interface TimeLeft {
@@ -20,7 +20,7 @@ interface TimeLeft {
 }
 
 const calculateTimeLeft = (): TimeLeft => {
-  const targetDate = new Date('2025-10-10').getTime();
+  const targetDate = new Date("2025-10-10").getTime();
   const now = new Date().getTime();
   const difference = targetDate - now;
 
@@ -28,7 +28,7 @@ const calculateTimeLeft = (): TimeLeft => {
     days: Math.floor(difference / (1000 * 60 * 60 * 24)),
     hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
     minutes: Math.floor((difference / 1000 / 60) % 60),
-    seconds: Math.floor((difference / 1000) % 60)
+    seconds: Math.floor((difference / 1000) % 60),
   };
 };
 
@@ -60,7 +60,7 @@ export default function Hero() {
             Luxury Redefined
           </h1>
           <p className="text-xl md:text-2xl mb-5 max-w-2xl mx-auto text-white">
-            #1 Residential Apartment in South Bangalore
+            .. handing over in ..
           </p>
 
           <div className="grid grid-cols-4 gap-4 mb-8 max-w-lg mx-auto">
@@ -69,20 +69,26 @@ export default function Hero() {
               <p className="text-white text-sm">Days</p>
             </div>
             <div className="bg-black/60 p-3 rounded-lg backdrop-blur-sm">
-              <p className="text-primary text-2xl font-bold">{timeLeft.hours}</p>
+              <p className="text-primary text-2xl font-bold">
+                {timeLeft.hours}
+              </p>
               <p className="text-white text-sm">Hours</p>
             </div>
             <div className="bg-black/60 p-3 rounded-lg backdrop-blur-sm">
-              <p className="text-primary text-2xl font-bold">{timeLeft.minutes}</p>
+              <p className="text-primary text-2xl font-bold">
+                {timeLeft.minutes}
+              </p>
               <p className="text-white text-sm">Minutes</p>
             </div>
             <div className="bg-black/60 p-3 rounded-lg backdrop-blur-sm">
-              <p className="text-primary text-2xl font-bold">{timeLeft.seconds}</p>
+              <p className="text-primary text-2xl font-bold">
+                {timeLeft.seconds}
+              </p>
               <p className="text-white text-sm">Seconds</p>
             </div>
           </div>
 
-          <div className="grid grid-cols-3 gap-4 mb-8 max-w-4xl mx-auto">
+          {/* <div className="grid grid-cols-3 gap-4 mb-8 max-w-4xl mx-auto">
             <div className="bg-black/60 p-3 rounded-lg backdrop-blur-sm">
               <p className="text-primary font-semibold">Prime Location</p>
               <p className="text-white text-sm">500m from Bommasandra Metro</p>
@@ -97,7 +103,7 @@ export default function Hero() {
                 Exclusive resident privileges
               </p>
             </div>
-          </div>
+          </div> */}
           <Button
             size="lg"
             className="bg-primary text-black hover:bg-primary/90"
