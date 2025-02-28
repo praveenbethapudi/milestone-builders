@@ -1,10 +1,11 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { motion } from "framer-motion";
 import { Building2, Car, Trees } from "lucide-react";
 
 const features = [
   {
-    title: "Elegant Landscapes",
+    title: "ELegent Landscapes",
     icon: Trees,
     description:
       "This luxury apartment boasts a well thought out landscape with beautiful palms and floral trees.",
@@ -25,21 +26,13 @@ const features = [
 
 export default function Information() {
   return (
-    <section 
-      className="py-20 px-4 bg-accent relative"
-      style={{
-        backgroundImage: 'url(/images/pool-view.jpg)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-      }}
-    >
-      <div className="absolute inset-0 bg-black/50" />
-      <div className="max-w-7xl mx-auto relative z-10">
+    <section className="py-20 px-4 bg-accent">
+      <div className="max-w-7xl mx-auto">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-4xl font-bold text-center mb-6 text-primary"
+          className="text-4xl font-bold text-center mb-6"
         >
           What makes us the #1 choice for your luxury living?
         </motion.h2>
@@ -48,7 +41,7 @@ export default function Information() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-12 max-w-3xl mx-auto text-white"
+          className="text-center mb-12 max-w-3xl mx-auto text-muted-foreground"
         >
           Unlike ordinary residences, The Meridian sets a new benchmark in
           luxury living with thoughtfully designed spaces, superior construction
@@ -64,13 +57,13 @@ export default function Information() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.2 }}
             >
-              <Card className="bg-black/60 backdrop-blur-sm border-primary/20">
+              <Card>
                 <CardContent className="pt-6">
-                  <feature.icon className="h-12 w-12 mb-4 text-primary" />
-                  <h3 className="text-xl font-semibold mb-2 text-primary">
+                  <feature.icon className="h-12 w-12 mb-4" />
+                  <h3 className="text-xl font-semibold mb-2">
                     {feature.title}
                   </h3>
-                  <p className="text-white">{feature.description}</p>
+                  <p className="text-muted-foreground">{feature.description}</p>
                 </CardContent>
               </Card>
             </motion.div>
