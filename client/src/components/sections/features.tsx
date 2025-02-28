@@ -31,11 +31,13 @@ const features = {
 };
 
 const interiorImages = [
-  "https://images.unsplash.com/photo-1499955085172-a104c9463ece",
-  "https://images.unsplash.com/photo-1554995207-c18c203602cb",
-  "https://images.unsplash.com/photo-1520106392146-ef585c111254",
-  "https://images.unsplash.com/photo-1560185007-cde436f6a4d0",
-  "https://images.unsplash.com/photo-1616137356540-a11331a5de29"
+  "/images/luxury-living-room-marble-flooring.jpg",  
+  "/images/white-marble-tiles.jpg",
+  "/images/beige-living-room-tiles.jpg",
+  "/images/beige-marble-tiles.jpg",
+  "/images/white-gold-marble-tiles.jpg",
+  "/images/modern-lobby-marble-flooring.jpg",
+  "/images/brown-marble-tiles.jpg"
 ];
 
 export default function Features() {
