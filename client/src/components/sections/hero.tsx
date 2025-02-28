@@ -23,7 +23,7 @@ export default function Hero() {
           className="text-center text-white px-4"
         >
           <h1 className="text-5xl md:text-7xl font-bold mb-6">
-            Luxury Living Redefined
+            Luxury Living Redefined with Value
           </h1>
           <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">
             Experience premium apartments designed for modern lifestyle
