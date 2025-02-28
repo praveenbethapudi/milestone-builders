@@ -80,7 +80,7 @@ export default function Features() {
                   <ImageCarousel images={floorImages} />
                 </div>
                 <div>
-                  <h4 className="text-lg font-medium mb-3">Door Features</h4>
+                  <h4 className="text-lg font-medium mb-3">Floor Features</h4>
                   <ul className="space-y-2">
                     <li>• Polished Galsed Vitrified Tiles (PGVT)</li>
                     <li>• 2x4 large form factor</li>
