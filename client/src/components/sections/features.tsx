@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import ImageCarousel from "@/components/ui/image-carousel";
 
 const features = {
-  fittings: [
+  specifications: [
     "Premium Aluminum Windows",
     "Solid Core Doors",
     "Imported Tiles",
@@ -12,7 +12,7 @@ const features = {
     "False Ceiling",
     "Automated Curtain Rails",
   ],
-  bathrooms: [
+  environment: [
     "Premium WC",
     "Designer Basins",
     "Hot & Cold Mixer",
@@ -31,23 +31,25 @@ const features = {
 };
 
 const interiorImages = [
-  "/images/luxury-living-room-marble-flooring.jpg",
-  "/images/white-marble-tiles.jpg",
-  "/images/beige-living-room-tiles.jpg",
-  "/images/beige-marble-tiles.jpg",
-  "/images/white-gold-marble-tiles.jpg",
-  "/images/modern-lobby-marble-flooring.jpg",
-  "/images/brown-marble-tiles.jpg",
+  "/images/floor/luxury-living-room-marble-flooring.jpg",
+  "/images/floor/white-marble-tiles.jpg",
+  "/images/floor/beige-living-room-tiles.jpg",
+  "/images/floor/beige-marble-tiles.jpg",
+  "/images/floor/white-gold-marble-tiles.jpg",
+  "/images/floor/modern-lobby-marble-flooring.jpg",
+  "/images/floor/white-marble.jpg",
+  "/images/floor/brown-marble-tiles.jpg",
 ];
 
 const floorImages = [
-  "/images/luxury-living-room-marble-flooring.jpg",
-  "/images/white-marble-tiles.jpg",
-  "/images/beige-living-room-tiles.jpg",
-  "/images/beige-marble-tiles.jpg",
-  "/images/white-gold-marble-tiles.jpg",
-  "/images/modern-lobby-marble-flooring.jpg",
-  "/images/brown-marble-tiles.jpg",
+  "/images/floor/luxury-living-room-marble-flooring.jpg",
+  "/images/floor/white-marble-tiles.jpg",
+  "/images/floor/beige-living-room-tiles.jpg",
+  "/images/floor/beige-marble-tiles.jpg",
+  "/images/floor/white-gold-marble-tiles.jpg",
+  "/images/floor/modern-lobby-marble-flooring.jpg",
+  "/images/floor/white-marble.jpg",
+  "/images/floor/brown-marble-tiles.jpg",
 ];
 
 const bathImages = [
@@ -160,8 +162,8 @@ export default function Features() {
 
         <Tabs defaultValue="fittings" className="w-full">
           <TabsList className="grid w-full grid-cols-3">
-            <TabsTrigger value="fittings">Fittings</TabsTrigger>
-            <TabsTrigger value="bathrooms">Bathrooms</TabsTrigger>
+            <TabsTrigger value="specifications">Specifications</TabsTrigger>
+            <TabsTrigger value="environment">Environment</TabsTrigger>
             <TabsTrigger value="security">Security</TabsTrigger>
           </TabsList>
 

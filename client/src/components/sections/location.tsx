@@ -17,23 +17,32 @@ interface LocationCardProps {
 
 const locations = {
   metro: [
-    { name: "Bommasandra Metro", distance: "0.5 km" },
-    { name: "BMTC Stop", distance: "0.2 km" }
+    { name: "Bommasandra Metro", distance: "10 km" },
+    { name: "Alliance University", distance: "14 km" },
+    { name: "New Oxford International", distance: "1 km" },
+    { name: "Edifice School", distance: "1 km" },
+    { name: "Indus International", distance: "0.5 km" },
   ],
   techParks: [
-    { name: "Satva Texonic", distance: "2 km" },
-    { name: "HCL Tech Park", distance: "3 km" }
+    { name: "Sattva Texonic", distance: "10 km" },
+    { name: "HCL Tech Park", distance: "4 km" },
+    { name: "Biocon", distance: "7 km" },
+    { name: "Micro Labs", distance: "7 km" },
+    { name: "Mylan", distance: "2.5 km" },
   ],
   malls: [
-    { name: "New Mall", distance: "1 km" },
-    { name: "DMart", distance: "1.5 km" }
-  ]
+    { name: "M5 E-City Mall", distance: "10 km" },
+    { name: "D-Mart, E-City", distance: "10 km" },
+    { name: "Meenakshi Mall", distance: "18 km" },
+    { name: "Sky-wards Sun Park", distance: "12 km" },
+    { name: "The Bigmarket", distance: "2.5 km" },
+  ],
 };
 
 const locationImages = [
-  "https://images.unsplash.com/photo-1667868118709-5d9c7b150031",
-  "https://images.unsplash.com/photo-1736117705462-34145ac33bdf",
-  "https://images.unsplash.com/photo-1595350576575-e481a38122bd"
+  "/images/location/metro.jpg",
+  "/images/location/hcl-tech.jpg",
+  "/images/location/m5-ecity-mall.png",
 ];
 
 export default function Location() {
@@ -46,18 +55,18 @@ export default function Location() {
           viewport={{ once: true }}
           className="text-4xl font-bold text-center mb-12"
         >
-          Prime Location
+          Accessible Location
         </motion.h2>
 
         <div className="grid md:grid-cols-3 gap-8">
           <LocationCard
-            title="Metro Connectivity"
+            title="Connectivity & Institutions"
             icon={Train}
             items={locations.metro}
             image={locationImages[0]}
           />
           <LocationCard
-            title="Tech Parks"
+            title="Tech Parks & Offices"
             icon={Building}
             items={locations.techParks}
             image={locationImages[1]}

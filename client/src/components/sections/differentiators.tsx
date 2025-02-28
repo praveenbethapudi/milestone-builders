@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { Award, Heart, Shield, Zap } from "lucide-react";
 
@@ -6,23 +5,27 @@ const differentiators = [
   {
     icon: Award,
     title: "Superior Architecture",
-    description: "While others offer standard construction, The Meridian features architectural excellence with premium materials and finishes that stand the test of time."
+    description:
+      "While others offer standard construction, The Meridian features architectural excellence with premium materials and finishes that stand the test of time.",
   },
   {
     icon: Shield,
     title: "Unmatched Security",
-    description: "Unlike conventional security systems, our multi-layered approach includes 24/7 surveillance, biometric access, and trained personnel for complete peace of mind."
+    description:
+      "Unlike conventional security systems, our multi-layered approach includes 24/7 surveillance, biometric access, and trained personnel for complete peace of mind.",
   },
   {
     icon: Zap,
-    title: "Energy Efficiency",
-    description: "The Meridian incorporates advanced sustainable design elements and energy-efficient systems that reduce your carbon footprint and utility costs."
+    title: "Eco Friendly",
+    description:
+      "The Meridian incorporates advanced sustainable design elements and energy-efficient systems that reduce your carbon footprint and utility costs.",
   },
   {
     icon: Heart,
     title: "Community Focus",
-    description: "Beyond just apartments, we've created a vibrant community with thoughtfully designed common spaces that foster meaningful connections among residents."
-  }
+    description:
+      "Beyond just apartments, we've created a vibrant community with thoughtfully designed common spaces that foster meaningful connections among residents.",
+  },
 ];
 
 export default function Differentiators() {
@@ -37,7 +40,7 @@ export default function Differentiators() {
         >
           The Meridian Difference
         </motion.h2>
-        
+
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
