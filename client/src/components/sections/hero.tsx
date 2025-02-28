@@ -23,10 +23,10 @@ export default function Hero() {
           className="text-center text-white px-4"
         >
           <h1 className="text-5xl md:text-7xl font-bold mb-6">
-            Luxury Apartments, Elevated Living
+            The Best Luxury Living in Jigani
           </h1>
           <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">
-            Where sophistication meets unparalleled comfort in every detail
+            Premium apartments crafted for an elite lifestyle
           </p>
           <Button 
             size="lg"
