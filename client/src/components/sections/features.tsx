@@ -50,7 +50,13 @@ const floorImages = [
   "/images/brown-marble-tiles.jpg",
 ];
 
-const doorImages = ["/images/main-door.jpg", "/images/door.jpg"];
+const bathImages = [
+  "/images/bath/wc.jpg",
+  "/images/bath/basin-1.jpg",
+  "/images/bath/basin-2.jpg",
+];
+
+const doorImages = ["/images/doors/main-door.jpg", "/images/doors/door.jpg"];
 
 export default function Features() {
   return (
@@ -73,14 +79,16 @@ export default function Features() {
           <Card>
             <CardContent className="pt-6">
               <h3 className="text-xl font-semibold mb-4">
-                Premium Floor Options
+                Premium Floor Tiles
               </h3>
               <div className="grid md:grid-cols-2 gap-8">
                 <div className="w-full h-80 rounded-lg overflow-hidden">
                   <ImageCarousel images={floorImages} />
                 </div>
                 <div>
-                  <h4 className="text-lg font-medium mb-3">Door Features</h4>
+                  <h4 className="text-lg font-medium mb-3">
+                    Choose Your Tiles
+                  </h4>
                   <ul className="space-y-2">
                     <li>• Polished Galsed Vitrified Tiles (PGVT)</li>
                     <li>• 2x4 large form factor</li>
@@ -105,14 +113,44 @@ export default function Features() {
                   <ImageCarousel images={doorImages} />
                 </div>
                 <div>
-                  <h4 className="text-lg font-medium mb-3">Door Features</h4>
+                  <h4 className="text-lg font-medium mb-3">
+                    Veneer & Laminate Doors
+                  </h4>
                   <ul className="space-y-2">
                     <li>• Burma Teak Designer Veneer Maindoors</li>
-                    <li>• Fero Pine Designer Laminated Flush Doors</li>
+                    <li>• Pine Designer Laminated Flush Doors</li>
                     <li>• Solid Core Construction</li>
                     <li>• Premium Hardware Fittings</li>
                     <li>• Scratch-Resistant Finish</li>
                     <li>• Sound Insulation Properties</li>
+                  </ul>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        <div className="mt-8 mb-12">
+          <Card>
+            <CardContent className="pt-6">
+              <h3 className="text-xl font-semibold mb-4">
+                Premium Bath Accessories
+              </h3>
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="w-full h-80 rounded-lg overflow-hidden">
+                  <ImageCarousel images={bathImages} />
+                </div>
+                <div>
+                  <h4 className="text-lg font-medium mb-3">
+                    Bathroom Accessories
+                  </h4>
+                  <ul className="space-y-2">
+                    <li>• Eligant Single Piece WC</li>
+                    <li>• Stylish full height Basins</li>
+                    <li>• Provision for in-ceiling Heaters</li>
+                    <li>• Hot & Cold water for Shower & Basin</li>
+                    <li>• Jacquar Brass Diverters</li>
+                    <li>• Recycled Water for WC</li>
                   </ul>
                 </div>
               </div>
