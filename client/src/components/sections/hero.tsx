@@ -7,6 +7,10 @@ const exteriorImages = [
   "/images/building-2.jpg",
   "/images/building-3.jpg",
   "/images/building-4.jpg",
+  "/images/building-5.jpg",
+  "/images/building-6.jpg",
+  "/images/building-7.jpg",
+  "/images/building-8.jpg",
   "/images/building-2-grayscale.jpg"   // Grayscale version of building-2
 ];
 
