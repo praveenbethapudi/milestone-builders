@@ -3,12 +3,12 @@ import { Button } from "@/components/ui/button";
 import ImageCarousel from "@/components/ui/image-carousel";
 
 const exteriorImages = [
-  "/images/building-1.jpg",
+  "/images/building-6.jpg",
   "/images/building-2.jpg",
   "/images/building-3.jpg",
   "/images/building-4.jpg",
   "/images/building-5.jpg",
-  "/images/building-6.jpg",
+  "/images/building-1.jpg"
 ];
 
 export default function Hero() {
