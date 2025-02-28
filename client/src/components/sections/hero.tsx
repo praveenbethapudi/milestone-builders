@@ -29,7 +29,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative h-[60vh]">
+    <section className="relative h-[75vh]">
       <ImageCarousel images={randomizedImages} />
       <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
         <motion.div 
