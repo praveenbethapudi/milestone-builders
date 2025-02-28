@@ -22,7 +22,7 @@ export default function Hero() {
           transition={{ duration: 0.8 }}
           className="text-center px-4"
         >
-          <h1 className="text-5xl md:text-7xl font-bold mb-6" style={{ color: '#FFEA57' }}>
+          <h1 className="text-3xl md:text-5xl font-bold mb-6" style={{ color: '#FFEA57' }}>
             The Best Luxury Living in Jigani
           </h1>
           <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto text-white">
