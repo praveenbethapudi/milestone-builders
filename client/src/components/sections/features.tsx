@@ -40,6 +40,13 @@ const interiorImages = [
   "/images/brown-marble-tiles.jpg"
 ];
 
+const doorImages = [
+  "/images/door1.jpg", //Replace with actual image paths
+  "/images/door2.jpg",
+  "/images/door3.jpg"
+];
+
+
 export default function Features() {
   return (
     <section className="py-20 px-4 relative">
@@ -53,6 +60,30 @@ export default function Features() {
         >
           Premium Features
         </motion.h2>
+
+        <div className="mt-8 mb-12">
+          <Card>
+            <CardContent className="pt-6">
+              <h3 className="text-xl font-semibold mb-4">Premium Door Options</h3>
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="w-full h-80 rounded-lg overflow-hidden">
+                  <ImageCarousel images={doorImages} />
+                </div>
+                <div>
+                  <h4 className="text-lg font-medium mb-3">Door Features</h4>
+                  <ul className="space-y-2">
+                    <li>• Burma Teak Designer Veneer Maindoors</li>
+                    <li>• Fero Pine Designer Laminated Flush Doors</li>
+                    <li>• Solid Core Construction</li>
+                    <li>• Premium Hardware Fittings</li>
+                    <li>• Scratch-Resistant Finish</li>
+                    <li>• Sound Insulation Properties</li>
+                  </ul>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
 
         <Tabs defaultValue="fittings" className="w-full">
           <TabsList className="grid w-full grid-cols-3">
