@@ -10,7 +10,7 @@ const features = {
     "Imported Tiles",
     "Designer Wall Panels",
     "False Ceiling",
-    "Automated Curtain Rails"
+    "Automated Curtain Rails",
   ],
   bathrooms: [
     "Premium WC",
@@ -18,7 +18,7 @@ const features = {
     "Hot & Cold Mixer",
     "Jaquar Fittings",
     "Anti-skid Tiles",
-    "Rain Shower"
+    "Rain Shower",
   ],
   security: [
     "10' Boundary Walls",
@@ -26,31 +26,39 @@ const features = {
     "Access Control",
     "Intercom",
     "Security Personnel",
-    "Visitor Management"
-  ]
+    "Visitor Management",
+  ],
 };
 
 const interiorImages = [
-  "/images/luxury-living-room-marble-flooring.jpg",  
+  "/images/luxury-living-room-marble-flooring.jpg",
   "/images/white-marble-tiles.jpg",
   "/images/beige-living-room-tiles.jpg",
   "/images/beige-marble-tiles.jpg",
   "/images/white-gold-marble-tiles.jpg",
   "/images/modern-lobby-marble-flooring.jpg",
-  "/images/brown-marble-tiles.jpg"
+  "/images/brown-marble-tiles.jpg",
 ];
 
-const doorImages = [
-  "/images/door1.jpg", //Replace with actual image paths
-  "/images/door2.jpg",
-  "/images/door3.jpg"
+const floorImages = [
+  "/images/luxury-living-room-marble-flooring.jpg",
+  "/images/white-marble-tiles.jpg",
+  "/images/beige-living-room-tiles.jpg",
+  "/images/beige-marble-tiles.jpg",
+  "/images/white-gold-marble-tiles.jpg",
+  "/images/modern-lobby-marble-flooring.jpg",
+  "/images/brown-marble-tiles.jpg",
 ];
 
+const doorImages = ["/images/main-door.jpg", "/images/door.jpg"];
 
 export default function Features() {
   return (
     <section className="py-20 px-4 relative">
-      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30" style={{ backgroundImage: 'url("/images/floor-plan.png")' }}></div>
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
+        style={{ backgroundImage: 'url("/images/floor-plan.png")' }}
+      ></div>
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -64,7 +72,34 @@ export default function Features() {
         <div className="mt-8 mb-12">
           <Card>
             <CardContent className="pt-6">
-              <h3 className="text-xl font-semibold mb-4">Premium Door Options</h3>
+              <h3 className="text-xl font-semibold mb-4">
+                Premium Floor Options
+              </h3>
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="w-full h-80 rounded-lg overflow-hidden">
+                  <ImageCarousel images={floorImages} />
+                </div>
+                <div>
+                  <h4 className="text-lg font-medium mb-3">Door Features</h4>
+                  <ul className="space-y-2">
+                    <li>• Polished Galsed Vitrified Tiles (PGVT)</li>
+                    <li>• 2x4 large form factor</li>
+                    <li>• Premium Marble Tiles</li>
+                    <li>• Scratch-Resistant</li>
+                    <li>• Water-Resistant</li>
+                  </ul>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        <div className="mt-8 mb-12">
+          <Card>
+            <CardContent className="pt-6">
+              <h3 className="text-xl font-semibold mb-4">
+                Premium Door Options
+              </h3>
               <div className="grid md:grid-cols-2 gap-8">
                 <div className="w-full h-80 rounded-lg overflow-hidden">
                   <ImageCarousel images={doorImages} />
