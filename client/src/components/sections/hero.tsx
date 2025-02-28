@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import ImageCarousel from "@/components/ui/image-carousel";
+import { useState, useEffect } from "react";
 
 const exteriorImages = [
   "/images/building-6.jpg",
@@ -11,7 +12,37 @@ const exteriorImages = [
   "/images/building-1.jpg"
 ];
 
+interface TimeLeft {
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+}
+
+const calculateTimeLeft = (): TimeLeft => {
+  const targetDate = new Date('2025-10-10').getTime();
+  const now = new Date().getTime();
+  const difference = targetDate - now;
+
+  return {
+    days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+    hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+    minutes: Math.floor((difference / 1000 / 60) % 60),
+    seconds: Math.floor((difference / 1000) % 60)
+  };
+};
+
 export default function Hero() {
+  const [timeLeft, setTimeLeft] = useState<TimeLeft>(calculateTimeLeft());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft(calculateTimeLeft());
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section className="relative h-[75vh]">
       <ImageCarousel images={exteriorImages} />
@@ -31,6 +62,26 @@ export default function Hero() {
           <p className="text-xl md:text-2xl mb-5 max-w-2xl mx-auto text-white">
             #1 Residential Apartment in South Bangalore
           </p>
+
+          <div className="grid grid-cols-4 gap-4 mb-8 max-w-lg mx-auto">
+            <div className="bg-black/60 p-3 rounded-lg backdrop-blur-sm">
+              <p className="text-primary text-2xl font-bold">{timeLeft.days}</p>
+              <p className="text-white text-sm">Days</p>
+            </div>
+            <div className="bg-black/60 p-3 rounded-lg backdrop-blur-sm">
+              <p className="text-primary text-2xl font-bold">{timeLeft.hours}</p>
+              <p className="text-white text-sm">Hours</p>
+            </div>
+            <div className="bg-black/60 p-3 rounded-lg backdrop-blur-sm">
+              <p className="text-primary text-2xl font-bold">{timeLeft.minutes}</p>
+              <p className="text-white text-sm">Minutes</p>
+            </div>
+            <div className="bg-black/60 p-3 rounded-lg backdrop-blur-sm">
+              <p className="text-primary text-2xl font-bold">{timeLeft.seconds}</p>
+              <p className="text-white text-sm">Seconds</p>
+            </div>
+          </div>
+
           <div className="grid grid-cols-3 gap-4 mb-8 max-w-4xl mx-auto">
             <div className="bg-black/60 p-3 rounded-lg backdrop-blur-sm">
               <p className="text-primary font-semibold">Prime Location</p>
