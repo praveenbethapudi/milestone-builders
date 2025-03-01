@@ -1,18 +1,31 @@
+
 import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import ImageCarousel from "../ui/image-carousel";
 
 const amenityImages = [
-  "https://images.unsplash.com/photo-1605882171181-e31b036e4ceb",
-  "https://images.unsplash.com/photo-1517676284413-49b63f9007fe",
-  "https://images.unsplash.com/photo-1530268578403-df6e89da0d30"
+  "/images/amenities/swimming-pool.jpg",
+  "/images/amenities/playground.jpg",
+  "/images/amenities/palm-landscape.jpg",
+  "/images/amenities/floral-garden.jpg",
+  "/images/amenities/games-room.jpg",
+  "/images/amenities/function-hall.jpg",
+  "/images/amenities/gym.jpg",
+  "/images/amenities/basement-parking.jpg",
+  "/images/amenities/elevators.jpg"
 ];
 
 const amenities = [
-  "24/7 Security",
-  "Fitness Center",
   "Swimming Pool",
   "Children's Play Area",
+  "Palm Landscapes",
+  "Floral Gardens",
+  "Indoor Games Room",
+  "Function Hall",
+  "Fully Equipped Gym",
+  "Basement Parking",
+  "Modern Elevators",
+  "24/7 Security",
   "Landscaped Gardens",
   "Community Hall"
 ];
