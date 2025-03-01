@@ -16,7 +16,7 @@ import TermsOfUse from "./pages/terms";
 import PrivacyPolicy from "./pages/privacy";
 // Added RefundPolicy import - assuming it's needed based on the context.
 import RefundPolicy from "./pages/refund";
-
+import Amenities from "./components/sections/amenities";
 
 function HomePage() {
   return (
@@ -26,6 +26,7 @@ function HomePage() {
       <Information />
       <Differentiators />
       <Features />
+      <Amenities />
       <Location />
       <Contact />
       <Footer />
@@ -42,7 +43,8 @@ function Router() {
           <Route path="/terms" element={<TermsOfUse />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/refund" element={<RefundPolicy />} />
-          <Route path="*" element={<NotFound />} /> {/* Added a catch-all route */}
+          <Route path="*" element={<NotFound />} />{" "}
+          {/* Added a catch-all route */}
         </Routes>
       </HashRouter>
       <Toaster />
