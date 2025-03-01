@@ -55,7 +55,7 @@ export default function Location() {
           viewport={{ once: true }}
           className="text-4xl font-bold text-center mb-12"
         >
-          Accessible Location
+          Accessiblity
         </motion.h2>
 
         <div className="grid md:grid-cols-3 gap-8">
