@@ -1,4 +1,4 @@
-import { Switch, Route } from "wouter";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "./lib/queryClient";
 import { Toaster } from "@/components/ui/toaster";
@@ -12,19 +12,15 @@ import Differentiators from "./components/sections/differentiators";
 import Location from "./components/sections/location";
 import Contact from "./components/sections/contact";
 import Footer from "./components/sections/footer";
+import TermsOfUse from "./pages/terms";
+import PrivacyPolicy from "./pages/privacy";
+// Added RefundPolicy import - assuming it's needed based on the context.
+import RefundPolicy from "./pages/refund";
 
-function Router() {
-  return (
-    <Switch>
-      <Route path="/" component={Home} />
-      <Route component={NotFound} />
-    </Switch>
-  );
-}
 
-function App() {
+function HomePage() {
   return (
-    <QueryClientProvider client={queryClient}>
+    <>
       <Hero />
       <Logo />
       <Information />
@@ -33,9 +29,25 @@ function App() {
       <Location />
       <Contact />
       <Footer />
+    </>
+  );
+}
+
+function Router() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <HashRouter>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/terms" element={<TermsOfUse />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/refund" element={<RefundPolicy />} />
+          <Route path="*" element={<NotFound />} /> {/* Added a catch-all route */}
+        </Routes>
+      </HashRouter>
       <Toaster />
     </QueryClientProvider>
   );
 }
 
-export default App;
+export default Router;
