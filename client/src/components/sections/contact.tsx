@@ -19,12 +19,22 @@ import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import { MessageCircle } from "lucide-react";
 
-export default function Contact() {
-  const api_url = import.meta.env.VITE_TELECRM_API_URL;
-  const token = import.meta.env.VITE_TELECRM_API_TOKEN;
-  const ent_id = import.meta.env.VITE_TELECRM_ENT_ID;
+// Type declaration for environment variables
+interface EnvVariables {
+  VITE_TELECRM_API_URL: string;
+  VITE_TELECRM_API_TOKEN: string;
+  VITE_TELECRM_ENT_ID: string;
+}
 
+export default function Contact() {
   const { toast } = useToast();
+
+  // Safely access environment variables
+  const env = import.meta.env as unknown as EnvVariables;
+  const api_url = env.VITE_TELECRM_API_URL;
+  const token = env.VITE_TELECRM_API_TOKEN;
+  const ent_id = env.VITE_TELECRM_ENT_ID;
+
   const form = useForm({
     resolver: zodResolver(insertInquirySchema),
     defaultValues: {
@@ -35,27 +45,33 @@ export default function Contact() {
     },
   });
 
-  const uri = `${api_url}/${ent_id}/autoupdatelead`;
-  const body = {
-    fields: {
-      name: "Telecrm Support",
-      mobile: "917017406742",
-      email: "support@telecrm.in",
-    },
-    actions: [
-      {
-        type: "SYSTEM_NOTE",
-        text: "Lead Source: Website",
-      },
-      {
-        type: "SYSTEM_NOTE",
-        text: "Note: Website",
-      },
-    ],
-  };
+  // Only construct URI if environment variables are available
+  const uri = api_url && ent_id ? `${api_url}/${ent_id}/autoupdatelead` : '';
 
   const mutation = useMutation({
     mutationFn: async (values: any) => {
+      if (!uri || !token) {
+        throw new Error("Missing configuration for TeleCRM integration");
+      }
+
+      const body = {
+        fields: {
+          name: values.name,
+          mobile: values.phone,
+          email: values.email,
+        },
+        actions: [
+          {
+            type: "SYSTEM_NOTE",
+            text: "Lead Source: Website",
+          },
+          {
+            type: "SYSTEM_NOTE",
+            text: `Message: ${values.message}`,
+          },
+        ],
+      };
+
       await apiRequest("POST", uri, body, token);
     },
     onSuccess: () => {
