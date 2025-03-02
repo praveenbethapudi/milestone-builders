@@ -97,7 +97,7 @@ export default function Botanical() {
           </p>
         </motion.div>
 
-        <div className="columns-1 md:columns-2 lg:columns-3 gap-0 [column-fill:_balance]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {plants.map((plant, index) => (
             <motion.div
               key={plant.name}
@@ -105,18 +105,10 @@ export default function Botanical() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="group break-inside-avoid"
+              className="group"
             >
-              <Card className="overflow-hidden bg-white border-none shadow-lg hover:shadow-xl transition-all duration-300 rounded-none">
-                <div
-                  className={`relative overflow-hidden ${
-                    plant.size === "large"
-                      ? "aspect-[16/9]"
-                      : plant.size === "medium"
-                        ? "aspect-[4/3]"
-                        : "aspect-square"
-                  }`}
-                >
+              <Card className="overflow-hidden bg-white border-none shadow-lg hover:shadow-xl transition-all duration-300">
+                <div className="relative overflow-hidden aspect-[4/3]">
                   <img
                     src={plant.image}
                     alt={plant.name}
