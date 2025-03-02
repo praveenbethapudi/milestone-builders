@@ -1,5 +1,6 @@
+
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link } from "@/components/ui/link";
 
 export default function Footer() {
   return (
@@ -22,7 +23,7 @@ export default function Footer() {
               Phone: +91 9876543210
             </p>
           </motion.div>
-
+          
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -31,20 +32,20 @@ export default function Footer() {
             className="flex flex-col space-y-3"
           >
             <h3 className="text-lg font-semibold mb-2">Quick Links</h3>
-            <Link to="/" className="text-muted-foreground text-sm hover:text-primary">
-              Home
+            <Link href="#" className="text-muted-foreground text-sm hover:text-primary">
+              About Us
             </Link>
-            <a href="#amenities" className="text-muted-foreground text-sm hover:text-primary">
+            <Link href="#" className="text-muted-foreground text-sm hover:text-primary">
               Amenities
-            </a>
-            <a href="#features" className="text-muted-foreground text-sm hover:text-primary">
-              Features
-            </a>
-            <a href="#contact" className="text-muted-foreground text-sm hover:text-primary">
+            </Link>
+            <Link href="#" className="text-muted-foreground text-sm hover:text-primary">
+              Gallery
+            </Link>
+            <Link href="#contact" className="text-muted-foreground text-sm hover:text-primary">
               Contact
-            </a>
+            </Link>
           </motion.div>
-
+          
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -53,18 +54,18 @@ export default function Footer() {
             className="flex flex-col space-y-3"
           >
             <h3 className="text-lg font-semibold mb-2">Legal</h3>
-            <Link to="/terms" className="text-muted-foreground text-sm hover:text-primary">
+            <Link href="/terms" className="text-muted-foreground text-sm hover:text-primary">
               Terms of Use
             </Link>
-            <Link to="/privacy" className="text-muted-foreground text-sm hover:text-primary">
+            <Link href="/privacy" className="text-muted-foreground text-sm hover:text-primary">
               Privacy Policy
             </Link>
-            <Link to="/refund" className="text-muted-foreground text-sm hover:text-primary">
+            <Link href="/refund" className="text-muted-foreground text-sm hover:text-primary">
               Refund Policy
             </Link>
           </motion.div>
         </div>
-
+        
         <div className="border-t border-border mt-8 pt-8 text-center">
           <p className="text-sm text-muted-foreground">
             © {new Date().getFullYear()} The Meridian Luxury Apartments. All rights reserved.
