@@ -20,10 +20,10 @@ import { apiRequest } from "@/lib/queryClient";
 import { MessageCircle } from "lucide-react";
 
 export default function Contact() {
-  const teleCRM_api_url = process.env.TELECRM_API_URL;
-  const teleCRM_api_key = process.env.TELECRM_API_KEY;
-  const teleCRM_ent_id = process.env.TELECRM_ENT_ID;
-  
+  const api_url = import.meta.env.VITE_TELECRM_API_URL;
+  const token = import.meta.env.VITE_TELECRM_API_TOKEN;
+  const ent_id = import.meta.env.VITE_TELECRM_ENT_ID;
+
   const { toast } = useToast();
   const form = useForm({
     resolver: zodResolver(insertInquirySchema),
@@ -35,25 +35,28 @@ export default function Contact() {
     },
   });
 
+  const uri = `${api_url}/${ent_id}/autoupdatelead`;
+  const body = {
+    fields: {
+      name: "Telecrm Support",
+      mobile: "917017406742",
+      email: "support@telecrm.in",
+    },
+    actions: [
+      {
+        type: "SYSTEM_NOTE",
+        text: "Lead Source: Website",
+      },
+      {
+        type: "SYSTEM_NOTE",
+        text: "Note: Website",
+      },
+    ],
+  };
+
   const mutation = useMutation({
     mutationFn: async (values: any) => {
-      await apiRequest(
-        "POST",
-        teleCRM_api_url + teleCRM_api_key + "/autoupdatelead",
-        {
-          fields: {
-            name: "Telecrm Support",
-            phone: "917017406742",
-            email: "support@telecrm.in",
-          },
-          actions: [
-            {
-              type: "SYSTEM_NOTE",
-              text: "Lead Source: ${leadSource}",
-            },
-          ],
-        },
-      );
+      await apiRequest("POST", uri, body, token);
     },
     onSuccess: () => {
       toast({
