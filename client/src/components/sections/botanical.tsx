@@ -5,62 +5,74 @@ const plants = [
   {
     name: "Temple Tree (Plumeria)",
     image: "/images/botanical/temple-tree-2.webp",
-    description: "Fragrant flowering tree adding tropical charm to common areas"
+    description: "Fragrant flowering tree adding tropical charm to common areas",
+    size: "large"
   },
   {
     name: "Golden Shower Tree",
     image: "/images/botanical/Golden-Shower-Tree.webp",
-    description: "Majestic yellow blooms cascading through walkways"
+    description: "Majestic yellow blooms cascading through walkways",
+    size: "medium"
   },
   {
     name: "African Mahogany",
     image: "/images/botanical/african-mahogony.webp",
-    description: "Luxuriant shade tree offering premium wood characteristics"
+    description: "Luxuriant shade tree offering premium wood characteristics",
+    size: "large"
   },
   {
     name: "Date Palm",
     image: "/images/botanical/date-palms-1.webp",
-    description: "Iconic desert palm creating resort-style landscapes"
+    description: "Iconic desert palm creating resort-style landscapes",
+    size: "medium"
   },
   {
     name: "Anthurium",
     image: "/images/botanical/anthurium-andraeanum-2.jpg",
-    description: "Tropical flowering plant adorning garden corners"
+    description: "Tropical flowering plant adorning garden corners",
+    size: "small"
   },
   {
     name: "Aglaonema",
     image: "/images/botanical/aglaonema-1.webp",
-    description: "Chinese Evergreen - Adding colorful foliage to shaded areas"
+    description: "Chinese Evergreen - Adding colorful foliage to shaded areas",
+    size: "medium"
   },
   {
     name: "Acalypha Wilkesiana",
     image: "/images/botanical/acalypha-wilkesiana-1.webp",
-    description: "Copper Leaf - Vibrant foliage for garden borders"
+    description: "Copper Leaf - Vibrant foliage for garden borders",
+    size: "small"
   },
   {
     name: "Tabebuia Rosea",
     image: "/images/botanical/tabebuia-rosea-plant-1.webp",
-    description: "Pink Trumpet Tree - Creates stunning pink canopies"
+    description: "Pink Trumpet Tree - Creates stunning pink canopies",
+    size: "large"
   },
   {
     name: "Royal Bottle Palms",
     image: "/images/botanical/royal-bottle-palms-1.webp",
-    description: "Elegant palms creating stately entrance boulevards"
+    description: "Elegant palms creating stately entrance boulevards",
+    size: "medium"
   },
   {
     name: "Silver Oak",
     image: "/images/botanical/silver-oaks-1.webp",
-    description: "Graceful evergreen providing year-round shade and beauty"
+    description: "Graceful evergreen providing year-round shade and beauty",
+    size: "large"
   },
   {
     name: "Apple Tree",
     image: "/images/botanical/apple-1.webp",
-    description: "Ornamental fruit tree adding charm to garden spaces"
+    description: "Ornamental fruit tree adding charm to garden spaces",
+    size: "medium"
   },
   {
     name: "Banganapalli Mango",
     image: "/images/botanical/mango-banganapalli-1.webp",
-    description: "Premium mango variety offering sweet fruits and shade"
+    description: "Premium mango variety offering sweet fruits and shade",
+    size: "small"
   }
 ];
 
@@ -83,7 +95,7 @@ export default function Botanical() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="columns-1 md:columns-2 lg:columns-3 gap-8 [column-fill:_balance] mb-8">
           {plants.map((plant, index) => (
             <motion.div
               key={plant.name}
@@ -91,10 +103,16 @@ export default function Botanical() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="group"
+              className={`group break-inside-avoid mb-8 ${
+                plant.size === 'large' ? 'md:col-span-2' :
+                plant.size === 'medium' ? '' : 'md:col-span-1'
+              }`}
             >
               <Card className="overflow-hidden bg-white border-none shadow-lg hover:shadow-xl transition-all duration-300">
-                <div className="aspect-[4/3] relative overflow-hidden">
+                <div className={`relative overflow-hidden ${
+                  plant.size === 'large' ? 'aspect-[16/9]' :
+                  plant.size === 'medium' ? 'aspect-[4/3]' : 'aspect-square'
+                }`}>
                   <img
                     src={plant.image}
                     alt={plant.name}
