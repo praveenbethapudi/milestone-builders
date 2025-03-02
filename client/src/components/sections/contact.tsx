@@ -21,24 +21,42 @@ import { MessageCircle } from "lucide-react";
 
 export default function Contact() {
   const { toast } = useToast();
+  const teleCRM_api_url = import.meta.env.VITE_TELECRM_API_URL;
+  const teleCRM_api_key = import.meta.env.VITE_TELECRM_API_KEY;
   const form = useForm({
     resolver: zodResolver(insertInquirySchema),
     defaultValues: {
       name: "",
       email: "",
       phone: "",
-      message: ""
-    }
+      message: "",
+    },
   });
 
   const mutation = useMutation({
     mutationFn: async (values: any) => {
-      await apiRequest("POST", "/api/inquiries", values);
+      await apiRequest(
+        "POST",
+        teleCRM_api_url + teleCRM_api_key + "/autoupdatelead",
+        {
+          fields: {
+            name: "Telecrm Support",
+            phone: "917017406742",
+            email: "support@telecrm.in",
+          },
+          actions: [
+            {
+              type: "SYSTEM_NOTE",
+              text: "Lead Source: ${leadSource}",
+            },
+          ],
+        },
+      );
     },
     onSuccess: () => {
       toast({
         title: "Success",
-        description: "Your inquiry has been sent. We'll contact you soon!"
+        description: "Your inquiry has been sent. We'll contact you soon!",
       });
       form.reset();
     },
@@ -46,9 +64,9 @@ export default function Contact() {
       toast({
         title: "Error",
         description: "Failed to send inquiry. Please try again.",
-        variant: "destructive"
+        variant: "destructive",
       });
-    }
+    },
   });
 
   return (
@@ -71,12 +89,15 @@ export default function Contact() {
           >
             <h3 className="text-2xl font-semibold mb-4">Get in Touch</h3>
             <p className="mb-6 text-muted-foreground">
-              Interested in viewing our luxury apartments? Fill out the form or contact us directly.
+              Interested in viewing our luxury apartments? Fill out the form or
+              contact us directly.
             </p>
 
             <Button
               className="w-full mb-4"
-              onClick={() => window.open("https://wa.me/1234567890", "_blank")}
+              onClick={() =>
+                window.open("https://wa.me/917440075000", "_blank")
+              }
             >
               <MessageCircle className="mr-2 h-4 w-4" />
               Chat on WhatsApp
@@ -89,7 +110,10 @@ export default function Contact() {
             viewport={{ once: true }}
           >
             <Form {...form}>
-              <form onSubmit={form.handleSubmit((data) => mutation.mutate(data))} className="space-y-4">
+              <form
+                onSubmit={form.handleSubmit((data) => mutation.mutate(data))}
+                className="space-y-4"
+              >
                 <FormField
                   control={form.control}
                   name="name"
@@ -111,7 +135,11 @@ export default function Contact() {
                     <FormItem>
                       <FormLabel>Email</FormLabel>
                       <FormControl>
-                        <Input type="email" placeholder="Your email" {...field} />
+                        <Input
+                          type="email"
+                          placeholder="Your email"
+                          {...field}
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
