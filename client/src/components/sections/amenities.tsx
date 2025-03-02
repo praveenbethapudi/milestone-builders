@@ -7,7 +7,7 @@ const amenityImages = [
   "/images/amenities/playground.jpg",
   "/images/amenities/palm-landscape.jpg",
   "/images/amenities/floral-garden.jpg",
-  "/images/amenities/games-room.jpg",
+  "/images/amenities/indoor-games.jpg",
   "/images/amenities/function-hall.jpg",
   "/images/amenities/gym.jpg",
   "/images/amenities/basement-parking.webp",
