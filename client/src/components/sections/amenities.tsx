@@ -11,7 +11,8 @@ const amenityImages = [
   "/images/amenities/party-hall.jpg",
   "/images/amenities/gym.jpg",
   "/images/amenities/basement-parking.webp",
-  "/images/amenities/elevators.jpg"
+  "/images/amenities/elevators.jpg",
+  "/images/amenities/security-cameras.webp"
 ];
 
 const amenities = [
@@ -24,7 +25,7 @@ const amenities = [
   "Fully Equipped Gym",
   "Basement Parking",
   "Modern Elevators",
-  "24/7 Security",
+  "24/7 CCTV Surveillance",
   "Landscaped Gardens",
   "Community Hall"
 ];
