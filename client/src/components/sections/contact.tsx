@@ -56,7 +56,12 @@ export default function Contact() {
 
   const mutation = useMutation({
     mutationFn: async (values: any) => {
-      await apiRequest("POST", uri, body, token);
+      await apiRequest(
+        "POST",
+        uri,
+        { name: "test", mobile: "9652770025" },
+        token,
+      );
     },
     onSuccess: () => {
       toast({
@@ -68,7 +73,7 @@ export default function Contact() {
     onError: () => {
       toast({
         title: "Error",
-        description: "Failed to send inquiry. Please try again.",
+        description: `Failed to send inquiry. Please try again. ${uri} ${body}`,
         variant: "destructive",
       });
     },
