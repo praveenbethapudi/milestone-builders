@@ -20,9 +20,11 @@ import { apiRequest } from "@/lib/queryClient";
 import { MessageCircle } from "lucide-react";
 
 export default function Contact() {
+  const teleCRM_api_url = process.env.TELECRM_API_URL;
+  const teleCRM_api_key = process.env.TELECRM_API_KEY;
+  const teleCRM_ent_id = process.env.TELECRM_ENT_ID;
+  
   const { toast } = useToast();
-  const teleCRM_api_url = import.meta.env.VITE_TELECRM_API_URL;
-  const teleCRM_api_key = import.meta.env.VITE_TELECRM_API_KEY;
   const form = useForm({
     resolver: zodResolver(insertInquirySchema),
     defaultValues: {
