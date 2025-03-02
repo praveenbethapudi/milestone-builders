@@ -72,20 +72,6 @@ const amenities = [
     description: "Zen-inspired garden with artistic sculptures and water features",
     details: "Tranquil spaces perfect for meditation and relaxation",
     size: "large"
-  },
-  {
-    name: "Palm Landscapes",
-    image: "/images/amenities/palm-landscape.jpg",
-    description: "Majestic palm trees lining the walkways",
-    details: "Creating a resort-like atmosphere",
-    size: "medium"
-  },
-  {
-    name: "Floral Gardens",
-    image: "/images/amenities/floral-garden.jpg",
-    description: "Beautifully maintained gardens with seasonal flowers",
-    details: "Perfect spots for morning and evening walks",
-    size: "large"
   }
 ];
 
