@@ -56,12 +56,38 @@ export default function Contact() {
 
   const mutation = useMutation({
     mutationFn: async (values: any) => {
-      await apiRequest(
-        "POST",
-        uri,
-        { name: "test", mobile: "9652770025" },
-        token,
-      );
+      try {
+        const formData = {
+          fields: {
+            name: values.name,
+            mobile: values.phone,
+            email: values.email,
+            description: values.message
+          },
+          actions: [
+            {
+              type: "SYSTEM_NOTE",
+              text: "Lead Source: Website Contact Form"
+            },
+            {
+              type: "SYSTEM_NOTE",
+              text: `Message: ${values.message}`
+            }
+          ]
+        };
+        
+        const response = await apiRequest(
+          "POST",
+          uri,
+          formData,
+          token,
+        );
+        
+        return response;
+      } catch (error) {
+        console.error("API request failed:", error);
+        throw error;
+      }
     },
     onSuccess: () => {
       toast({
@@ -70,10 +96,11 @@ export default function Contact() {
       });
       form.reset();
     },
-    onError: () => {
+    onError: (error) => {
+      console.error("Mutation error:", error);
       toast({
         title: "Error",
-        description: `Failed to send inquiry. Please try again. ${uri} ${body}`,
+        description: "Failed to send inquiry. Please try again.",
         variant: "destructive",
       });
     },
