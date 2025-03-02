@@ -1,77 +1,66 @@
 import { motion } from "framer-motion";
+import { Card, CardContent } from "@/components/ui/card";
 
 const plants = [
   {
     name: "Temple Tree (Plumeria)",
     image: "/images/botanical/temple-tree-2.webp",
-    description: "Fragrant flowering tree adding tropical charm to common areas",
-    size: "large"
+    description: "Fragrant flowering tree adding tropical charm to common areas"
   },
   {
     name: "Golden Shower Tree",
     image: "/images/botanical/Golden-Shower-Tree.webp",
-    description: "Majestic yellow blooms cascading through walkways",
-    size: "medium"
+    description: "Majestic yellow blooms cascading through walkways"
   },
   {
     name: "African Mahogany",
     image: "/images/botanical/african-mahogony.webp",
-    description: "Luxuriant shade tree offering premium wood characteristics",
-    size: "small"
+    description: "Luxuriant shade tree offering premium wood characteristics"
   },
   {
     name: "Date Palm",
     image: "/images/botanical/date-palms-1.webp",
-    description: "Iconic desert palm creating resort-style landscapes",
-    size: "medium"
+    description: "Iconic desert palm creating resort-style landscapes"
   },
   {
     name: "Anthurium",
     image: "/images/botanical/anthurium-andraeanum-2.jpg",
-    description: "Tropical flowering plant adorning garden corners",
-    size: "small"
+    description: "Tropical flowering plant adorning garden corners"
   },
   {
     name: "Aglaonema",
     image: "/images/botanical/aglaonema-1.webp",
-    description: "Chinese Evergreen - Adding colorful foliage to shaded areas",
-    size: "medium"
+    description: "Chinese Evergreen - Adding colorful foliage to shaded areas"
   },
   {
     name: "Acalypha Wilkesiana",
     image: "/images/botanical/acalypha-wilkesiana-1.webp",
-    description: "Copper Leaf - Vibrant foliage for garden borders",
-    size: "large"
+    description: "Copper Leaf - Vibrant foliage for garden borders"
   },
   {
     name: "Tabebuia Rosea",
     image: "/images/botanical/tabebuia-rosea-plant-1.webp",
-    description: "Pink Trumpet Tree - Creates stunning pink canopies",
-    size: "medium"
+    description: "Pink Trumpet Tree - Creates stunning pink canopies"
   },
   {
     name: "Royal Bottle Palms",
     image: "/images/botanical/royal-bottle-palms-1.webp",
-    description: "Elegant palms creating stately entrance boulevards",
-    size: "small"
+    description: "Elegant palms creating stately entrance boulevards"
   },
   {
     name: "Silver Oak",
     image: "/images/botanical/silver-oaks-1.webp",
-    description: "Graceful evergreen providing year-round shade and beauty",
-    size: "large"
+    description: "Graceful evergreen providing year-round shade and beauty"
   },
   {
     name: "Apple Tree",
     image: "/images/botanical/apple-1.webp",
-    description: "Ornamental fruit tree adding charm to garden spaces",
-    size: "medium"
+    description: "Ornamental fruit tree adding charm to garden spaces"
   },
   {
     name: "Banganapalli Mango",
     image: "/images/botanical/mango-banganapalli-1.webp",
-    description: "Premium mango variety offering sweet fruits and shade",
-    size: "small"
+    description: "Premium mango variety offering sweet fruits and shade"
   }
 ];
 
@@ -95,7 +84,7 @@ export default function Botanical() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {plants.map((plant, index) => (
             <motion.div
               key={plant.name}
@@ -103,29 +92,24 @@ export default function Botanical() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className={`group relative rounded-xl overflow-hidden
-                ${plant.size === 'large' ? 'col-span-2 row-span-2' : ''}
-                ${plant.size === 'medium' ? 'col-span-1 row-span-2' : ''}
-                ${plant.size === 'small' ? 'col-span-1 row-span-1' : ''}
-              `}
             >
-              <div className="absolute inset-0">
-                <img
-                  src={plant.image}
-                  alt={plant.name}
-                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
-                />
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-90 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-                  <h3 className="text-lg font-semibold mb-1 text-primary">
+              <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                <div className="aspect-video relative overflow-hidden">
+                  <img
+                    src={plant.image}
+                    alt={plant.name}
+                    className="object-cover w-full h-full transform hover:scale-110 transition-transform duration-300"
+                  />
+                </div>
+                <CardContent className="p-4">
+                  <h3 className="text-xl font-semibold mb-2 text-primary">
                     {plant.name}
                   </h3>
-                  <p className="text-sm opacity-90 line-clamp-2">
+                  <p className="text-muted-foreground">
                     {plant.description}
                   </p>
-                </div>
-              </div>
+                </CardContent>
+              </Card>
             </motion.div>
           ))}
         </div>
