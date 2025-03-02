@@ -67,6 +67,13 @@ const amenities = [
     size: "small"
   },
   {
+    name: "Crafted Landscapes",
+    image: "/images/amenities/buddha.webp",
+    description: "Zen-inspired garden with artistic sculptures and water features",
+    details: "Tranquil spaces perfect for meditation and relaxation",
+    size: "large"
+  },
+  {
     name: "Palm Landscapes",
     image: "/images/amenities/palm-landscape.jpg",
     description: "Majestic palm trees lining the walkways",
