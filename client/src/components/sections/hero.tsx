@@ -20,7 +20,7 @@ interface TimeLeft {
 }
 
 const calculateTimeLeft = (): TimeLeft => {
-  const targetDate = new Date("2025-10-10").getTime();
+  const targetDate = new Date("2025-06-10").getTime();
   const now = new Date().getTime();
   const difference = targetDate - now;
 
@@ -60,7 +60,7 @@ export default function Hero() {
             Luxury Living Redefined
           </h1>
           <p className="text-xl md:text-2xl mb-5 max-w-2xl mx-auto text-white">
-            Finishing Soon:
+            Tower B, Finishing Soon:
           </p>
 
           <div className="grid grid-cols-4 gap-4 mb-8 max-w-lg mx-auto">

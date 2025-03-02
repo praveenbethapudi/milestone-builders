@@ -17,4 +17,17 @@
   h1, h2, h3 {
     font-family: 'Orbitron', sans-serif;
   }
+
+  /* Custom Scrollbar Styling */
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-muted;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary rounded-full hover:bg-primary/80 transition-colors;
+  }
 }
