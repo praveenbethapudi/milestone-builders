@@ -11,12 +11,11 @@ import Information from "./components/sections/information";
 import Differentiators from "./components/sections/differentiators";
 import Location from "./components/sections/location";
 import Contact from "./components/sections/contact";
-import Footer from "./components/sections/footer";
 import TermsOfUse from "./pages/terms";
 import PrivacyPolicy from "./pages/privacy";
-// Added RefundPolicy import - assuming it's needed based on the context.
 import RefundPolicy from "./pages/refund";
 import Amenities from "./components/sections/amenities";
+import Botanical from "./components/sections/botanical";
 
 function HomePage() {
   return (
@@ -27,9 +26,9 @@ function HomePage() {
       <Differentiators />
       <Features />
       <Amenities />
+      <Botanical />
       <Location />
       <Contact />
-      <Footer />
     </>
   );
 }
@@ -43,8 +42,7 @@ function Router() {
           <Route path="/terms" element={<TermsOfUse />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/refund" element={<RefundPolicy />} />
-          <Route path="*" element={<NotFound />} />{" "}
-          {/* Added a catch-all route */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </HashRouter>
       <Toaster />
