@@ -11,7 +11,7 @@
   }
 
   body {
-    @apply font-sans antialiased bg-background text-foreground;
+    @apply font-sans antialiased bg-background text-foreground overflow-x-hidden;
   }
 
   h1, h2, h3 {
@@ -21,6 +21,7 @@
   /* Custom Scrollbar Styling */
   ::-webkit-scrollbar {
     width: 5px;
+    height: 0; /* Hide horizontal scrollbar */
   }
 
   ::-webkit-scrollbar-track {
