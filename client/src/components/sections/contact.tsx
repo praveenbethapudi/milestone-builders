@@ -52,7 +52,7 @@ export default function Contact() {
   });
 
   return (
-    <section id="contact" className="py-20 px-4 bg-accent">
+    <section id="contact" className="py-20 px-4 bg-background">
       <div className="max-w-7xl mx-auto">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -139,7 +139,7 @@ export default function Contact() {
                     <FormItem>
                       <FormLabel>Message</FormLabel>
                       <FormControl>
-                        <Textarea 
+                        <Textarea
                           placeholder="Tell us about your requirements"
                           className="resize-none"
                           {...field}
@@ -150,8 +150,8 @@ export default function Contact() {
                   )}
                 />
 
-                <Button 
-                  type="submit" 
+                <Button
+                  type="submit"
                   className="w-full"
                   disabled={mutation.isPending}
                 >

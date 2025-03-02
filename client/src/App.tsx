@@ -16,6 +16,7 @@ import PrivacyPolicy from "./pages/privacy";
 import RefundPolicy from "./pages/refund";
 import Amenities from "./components/sections/amenities";
 import Botanical from "./components/sections/botanical";
+import Footer from "./components/sections/footer";
 
 function HomePage() {
   return (
@@ -29,6 +30,7 @@ function HomePage() {
       <Botanical />
       <Location />
       <Contact />
+      <Footer />
     </>
   );
 }

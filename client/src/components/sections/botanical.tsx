@@ -5,80 +5,81 @@ const plants = [
   {
     name: "Temple Tree (Plumeria)",
     image: "/images/botanical/temple-tree-2.webp",
-    description: "Fragrant flowering tree adding tropical charm to common areas",
-    size: "large"
+    description:
+      "Fragrant flowering tree adding tropical charm to common areas",
+    size: "large",
   },
   {
     name: "Golden Shower Tree",
     image: "/images/botanical/Golden-Shower-Tree.webp",
     description: "Majestic yellow blooms cascading through walkways",
-    size: "medium"
+    size: "medium",
   },
   {
     name: "African Mahogany",
     image: "/images/botanical/african-mahogony.webp",
     description: "Luxuriant shade tree offering premium wood characteristics",
-    size: "large"
+    size: "large",
   },
   {
     name: "Date Palm",
     image: "/images/botanical/date-palms-1.webp",
     description: "Iconic desert palm creating resort-style landscapes",
-    size: "medium"
+    size: "medium",
   },
   {
     name: "Anthurium",
     image: "/images/botanical/anthurium-andraeanum-2.jpg",
     description: "Tropical flowering plant adorning garden corners",
-    size: "small"
+    size: "small",
   },
   {
     name: "Aglaonema",
     image: "/images/botanical/aglaonema-1.webp",
     description: "Chinese Evergreen - Adding colorful foliage to shaded areas",
-    size: "medium"
+    size: "medium",
   },
   {
     name: "Acalypha Wilkesiana",
     image: "/images/botanical/acalypha-wilkesiana-1.webp",
     description: "Copper Leaf - Vibrant foliage for garden borders",
-    size: "small"
+    size: "small",
   },
   {
     name: "Tabebuia Rosea",
     image: "/images/botanical/tabebuia-rosea-plant-1.webp",
     description: "Pink Trumpet Tree - Creates stunning pink canopies",
-    size: "large"
+    size: "large",
   },
   {
     name: "Royal Bottle Palms",
     image: "/images/botanical/royal-bottle-palms-1.webp",
     description: "Elegant palms creating stately entrance boulevards",
-    size: "medium"
+    size: "medium",
   },
   {
     name: "Silver Oak",
     image: "/images/botanical/silver-oaks-1.webp",
     description: "Graceful evergreen providing year-round shade and beauty",
-    size: "large"
+    size: "large",
   },
   {
     name: "Apple Tree",
     image: "/images/botanical/apple-1.webp",
     description: "Ornamental fruit tree adding charm to garden spaces",
-    size: "medium"
+    size: "medium",
   },
   {
     name: "Banganapalli Mango",
     image: "/images/botanical/mango-banganapalli-1.webp",
     description: "Premium mango variety offering sweet fruits and shade",
-    size: "small"
-  }
+    size: "small",
+  },
 ];
 
 export default function Botanical() {
   return (
-    <section className="py-20 px-4 bg-background">
+    <section className="py-20 px-4 bg-accent">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -90,8 +91,9 @@ export default function Botanical() {
             Botanical Haven
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            A carefully curated selection of nature's finest specimens, chosen to create 
-            a living tapestry of colors, textures, and sustainable beauty throughout our property.
+            A carefully curated selection of nature's finest specimens, chosen
+            to create a living tapestry of colors, textures, and sustainable
+            beauty throughout our property.
           </p>
         </motion.div>
 
@@ -106,10 +108,15 @@ export default function Botanical() {
               className="group break-inside-avoid"
             >
               <Card className="overflow-hidden bg-white border-none shadow-lg hover:shadow-xl transition-all duration-300 rounded-none">
-                <div className={`relative overflow-hidden ${
-                  plant.size === 'large' ? 'aspect-[16/9]' :
-                  plant.size === 'medium' ? 'aspect-[4/3]' : 'aspect-square'
-                }`}>
+                <div
+                  className={`relative overflow-hidden ${
+                    plant.size === "large"
+                      ? "aspect-[16/9]"
+                      : plant.size === "medium"
+                        ? "aspect-[4/3]"
+                        : "aspect-square"
+                  }`}
+                >
                   <img
                     src={plant.image}
                     alt={plant.name}
