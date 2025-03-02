@@ -38,7 +38,7 @@ export default function Differentiators() {
           viewport={{ once: true }}
           className="text-4xl font-bold text-center mb-6"
         >
-          The Meridian Difference
+          The 'Milestone' Superiority
         </motion.h2>
 
         <motion.p

@@ -23,9 +23,9 @@ function HomePage() {
       <Hero />
       <Logo />
       <Information />
+      <Amenities />
       <Differentiators />
       <Features />
-      <Amenities />
       <Botanical />
       <Location />
       <Contact />

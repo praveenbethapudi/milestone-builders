@@ -8,71 +8,66 @@ const amenities = [
     image: "/images/amenities/swimming-pool.jpg",
     description: "Temperature-controlled infinity pool with stunning views",
     details: "Perfect for both leisure swimming and morning workouts",
-    size: "large"
+    size: "large",
   },
   {
     name: "Elegant Entrance",
-    image: "/images/amenities/landscape-4.jpg",
+    image: "/images/amenities/landscape-1.jpg",
     description: "Contemporary architectural design with premium finishes",
     details: "Featuring modern landscaping and artistic wall panels",
-    size: "large"
+    size: "large",
   },
   {
     name: "Indoor Games Room",
     image: "/images/amenities/indoor-games.jpg",
     description: "Premium gaming facilities including pool and chess tables",
     details: "Professionally maintained equipment for your entertainment",
-    size: "medium"
-  },
-  {
-    name: "Function Hall",
-    image: "/images/amenities/party-hall.jpg",
-    description: "Spacious hall with panoramic city views",
-    details: "Perfect for hosting parties and community gatherings",
-    size: "large"
+    size: "medium",
   },
   {
     name: "Children's Play Area",
     image: "/images/amenities/play-area.jpg",
     description: "Safe and colorful playground with modern equipment",
     details: "Designed for both fun and development",
-    size: "medium"
+    size: "medium",
   },
   {
     name: "Fully Equipped Gym",
-    image: "/images/amenities/gym.jpg",
-    description: "State-of-the-art fitness center with cardio and weight sections",
+    image: "/images/amenities/fitness-center.jpg",
+    description:
+      "State-of-the-art fitness center with cardio and weight sections",
     details: "Professional trainers available on request",
-    size: "medium"
+    size: "medium",
   },
   {
     name: "Modern Elevators",
     image: "/images/amenities/elevator.jpg",
     description: "High-speed elevators with elegant interiors",
     details: "Smart card access for enhanced security",
-    size: "small"
+    size: "small",
   },
   {
     name: "Basement Parking",
     image: "/images/amenities/basement-parking.webp",
     description: "Well-lit parking area with dedicated spots",
     details: "24/7 security monitoring for your vehicles",
-    size: "medium"
+    size: "medium",
   },
   {
     name: "24/7 CCTV Surveillance",
     image: "/images/amenities/security-cameras.webp",
     description: "Advanced security system with complete coverage",
     details: "Professional security staff monitoring round the clock",
-    size: "small"
+    size: "small",
   },
   {
     name: "Crafted Landscapes",
-    image: "/images/amenities/buddha.webp",
-    description: "Zen-inspired garden with artistic sculptures and water features",
+    image: "/images/amenities/landscape-2.webp",
+    description:
+      "Zen-inspired garden with artistic sculptures and water features",
     details: "Tranquil spaces perfect for meditation and relaxation",
-    size: "large"
-  }
+    size: "large",
+  },
 ];
 
 export default function Amenities() {
@@ -94,8 +89,9 @@ export default function Amenities() {
           viewport={{ once: true }}
           className="text-center mb-12 max-w-3xl mx-auto text-muted-foreground"
         >
-          Experience luxury living with our carefully curated selection of world-class amenities,
-          designed to enhance your lifestyle and provide ultimate comfort.
+          Experience luxury living with our carefully curated selection of
+          world-class amenities, designed to enhance your lifestyle and provide
+          ultimate comfort.
         </motion.p>
 
         <div className="columns-1 md:columns-2 lg:columns-3 gap-0 [column-fill:_balance]">
@@ -109,10 +105,15 @@ export default function Amenities() {
               className="group break-inside-avoid mb-0"
             >
               <Card className="overflow-hidden bg-white border-none rounded-none">
-                <div className={`relative overflow-hidden ${
-                  amenity.size === 'large' ? 'aspect-[16/9]' :
-                  amenity.size === 'medium' ? 'aspect-[4/3]' : 'aspect-square'
-                }`}>
+                <div
+                  className={`relative overflow-hidden ${
+                    amenity.size === "large"
+                      ? "aspect-[16/9]"
+                      : amenity.size === "medium"
+                        ? "aspect-[4/3]"
+                        : "aspect-square"
+                  }`}
+                >
                   <img
                     src={amenity.image}
                     alt={amenity.name}
@@ -124,9 +125,7 @@ export default function Amenities() {
                   <h3 className="text-xl font-semibold mb-2 text-primary group-hover:text-primary/80 transition-colors">
                     {amenity.name}
                   </h3>
-                  <p className="text-muted-foreground">
-                    {amenity.description}
-                  </p>
+                  <p className="text-muted-foreground">{amenity.description}</p>
                   <p className="text-sm text-muted-foreground mt-1 opacity-80">
                     {amenity.details}
                   </p>

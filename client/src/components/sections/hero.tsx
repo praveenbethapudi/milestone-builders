@@ -7,9 +7,9 @@ const exteriorImages = [
   "/images/building-1.jpg",
   "/images/building-2.jpg",
   "/images/building-3.jpg",
-  // "/images/building-4.jpg",
-  // "/images/building-5.jpg",
-  // "/images/building-6.jpg",
+  "/images/building-4.jpg",
+  "/images/building-5.jpg",
+  "/images/building-6.jpg",
 ];
 
 interface TimeLeft {
@@ -57,10 +57,10 @@ export default function Hero() {
             className="text-3xl md:text-4xl font-bold mb-6"
             style={{ color: "#FFEA57" }}
           >
-            Luxury Redefined
+            Luxury Living Redefined
           </h1>
           <p className="text-xl md:text-2xl mb-5 max-w-2xl mx-auto text-white">
-            .. handing over in ..
+            Finishing Soon:
           </p>
 
           <div className="grid grid-cols-4 gap-4 mb-8 max-w-lg mx-auto">
