@@ -45,7 +45,6 @@ export default function Contact() {
             name: values.name,
             mobile: values.phone,
             email: values.email,
-            description: values.message,
           },
           actions: [
             {
@@ -54,12 +53,14 @@ export default function Contact() {
             },
             {
               type: "SYSTEM_NOTE",
-              text: `Message: ${values.message}`,
+              text: `Notes: ${values.message}`,
             },
           ],
         };
 
         const response = await apiRequest("POST", uri, formData, token);
+
+        // console.log(JSON.stringify(formData));
 
         return response;
       } catch (error) {
@@ -78,7 +79,7 @@ export default function Contact() {
       console.error("Mutation error:", error);
       toast({
         title: "Error",
-        description: "Failed to send inquiry. Please try again.",
+        description: `Failed to send inquiry. Please try again. ${uri}`,
         variant: "destructive",
       });
     },
@@ -117,6 +118,17 @@ export default function Contact() {
               <MessageCircle className="mr-2 h-4 w-4" />
               Chat on WhatsApp
             </Button>
+
+            <div className="flex flex-col items-center mt-6">
+              <img
+                src="/images/location-qr.png"
+                alt="Location QR Code"
+                className="w-32 h-32 mb-2"
+              />
+              <p className="text-sm text-muted-foreground">
+                Scan to view location
+              </p>
+            </div>
           </motion.div>
 
           <motion.div
