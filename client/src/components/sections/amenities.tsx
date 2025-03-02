@@ -11,6 +11,13 @@ const amenities = [
     size: "large"
   },
   {
+    name: "Elegant Entrance",
+    image: "/images/amenities/landscape-4.jpg",
+    description: "Contemporary architectural design with premium finishes",
+    details: "Featuring modern landscaping and artistic wall panels",
+    size: "large"
+  },
+  {
     name: "Indoor Games Room",
     image: "/images/amenities/indoor-games.jpg",
     description: "Premium gaming facilities including pool and chess tables",
