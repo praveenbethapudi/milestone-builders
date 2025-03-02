@@ -78,13 +78,12 @@ export default function Botanical() {
             Botanical Haven
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Experience nature's finest selection in our meticulously curated landscape. 
-            Each plant has been chosen for its beauty, sustainability, and contribution 
-            to creating a serene living environment.
+            A carefully curated selection of nature's finest specimens, chosen to create 
+            a living tapestry of colors, textures, and sustainable beauty throughout our property.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {plants.map((plant, index) => (
             <motion.div
               key={plant.name}
@@ -92,20 +91,22 @@ export default function Botanical() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
+              className="group"
             >
-              <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                <div className="aspect-video relative overflow-hidden">
+              <Card className="overflow-hidden bg-white border-none shadow-lg hover:shadow-xl transition-all duration-300">
+                <div className="aspect-[4/3] relative overflow-hidden">
                   <img
                     src={plant.image}
                     alt={plant.name}
-                    className="object-cover w-full h-full transform hover:scale-110 transition-transform duration-300"
+                    className="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-500"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
-                <CardContent className="p-4">
-                  <h3 className="text-xl font-semibold mb-2 text-primary">
+                <CardContent className="p-6 bg-white">
+                  <h3 className="text-xl font-semibold mb-2 text-primary group-hover:text-primary/80 transition-colors">
                     {plant.name}
                   </h3>
-                  <p className="text-muted-foreground">
+                  <p className="text-muted-foreground text-sm leading-relaxed">
                     {plant.description}
                   </p>
                 </CardContent>
