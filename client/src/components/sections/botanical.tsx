@@ -97,7 +97,7 @@ export default function Botanical() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-0 [column-fill:_balance]">
           {plants.map((plant, index) => (
             <motion.div
               key={plant.name}
@@ -105,10 +105,16 @@ export default function Botanical() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="group"
+              className="group break-inside-avoid"
             >
-              <Card className="overflow-hidden bg-white border-none shadow-lg hover:shadow-xl transition-all duration-300">
-                <div className="relative overflow-hidden aspect-[4/3]">
+              <Card className="overflow-hidden bg-white border-none shadow-lg hover:shadow-xl transition-all duration-300 rounded-none">
+                <div className={`relative overflow-hidden ${
+                  plant.size === "large" 
+                    ? "aspect-[16/9]" 
+                    : plant.size === "medium"
+                    ? "aspect-[4/3]"
+                    : "aspect-square"
+                }`}>
                   <img
                     src={plant.image}
                     alt={plant.name}
@@ -116,7 +122,7 @@ export default function Botanical() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
-                <CardContent className="p-6 bg-white">
+                <CardContent className="p-6 bg-white rounded-none">
                   <h3 className="text-xl font-semibold mb-2 text-primary group-hover:text-primary/80 transition-colors">
                     {plant.name}
                   </h3>
