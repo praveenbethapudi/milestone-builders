@@ -16,6 +16,7 @@ import PrivacyPolicy from "./pages/privacy";
 import RefundPolicy from "./pages/refund";
 import Amenities from "./components/sections/amenities";
 import Botanical from "./components/sections/botanical";
+import Footer from "./components/sections/footer";
 
 function HomePage() {
   return (
@@ -29,6 +30,17 @@ function HomePage() {
       <Botanical />
       <Location />
       <Contact />
+      <Footer />
+    </>
+  );
+}
+
+// Wrapper component to ensure Footer appears on all pages
+function Layout({ children }: { children: React.ReactNode }) {
+  return (
+    <>
+      {children}
+      <Footer />
     </>
   );
 }
@@ -38,11 +50,11 @@ function Router() {
     <QueryClientProvider client={queryClient}>
       <HashRouter>
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/terms" element={<TermsOfUse />} />
-          <Route path="/privacy" element={<PrivacyPolicy />} />
-          <Route path="/refund" element={<RefundPolicy />} />
-          <Route path="*" element={<NotFound />} />
+          <Route path="/" element={<Layout><HomePage /></Layout>} />
+          <Route path="/terms" element={<Layout><TermsOfUse /></Layout>} />
+          <Route path="/privacy" element={<Layout><PrivacyPolicy /></Layout>} />
+          <Route path="/refund" element={<Layout><RefundPolicy /></Layout>} />
+          <Route path="*" element={<Layout><NotFound /></Layout>} />
         </Routes>
       </HashRouter>
       <Toaster />
