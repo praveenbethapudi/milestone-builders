@@ -121,12 +121,12 @@ export default function Contact() {
 
             <div className="flex flex-col items-center mt-6">
               <img
-                src="/images/location-qr.png"
-                alt="Location QR Code"
+                src="/images/contact-qr.png"
+                alt="Contact QR Code"
                 className="w-32 h-32 mb-2"
               />
               <p className="text-sm text-muted-foreground">
-                Scan to view location
+                Scan to connect with us
               </p>
             </div>
           </motion.div>
