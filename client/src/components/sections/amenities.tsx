@@ -1,4 +1,3 @@
-
 import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import ImageCarousel from "../ui/image-carousel";
@@ -11,7 +10,7 @@ const amenityImages = [
   "/images/amenities/games-room.jpg",
   "/images/amenities/function-hall.jpg",
   "/images/amenities/gym.jpg",
-  "/images/amenities/basement-parking.jpg",
+  "/images/amenities/basement-parking.webp",
   "/images/amenities/elevators.jpg"
 ];
 
