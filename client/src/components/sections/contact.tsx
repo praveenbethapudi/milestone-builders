@@ -36,23 +36,6 @@ export default function Contact() {
   });
 
   const uri = `${api_url}/${ent_id}/autoupdatelead`;
-  const body = {
-    fields: {
-      name: "Telecrm Support",
-      mobile: "917017406742",
-      email: "support@telecrm.in",
-    },
-    actions: [
-      {
-        type: "SYSTEM_NOTE",
-        text: "Lead Source: Website",
-      },
-      {
-        type: "SYSTEM_NOTE",
-        text: "Note: Website",
-      },
-    ],
-  };
 
   const mutation = useMutation({
     mutationFn: async (values: any) => {
@@ -62,27 +45,22 @@ export default function Contact() {
             name: values.name,
             mobile: values.phone,
             email: values.email,
-            description: values.message
+            description: values.message,
           },
           actions: [
             {
               type: "SYSTEM_NOTE",
-              text: "Lead Source: Website Contact Form"
+              text: "Lead Source: Website",
             },
             {
               type: "SYSTEM_NOTE",
-              text: `Message: ${values.message}`
-            }
-          ]
+              text: `Message: ${values.message}`,
+            },
+          ],
         };
-        
-        const response = await apiRequest(
-          "POST",
-          uri,
-          formData,
-          token,
-        );
-        
+
+        const response = await apiRequest("POST", uri, formData, token);
+
         return response;
       } catch (error) {
         console.error("API request failed:", error);
