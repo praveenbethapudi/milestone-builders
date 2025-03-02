@@ -49,7 +49,7 @@ export default function Location() {
   return (
     <section className="py-20 px-4 relative">
       <div
-        className="absolute inset-0 bg-cover bg-center bg-fixed opacity-10"
+        className="absolute inset-0 bg-cover bg-center bg-fixed opacity-40"
         style={{ backgroundImage: 'url("/images/location/world-map.avif")' }}
       ></div>
       <div className="max-w-7xl mx-auto relative z-10">

@@ -97,7 +97,7 @@ export default function Botanical() {
           </p>
         </motion.div>
 
-        <div className="columns-1 md:columns-2 lg:columns-3 gap-0 [column-fill:_balance]">
+        <div className="columns-1 md:columns-2 lg:columns-3 gap-4 [column-fill:_balance] max-w-5xl mx-auto">
           {plants.map((plant, index) => (
             <motion.div
               key={plant.name}
@@ -105,16 +105,16 @@ export default function Botanical() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="group break-inside-avoid"
+              className="group break-inside-avoid mb-4"
             >
-              <Card className="overflow-hidden bg-white border-none shadow-lg hover:shadow-xl transition-all duration-300 rounded-none">
+              <Card className="overflow-hidden bg-white border-none shadow-lg hover:shadow-xl transition-all duration-300 rounded-lg">
                 <div
                   className={`relative overflow-hidden ${
                     plant.size === "large"
-                      ? "aspect-[16/9]"
+                      ? "aspect-[16/9] h-40"
                       : plant.size === "medium"
-                        ? "aspect-[4/3]"
-                        : "aspect-square"
+                        ? "aspect-[4/3] h-36"
+                        : "aspect-square h-32"
                   }`}
                 >
                   <img
@@ -124,11 +124,11 @@ export default function Botanical() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
-                <CardContent className="p-6 bg-white">
-                  <h3 className="text-xl font-semibold mb-2 text-primary group-hover:text-primary/80 transition-colors">
+                <CardContent className="p-4 bg-white">
+                  <h3 className="text-lg font-semibold mb-1 text-primary group-hover:text-primary/80 transition-colors">
                     {plant.name}
                   </h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
+                  <p className="text-sm text-muted-foreground leading-relaxed">
                     {plant.description}
                   </p>
                 </CardContent>
