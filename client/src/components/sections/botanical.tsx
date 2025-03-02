@@ -3,64 +3,64 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const plants = [
   {
-    name: "Tabebuia Rosea",
-    image: "/images/tabebuia-rosea-plant-1.webp",
-    description: "Pink Trumpet Tree - Creates stunning pink canopies along the avenue"
-  },
-  {
-    name: "Temple Tree",
-    image: "/images/temple-tree-1.jpg",
-    description: "Plumeria - Fragrant flowering tree adding tropical charm to common areas"
+    name: "Temple Tree (Plumeria)",
+    image: "/images/botanical/temple-tree-2.webp",
+    description: "Fragrant flowering tree adding tropical charm to common areas"
   },
   {
     name: "Golden Shower Tree",
-    image: "/images/Golden-Shower-Tree.webp",
-    description: "Cassia Fistula - Majestic yellow blooms cascading through walkways"
-  },
-  {
-    name: "Royal Bottle Palms",
-    image: "/images/royal-bottle-palms-1.webp",
-    description: "Elegant palms creating stately entrance boulevards"
-  },
-  {
-    name: "Silver Oak",
-    image: "/images/silver-oaks-1.webp",
-    description: "Graceful evergreen providing year-round shade and beauty"
+    image: "/images/botanical/Golden-Shower-Tree.webp",
+    description: "Majestic yellow blooms cascading through walkways"
   },
   {
     name: "African Mahogany",
-    image: "/images/african-mahogony.webp",
+    image: "/images/botanical/african-mahogony.webp",
     description: "Luxuriant shade tree offering premium wood characteristics"
   },
   {
     name: "Date Palm",
-    image: "/images/date-palms-1.webp",
+    image: "/images/botanical/date-palms-1.webp",
     description: "Iconic desert palm creating resort-style landscapes"
   },
   {
     name: "Anthurium",
-    image: "/images/anthurium-andraeanum-2.jpg",
+    image: "/images/botanical/anthurium-andraeanum-2.jpg",
     description: "Tropical flowering plant adorning garden corners"
   },
   {
     name: "Aglaonema",
-    image: "/images/aglaonema-1.webp",
+    image: "/images/botanical/aglaonema-1.webp",
     description: "Chinese Evergreen - Adding colorful foliage to shaded areas"
   },
   {
     name: "Acalypha Wilkesiana",
-    image: "/images/acalypha-wilkesiana-1.webp",
+    image: "/images/botanical/acalypha-wilkesiana-1.webp",
     description: "Copper Leaf - Vibrant foliage for garden borders"
   },
   {
-    name: "Mango Banganapalli",
-    image: "/images/mango-banganapalli-1.webp",
-    description: "Premium mango variety offering sweet fruits and shade"
+    name: "Tabebuia Rosea",
+    image: "/images/botanical/tabebuia-rosea-plant-1.webp",
+    description: "Pink Trumpet Tree - Creates stunning pink canopies"
   },
   {
-    name: "Jackfruit",
-    image: "/images/jack-fruit-1.webp",
-    description: "Tropical fruit tree providing both food and shade"
+    name: "Royal Bottle Palms",
+    image: "/images/botanical/royal-bottle-palms-1.webp",
+    description: "Elegant palms creating stately entrance boulevards"
+  },
+  {
+    name: "Silver Oak",
+    image: "/images/botanical/silver-oaks-1.webp",
+    description: "Graceful evergreen providing year-round shade and beauty"
+  },
+  {
+    name: "Apple Tree",
+    image: "/images/botanical/apple-1.webp",
+    description: "Ornamental fruit tree adding charm to garden spaces"
+  },
+  {
+    name: "Banganapalli Mango",
+    image: "/images/botanical/mango-banganapalli-1.webp",
+    description: "Premium mango variety offering sweet fruits and shade"
   }
 ];
 
