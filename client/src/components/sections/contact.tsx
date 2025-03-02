@@ -120,11 +120,13 @@ export default function Contact() {
             </Button>
 
             <div className="flex flex-col items-center mt-6">
-              <img
-                src="/images/contact-qr.png"
-                alt="Contact QR Code"
-                className="w-32 h-32 mb-2"
-              />
+              <a href="https://maps.app.goo.gl/156eSEve6V77qcwb7">
+                <img
+                  src="/images/location-qr.png"
+                  alt="Contact QR Code"
+                  className="w-32 h-32 mb-2"
+                />
+              </a>
               <p className="text-sm text-muted-foreground">
                 Scan to connect with us
               </p>
