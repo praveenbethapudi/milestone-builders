@@ -4,30 +4,26 @@ import ImageCarousel from "../ui/image-carousel";
 
 const amenityImages = [
   "/images/amenities/swimming-pool.jpg",
-  "/images/amenities/playground.jpg",
-  "/images/amenities/palm-landscape.jpg",
-  "/images/amenities/floral-garden.jpg",
   "/images/amenities/indoor-games.jpg",
   "/images/amenities/party-hall.jpg",
   "/images/amenities/gym.jpg",
+  "/images/amenities/elevator.jpg",
   "/images/amenities/basement-parking.webp",
-  "/images/amenities/elevators.jpg",
-  "/images/amenities/security-cameras.webp"
+  "/images/amenities/security-cameras.webp",
+  "/images/amenities/palm-landscape.jpg",
+  "/images/amenities/floral-garden.jpg",
 ];
 
 const amenities = [
   "Swimming Pool",
-  "Children's Play Area",
-  "Palm Landscapes",
-  "Floral Gardens",
   "Indoor Games Room",
   "Function Hall",
   "Fully Equipped Gym",
-  "Basement Parking",
   "Modern Elevators",
+  "Basement Parking",
   "24/7 CCTV Surveillance",
-  "Landscaped Gardens",
-  "Community Hall"
+  "Palm Landscapes",
+  "Floral Gardens",
 ];
 
 export default function Amenities() {
@@ -58,7 +54,7 @@ export default function Amenities() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
-                    className="p-4 border rounded-lg text-center"
+                    className="p-4 border rounded-lg text-center hover:bg-primary/5 transition-colors"
                   >
                     {amenity}
                   </motion.div>
