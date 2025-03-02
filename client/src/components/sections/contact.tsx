@@ -119,17 +119,29 @@ export default function Contact() {
               Chat on WhatsApp
             </Button>
 
-            <div className="flex flex-col items-center mt-6">
-              <a href="https://maps.app.goo.gl/156eSEve6V77qcwb7">
+            <div className="flex items-center justify-around mt-6">
+              <div className="flex flex-col items-center">
                 <img
-                  src="/images/location-qr.png"
+                  src="/images/contact-qr.png"
                   alt="Contact QR Code"
                   className="w-32 h-32 mb-2"
                 />
-              </a>
-              <p className="text-sm text-muted-foreground">
-                Scan to connect with us
-              </p>
+                <p className="text-sm text-muted-foreground">
+                  Scan to connect
+                </p>
+              </div>
+              <div className="flex flex-col items-center">
+                <a href="https://maps.app.goo.gl/156eSEve6V77qcwb7">
+                  <img
+                    src="/images/location-qr.png"
+                    alt="Location QR Code"
+                    className="w-32 h-32 mb-2"
+                  />
+                </a>
+                <p className="text-sm text-muted-foreground">
+                  Scan for location
+                </p>
+              </div>
             </div>
           </motion.div>
 
