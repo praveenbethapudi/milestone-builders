@@ -60,7 +60,7 @@ export default function Hero() {
             Luxury Living Redefined
           </h1>
           <p className="text-xl md:text-2xl mb-5 max-w-2xl mx-auto text-white">
-            Tower B, Finishing Soon:
+            Tower B, ready for ocupanc in...
           </p>
 
           <div className="grid grid-cols-4 gap-4 mb-8 max-w-lg mx-auto">
