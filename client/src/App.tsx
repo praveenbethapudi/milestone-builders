@@ -17,6 +17,7 @@ import RefundPolicy from "./pages/refund";
 import Amenities from "./components/sections/amenities";
 import Botanical from "./components/sections/botanical";
 import Footer from "./components/sections/footer";
+import WhatsAppButton from "./components/ui/whatsapp-button";
 
 function HomePage() {
   return (
@@ -31,6 +32,7 @@ function HomePage() {
       <Location />
       <Contact />
       <Footer />
+      <WhatsAppButton />
     </>
   );
 }
