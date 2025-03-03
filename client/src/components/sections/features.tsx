@@ -4,26 +4,26 @@ import { motion } from "framer-motion";
 import ImageCarousel from "@/components/ui/image-carousel";
 
 const features = {
-  specifications: [
-    "Premium Aluminum Windows",
+  specification: [
+    "Premium UPVC Windows",
     "Solid Core Doors",
-    "Imported Tiles",
-    "Designer Wall Panels",
-    "False Ceiling",
-    "Automated Curtain Rails",
+    "Marble PGV Tiles",
+    "Modular Kitchen as an Upgrade",
+    "False Ceiling as an Upgrade",
+    "Automation as an Upgrade ",
   ],
   environment: [
-    "Premium WC",
-    "Designer Basins",
-    "Hot & Cold Mixer",
-    "Jaquar Fittings",
-    "Anti-skid Tiles",
-    "Rain Shower",
+    "Recycled Water for WCs",
+    "Recycled Water for Landscapes",
+    "Rain Water Collectoin Tank",
+    "Rain Water Harvesting",
+    "5 Star Rated Backup Generators",
+    "Solar Power for Heating on Select Units",
   ],
   security: [
-    "10' Boundary Walls",
+    "10 feet Boundary Walls",
     "CCTV Surveillance",
-    "Access Control",
+    "Biometric Locks",
     "Intercom",
     "Security Personnel",
     "Visitor Management",
@@ -80,19 +80,15 @@ export default function Features() {
         <div className="mt-8 mb-12">
           <Card>
             <CardContent className="pt-6">
-              <h3 className="text-xl font-semibold mb-4">
-                Premium Floor Tiles
-              </h3>
+              <h3 className="text-xl font-semibold mb-4">Premium Flooring</h3>
               <div className="grid md:grid-cols-2 gap-8">
                 <div className="w-full h-80 rounded-lg overflow-hidden">
                   <ImageCarousel images={floorImages} />
                 </div>
                 <div>
-                  <h4 className="text-lg font-medium mb-3">
-                    Choose Your Tiles
-                  </h4>
+                  <h4 className="text-lg font-medium mb-3">Choice of Tiles</h4>
                   <ul className="space-y-2">
-                    <li>• Polished Galsed Vitrified Tiles (PGVT)</li>
+                    <li>• Polished Galsed Vitrified Tiles</li>
                     <li>• 2x4 large form factor</li>
                     <li>• Premium Marble Tiles</li>
                     <li>• Scratch-Resistant</li>
@@ -107,9 +103,7 @@ export default function Features() {
         <div className="mt-8 mb-12">
           <Card>
             <CardContent className="pt-6">
-              <h3 className="text-xl font-semibold mb-4">
-                Premium Door Options
-              </h3>
+              <h3 className="text-xl font-semibold mb-4">Premium Doors</h3>
               <div className="grid md:grid-cols-2 gap-8">
                 <div className="w-full h-80 rounded-lg overflow-hidden">
                   <ImageCarousel images={doorImages} />
@@ -136,7 +130,7 @@ export default function Features() {
           <Card>
             <CardContent className="pt-6">
               <h3 className="text-xl font-semibold mb-4">
-                Premium Bath Accessories
+                Premium Bath Fittings
               </h3>
               <div className="grid md:grid-cols-2 gap-8">
                 <div className="w-full h-80 rounded-lg overflow-hidden">
@@ -162,7 +156,7 @@ export default function Features() {
 
         <Tabs defaultValue="fittings" className="w-full">
           <TabsList className="grid w-full grid-cols-3">
-            <TabsTrigger value="specifications">Specifications</TabsTrigger>
+            <TabsTrigger value="specification">Specification</TabsTrigger>
             <TabsTrigger value="environment">Environment</TabsTrigger>
             <TabsTrigger value="security">Security</TabsTrigger>
           </TabsList>

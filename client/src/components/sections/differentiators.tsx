@@ -6,19 +6,19 @@ const differentiators = [
     icon: Award,
     title: "Superior Architecture",
     description:
-      "While others offer standard construction, The Meridian features architectural excellence with premium materials and finishes that stand the test of time.",
+      "While others offer conjested copied spaces, The Meridian features new architectural excellence with practial and optimized use of spaces that transcend into warm and vibrant and homes.",
   },
   {
     icon: Shield,
-    title: "Unmatched Security",
+    title: "Awesome Materials",
     description:
-      "Unlike conventional security systems, our multi-layered approach includes 24/7 surveillance, biometric access, and trained personnel for complete peace of mind.",
+      "Unlike conventional buildings, at the Meridian, we have curated a set of high quality materials in stunning detail that manifests into an overall goodness of customer satisfaction.",
   },
   {
     icon: Zap,
     title: "Eco Friendly",
     description:
-      "The Meridian incorporates advanced sustainable design elements and energy-efficient systems that reduce your carbon footprint and utility costs.",
+      "The Meridian incorporates advanced sustainable design elements like recycling and water conservation systems that reduce your carbon footprint and utility costs.",
   },
   {
     icon: Heart,
@@ -38,7 +38,7 @@ export default function Differentiators() {
           viewport={{ once: true }}
           className="text-4xl font-bold text-center mb-6"
         >
-          The 'Milestone' Superiority
+          The 'Milestone' Advantage
         </motion.h2>
 
         <motion.p
