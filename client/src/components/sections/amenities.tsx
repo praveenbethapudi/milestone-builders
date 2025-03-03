@@ -6,7 +6,7 @@ const amenities = [
   {
     name: "Swimming Pool",
     image: "/images/amenities/swimming-pool.jpg",
-    description: "Temperature-controlled infinity pool with stunning views",
+    description: "Nestled in between beautiful landscapes is a stunning pool",
     details: "Perfect for both leisure swimming and morning workouts",
     size: "large",
   },
