@@ -30,28 +30,28 @@ export default function FloorPlanCarousel({ plans }: FloorPlanCarouselProps) {
   }, [emblaApi]);
 
   return (
-    <div className="relative w-full">
-      <div className="overflow-hidden" ref={emblaRef}>
-        <div className="flex">
+    <div className="relative w-full h-full">
+      <div className="overflow-hidden h-full" ref={emblaRef}>
+        <div className="flex h-full">
           {plans.map((plan, index) => (
-            <div key={index} className="relative flex-[0_0_100%] min-w-0">
-              <div className="p-4 bg-card rounded-lg shadow-md m-2">
+            <div key={index} className="relative flex-[0_0_100%] min-w-0 h-full">
+              <div className="p-2 h-full">
                 <img 
                   src={plan.image} 
                   alt={plan.title} 
-                  className="w-full h-auto object-contain"
+                  className="w-full h-full object-contain rounded-md"
                 />
-                <div className="mt-4 text-center">
-                  <h3 className="text-xl font-semibold">{plan.title}</h3>
-                  <p className="text-muted-foreground">{plan.size}</p>
-                  <p className="text-sm">Units: {plan.units.join(', ')}</p>
+                <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white p-2">
+                  <h3 className="text-lg font-semibold">{plan.title}</h3>
+                  <p className="text-sm">{plan.size}</p>
+                  <p className="text-xs">Units: {plan.units.join(', ')}</p>
                 </div>
               </div>
             </div>
           ))}
         </div>
       </div>
-      
+
       <Button
         variant="outline"
         size="icon"
@@ -60,7 +60,7 @@ export default function FloorPlanCarousel({ plans }: FloorPlanCarouselProps) {
       >
         <ChevronLeft className="h-4 w-4" />
       </Button>
-      
+
       <Button
         variant="outline"
         size="icon"
