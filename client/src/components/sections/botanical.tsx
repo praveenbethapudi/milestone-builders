@@ -87,17 +87,17 @@ export default function Botanical() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold mb-6 text-primary">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 text-primary">
             Botanical Haven
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-base md:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto">
             A carefully curated selection of nature's finest specimens, chosen
             to create a living tapestry of colors, textures, and sustainable
             beauty throughout our property.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+        <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-4">
           {plants.map((plant, index) => (
             <motion.div
               key={plant.name}
@@ -109,8 +109,8 @@ export default function Botanical() {
             >
               <Card className="overflow-hidden bg-white border-none shadow-lg hover:shadow-xl transition-all duration-300 rounded-none">
                 <div className={`relative overflow-hidden ${
-                  plant.size === "large" 
-                    ? "aspect-[16/9]" 
+                  plant.size === "large"
+                    ? "aspect-[16/9]"
                     : plant.size === "medium"
                     ? "aspect-[4/3]"
                     : "aspect-square"
@@ -122,11 +122,11 @@ export default function Botanical() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
-                <CardContent className="p-4 bg-white">
-                  <h3 className="text-sm font-semibold mb-1 text-primary group-hover:text-primary/80 transition-colors truncate">
+                <CardContent className="p-2 sm:p-3 md:p-4 bg-white">
+                  <h3 className="text-xs sm:text-sm md:text-base font-semibold mb-1 text-primary group-hover:text-primary/80 transition-colors truncate">
                     {plant.name}
                   </h3>
-                  <p className="text-muted-foreground text-xs leading-relaxed line-clamp-2">
+                  <p className="text-[10px] sm:text-xs md:text-sm text-muted-foreground leading-relaxed line-clamp-2">
                     {plant.description}
                   </p>
                 </CardContent>
