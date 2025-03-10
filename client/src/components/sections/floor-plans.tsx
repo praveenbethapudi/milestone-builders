@@ -1,10 +1,10 @@
-
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { BedDouble, Bath, Maximize, Home } from "lucide-react";
+import { BedDouble, Bath, Maximize } from "lucide-react";
+import FloorPlanCarousel from "@/components/ui/floor-plan-carousel";
 
 interface FloorPlan {
   id: string;
@@ -18,6 +18,81 @@ interface FloorPlan {
   description: string;
   features: string[];
 }
+
+const bhk2Plans = [
+  {
+    image: "/attached_assets/B-103.jpg",
+    title: "B-103",
+    size: "2 BHK Unit",
+    units: ["203", "303", "403"]
+  },
+  {
+    image: "/attached_assets/B-104.jpg",
+    title: "B-104",
+    size: "2 BHK Unit",
+    units: ["204", "304", "404"]
+  },
+  {
+    image: "/attached_assets/B-105.jpg",
+    title: "B-105",
+    size: "2 BHK Unit",
+    units: ["205", "305", "405"]
+  },
+  {
+    image: "/attached_assets/B-106.jpg",
+    title: "B-106",
+    size: "2 BHK Unit",
+    units: ["206", "306", "406"]
+  },
+  {
+    image: "/attached_assets/B-107.jpg",
+    title: "B-107",
+    size: "2 BHK Unit",
+    units: ["207", "307", "407"]
+  },
+  {
+    image: "/attached_assets/B-108.jpg",
+    title: "B-108",
+    size: "2 BHK Unit",
+    units: ["208", "308", "408"]
+  },
+  {
+    image: "/attached_assets/A-103.jpg",
+    title: "A-103",
+    size: "2 BHK Unit",
+    units: ["203", "303", "403"]
+  },
+  {
+    image: "/attached_assets/A-104.jpg",
+    title: "A-104",
+    size: "2 BHK Unit",
+    units: ["204", "304", "404"]
+  },
+  {
+    image: "/attached_assets/A-105.jpg",
+    title: "A-105",
+    size: "2 BHK Unit",
+    units: ["205", "305", "405"]
+  },
+  {
+    image: "/attached_assets/A-106.jpg",
+    title: "A-106",
+    size: "2 BHK Unit",
+    units: ["206", "306", "406"]
+  },
+  {
+    image: "/attached_assets/A-107.jpg",
+    title: "A-107",
+    size: "2 BHK Unit",
+    units: ["207", "307", "407"]
+  },
+  {
+    image: "/attached_assets/A-108.jpg",
+    title: "A-108",
+    size: "2 BHK Unit",
+    units: ["208", "308", "408"]
+  }
+];
 
 const floorPlans: Record<string, FloorPlan[]> = {
   "2bhk": [
@@ -100,7 +175,7 @@ const floorPlans: Record<string, FloorPlan[]> = {
 
 export default function FloorPlans() {
   const [selectedPlan, setSelectedPlan] = useState<FloorPlan | null>(null);
-  
+
   return (
     <section id="floor-plans" className="py-20 px-4 bg-background">
       <div className="max-w-7xl mx-auto">
@@ -120,8 +195,8 @@ export default function FloorPlans() {
               <Card className="bg-card overflow-hidden shadow-lg">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="p-6">
-                    <img 
-                      src={selectedPlan.image} 
+                    <img
+                      src={selectedPlan.image}
                       alt={selectedPlan.title}
                       className="w-full h-full object-contain rounded-md"
                     />
@@ -134,7 +209,7 @@ export default function FloorPlans() {
                       </div>
                       <p className="text-xl font-bold">{selectedPlan.price}</p>
                     </div>
-                    
+
                     <div className="flex gap-4 mb-6">
                       <div className="flex items-center gap-2">
                         <BedDouble className="h-5 w-5 text-muted-foreground" />
@@ -149,9 +224,9 @@ export default function FloorPlans() {
                         <span>{selectedPlan.area}</span>
                       </div>
                     </div>
-                    
+
                     <p className="text-muted-foreground mb-6">{selectedPlan.description}</p>
-                    
+
                     <h4 className="font-semibold mb-3">Key Features:</h4>
                     <ul className="space-y-2 mb-6">
                       {selectedPlan.features.map((feature, index) => (
@@ -161,16 +236,16 @@ export default function FloorPlans() {
                         </li>
                       ))}
                     </ul>
-                    
+
                     <div className="flex gap-4">
-                      <Button 
+                      <Button
                         variant="outline"
                         onClick={() => setSelectedPlan(null)}
                         className="flex-1"
                       >
                         Back to Plans
                       </Button>
-                      <Button 
+                      <Button
                         className="flex-1"
                         onClick={() => {
                           document
@@ -191,61 +266,115 @@ export default function FloorPlans() {
                 <TabsTrigger value="2bhk">2 BHK</TabsTrigger>
                 <TabsTrigger value="3bhk">3 BHK</TabsTrigger>
               </TabsList>
-              
-              {Object.entries(floorPlans).map(([type, plans]) => (
-                <TabsContent key={type} value={type} className="mt-0">
-                  <div className="grid md:grid-cols-2 gap-6">
-                    {plans.map((plan) => (
-                      <Card 
-                        key={plan.id} 
-                        className="overflow-hidden cursor-pointer hover:shadow-lg transition-shadow"
-                        onClick={() => setSelectedPlan(plan)}
-                      >
-                        <div className="aspect-[4/3] overflow-hidden">
-                          <img 
-                            src={plan.image} 
-                            alt={plan.title} 
-                            className="w-full h-full object-cover"
-                          />
+
+              <TabsContent value="2bhk" className="mt-0">
+                <div className="mb-8">
+                  <FloorPlanCarousel plans={bhk2Plans} />
+                </div>
+                <div className="grid md:grid-cols-2 gap-6">
+                  {floorPlans["2bhk"].map((plan) => (
+                    <Card
+                      key={plan.id}
+                      className="overflow-hidden cursor-pointer hover:shadow-lg transition-shadow"
+                      onClick={() => setSelectedPlan(plan)}
+                    >
+                      <div className="aspect-[4/3] overflow-hidden">
+                        <img
+                          src={plan.image}
+                          alt={plan.title}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <CardContent className="p-6">
+                        <h3 className="text-xl font-semibold mb-1">{plan.title}</h3>
+                        <p className="text-primary font-medium mb-3">{plan.type}</p>
+
+                        <div className="flex gap-4 mb-4">
+                          <div className="flex items-center gap-2">
+                            <BedDouble className="h-4 w-4 text-muted-foreground" />
+                            <span className="text-sm">{plan.bedrooms}</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <Bath className="h-4 w-4 text-muted-foreground" />
+                            <span className="text-sm">{plan.bathrooms}</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <Maximize className="h-4 w-4 text-muted-foreground" />
+                            <span className="text-sm">{plan.area}</span>
+                          </div>
                         </div>
-                        <CardContent className="p-6">
-                          <h3 className="text-xl font-semibold mb-1">{plan.title}</h3>
-                          <p className="text-primary font-medium mb-3">{plan.type}</p>
-                          
-                          <div className="flex gap-4 mb-4">
-                            <div className="flex items-center gap-2">
-                              <BedDouble className="h-4 w-4 text-muted-foreground" />
-                              <span className="text-sm">{plan.bedrooms}</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                              <Bath className="h-4 w-4 text-muted-foreground" />
-                              <span className="text-sm">{plan.bathrooms}</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                              <Maximize className="h-4 w-4 text-muted-foreground" />
-                              <span className="text-sm">{plan.area}</span>
-                            </div>
+
+                        <div className="flex justify-between items-center">
+                          <p className="font-bold">{plan.price}</p>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setSelectedPlan(plan);
+                            }}
+                          >
+                            View Details
+                          </Button>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </TabsContent>
+
+              <TabsContent value="3bhk" className="mt-0">
+                <div className="grid md:grid-cols-2 gap-6">
+                  {floorPlans["3bhk"].map((plan) => (
+                    <Card
+                      key={plan.id}
+                      className="overflow-hidden cursor-pointer hover:shadow-lg transition-shadow"
+                      onClick={() => setSelectedPlan(plan)}
+                    >
+                      <div className="aspect-[4/3] overflow-hidden">
+                        <img
+                          src={plan.image}
+                          alt={plan.title}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <CardContent className="p-6">
+                        <h3 className="text-xl font-semibold mb-1">{plan.title}</h3>
+                        <p className="text-primary font-medium mb-3">{plan.type}</p>
+
+                        <div className="flex gap-4 mb-4">
+                          <div className="flex items-center gap-2">
+                            <BedDouble className="h-4 w-4 text-muted-foreground" />
+                            <span className="text-sm">{plan.bedrooms}</span>
                           </div>
-                          
-                          <div className="flex justify-between items-center">
-                            <p className="font-bold">{plan.price}</p>
-                            <Button 
-                              variant="outline" 
-                              size="sm"
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                setSelectedPlan(plan);
-                              }}
-                            >
-                              View Details
-                            </Button>
+                          <div className="flex items-center gap-2">
+                            <Bath className="h-4 w-4 text-muted-foreground" />
+                            <span className="text-sm">{plan.bathrooms}</span>
                           </div>
-                        </CardContent>
-                      </Card>
-                    ))}
-                  </div>
-                </TabsContent>
-              ))}
+                          <div className="flex items-center gap-2">
+                            <Maximize className="h-4 w-4 text-muted-foreground" />
+                            <span className="text-sm">{plan.area}</span>
+                          </div>
+                        </div>
+
+                        <div className="flex justify-between items-center">
+                          <p className="font-bold">{plan.price}</p>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setSelectedPlan(plan);
+                            }}
+                          >
+                            View Details
+                          </Button>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </TabsContent>
             </Tabs>
           )}
         </motion.div>
