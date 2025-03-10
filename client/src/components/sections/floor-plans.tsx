@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -20,41 +20,22 @@ type Unit = {
   image_link: string;
 };
 
-interface FloorPlan {
-  id: string;
-  title: string;
-  type: string;
-  bedrooms: number;
-  bathrooms: number;
-  area: string;
-  price: string;
-  image: string;
-  description: string;
-  features: string[];
-}
+// Floor level mapping
+const FLOOR_LEVELS = ["Ground", "First", "Second", "Third", "Fourth"] as const;
+type FloorLevel = typeof FLOOR_LEVELS[number];
 
 // Parse units data
 const units: Unit[] = unitsData.split('\n')
   .slice(1) // Skip header row
   .map(row => {
     const [unit_number, block, floor, area, size, price, face, balcony_count, available, image_link] = row.split(',');
-    // Convert floor number to string label using Number to avoid octal literal issues
-    const floorLabel = (() => {
-      const floorNum = Number(floor);
-      switch(floorNum) {
-        case 0: return 'Ground';
-        case 1: return 'First';
-        case 2: return 'Second';
-        case 3: return 'Third';
-        case 4: return 'Fourth';
-        default: return 'Ground';
-      }
-    })();
+    // Map numeric floor to string label
+    const floorLevel = FLOOR_LEVELS[Number(floor)] || "Ground";
 
     return {
       unit_number,
       block,
-      floor: floorLabel,
+      floor: floorLevel,
       area: Number(area),
       size,
       price: Number(price),
@@ -66,7 +47,7 @@ const units: Unit[] = unitsData.split('\n')
   });
 
 export default function FloorPlans() {
-  const [selectedFloor, setSelectedFloor] = useState("Ground");
+  const [selectedFloor, setSelectedFloor] = useState<FloorLevel>("Ground");
   const [selectedType, setSelectedType] = useState("2bhk");
 
   // Filter units based on selected floor and type
@@ -103,16 +84,14 @@ export default function FloorPlans() {
             and functionality.
           </p>
 
-          <Tabs defaultValue="Ground" className="w-full" onValueChange={setSelectedFloor}>
+          <Tabs defaultValue="Ground" className="w-full" onValueChange={(value) => setSelectedFloor(value as FloorLevel)}>
             <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-5 mb-8">
-              <TabsTrigger value="Ground">Ground Floor</TabsTrigger>
-              <TabsTrigger value="First">First Floor</TabsTrigger>
-              <TabsTrigger value="Second">Second Floor</TabsTrigger>
-              <TabsTrigger value="Third">Third Floor</TabsTrigger>
-              <TabsTrigger value="Fourth">Fourth Floor</TabsTrigger>
+              {FLOOR_LEVELS.map((floor) => (
+                <TabsTrigger key={floor} value={floor}>{floor} Floor</TabsTrigger>
+              ))}
             </TabsList>
 
-            {["Ground", "First", "Second", "Third", "Fourth"].map((floor) => (
+            {FLOOR_LEVELS.map((floor) => (
               <TabsContent key={floor} value={floor}>
                 <Tabs defaultValue="2bhk" onValueChange={setSelectedType}>
                   <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-8">
