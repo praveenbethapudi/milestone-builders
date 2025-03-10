@@ -81,7 +81,7 @@ export default function Botanical() {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex - 1 + plants.length) % plants.length);
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % plants.length);
     }, 5000);
     return () => clearInterval(timer);
   }, []);
@@ -120,9 +120,9 @@ export default function Botanical() {
               {visiblePlants.map((plant, index) => (
                 <motion.div
                   key={`${plant.name}-${index}`}
-                  initial={{ opacity: 0, x: -100 }}
+                  initial={{ opacity: 0, x: 100 }}
                   animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 100 }}
+                  exit={{ opacity: 0, x: -100 }}
                   transition={{ duration: 0.5 }}
                   className="group relative bg-white"
                 >
