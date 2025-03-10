@@ -114,7 +114,7 @@ export default function Botanical() {
           </p>
         </motion.div>
 
-        <div className="relative">
+        <div className="relative overflow-hidden">
           <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
             <AnimatePresence initial={false}>
               {visiblePlants.map((plant, index) => (
