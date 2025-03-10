@@ -35,16 +35,16 @@ const plants = [
     size: "large",
   },
   {
-    name: "Aglaonema",
-    image: "/images/botanical/aglaonema-1.webp",
-    description: "Chinese Evergreen - Adding colorful foliage to shaded areas",
-    size: "medium",
-  },
-  {
     name: "Acalypha Wilkesiana",
     image: "/images/botanical/acalypha-wilkesiana-1.webp",
     description: "Copper Leaf - Vibrant foliage for garden borders",
     size: "small",
+  },
+  {
+    name: "Aglaonema",
+    image: "/images/botanical/aglaonema-1.webp",
+    description: "Chinese Evergreen - Adding colorful foliage to shaded areas",
+    size: "medium",
   },
   {
     name: "Tabebuia Rosea",
@@ -82,21 +82,26 @@ export default function Botanical() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const getVisibleCount = () => {
-    if (typeof window === 'undefined') return 6;
+    if (typeof window === "undefined") return 6;
     if (window.innerWidth >= 1024) return 6;
     if (window.innerWidth >= 768) return 4;
     return 3;
   };
 
   const rotateLeft = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + plants.length) % plants.length);
+    setCurrentIndex(
+      (prevIndex) => (prevIndex - 1 + plants.length) % plants.length,
+    );
   };
 
   const rotateRight = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % plants.length);
   };
 
-  const visiblePlants = [...plants.slice(currentIndex), ...plants.slice(0, currentIndex)].slice(0, getVisibleCount());
+  const visiblePlants = [
+    ...plants.slice(currentIndex),
+    ...plants.slice(0, currentIndex),
+  ].slice(0, getVisibleCount());
 
   return (
     <section className="py-20 px-4 bg-accent">
@@ -105,7 +110,7 @@ export default function Botanical() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 text-primary"
+          className=" text-center text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 text-primary"
         >
           Botanical Haven
         </motion.h2>
@@ -116,9 +121,9 @@ export default function Botanical() {
           viewport={{ once: true }}
           className="text-base md:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto text-center mb-8"
         >
-          A carefully curated selection of nature's finest specimens, chosen
-          to create a living tapestry of colors, textures, and sustainable
-          beauty throughout our property.
+          A carefully curated selection of nature's finest specimens, chosen to
+          create a living tapestry of colors, textures, and sustainable beauty
+          throughout our property.
         </motion.p>
 
         <div className="relative overflow-hidden">
@@ -146,13 +151,15 @@ export default function Botanical() {
                 key={`${plant.name}-${index}`}
                 className="group relative bg-white"
               >
-                <div className={`relative ${
-                  plant.size === "large"
-                    ? "aspect-[16/9]"
-                    : plant.size === "medium"
-                    ? "aspect-[4/3]"
-                    : "aspect-square"
-                }`}>
+                <div
+                  className={`relative ${
+                    plant.size === "large"
+                      ? "aspect-[16/9]"
+                      : plant.size === "medium"
+                        ? "aspect-[4/3]"
+                        : "aspect-square"
+                  }`}
+                >
                   <img
                     src={plant.image}
                     alt={plant.name}
