@@ -73,19 +73,19 @@ export default function FloorPlanCarousel({ plans }: FloorPlanCarouselProps) {
   }, [emblaApi, onSelect]);
 
   return (
-    <div className="relative w-full h-full">
-      <div className="overflow-hidden h-full" ref={emblaRef}>
-        <div className="flex h-full">
+    <div className="relative w-full">
+      <div className="overflow-hidden" ref={emblaRef}>
+        <div className="flex">
           {plans.map((plan, index) => (
             <div 
               key={index} 
-              className="relative flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_33.333%] min-w-0 h-full p-1"
+              className="relative flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_33.333%] min-w-0 p-1"
             >
-              <div className="relative h-full rounded-lg overflow-hidden">
+              <div className="relative rounded-lg overflow-hidden">
                 <img 
                   src={plan.image} 
                   alt={`Floor plan ${plan.unit_id}`} 
-                  className="w-full h-full object-contain rounded-md"
+                  className="w-full object-contain rounded-md"
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white p-2 space-y-1">
                   <div className="flex items-center justify-between">

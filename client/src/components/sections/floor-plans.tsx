@@ -42,7 +42,7 @@ interface FilteredUnit {
 const floorOptions = ["G", "1", "2", "3", "4"];
 
 export default function FloorPlans() {
-  const [selectedBlock, setSelectedBlock] = useState("B"); // Default to Block B
+  const [selectedBlock, setSelectedBlock] = useState("B"); 
   const [selectedFloor, setSelectedFloor] = useState("1");
   const [selectedType, setSelectedType] = useState("2bhk");
   const [unitData, setUnitData] = useState<Unit[]>([]);
@@ -116,13 +116,13 @@ export default function FloorPlans() {
             </TabsList>
 
             <TabsContent value="2bhk" className="mt-0">
-              <div className="aspect-[4/3] overflow-hidden">
+              <div className="sm:h-auto">
                 <FloorPlanCarousel plans={getFilteredUnits()} />
               </div>
             </TabsContent>
 
             <TabsContent value="3bhk" className="mt-0">
-              <div className="aspect-[4/3] overflow-hidden">
+              <div className="sm:h-auto">
                 <FloorPlanCarousel plans={getFilteredUnits()} />
               </div>
             </TabsContent>
