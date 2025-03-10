@@ -152,15 +152,19 @@ export default function Botanical() {
               <motion.div
                 key={`${plant.name}-${index}`}
                 initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 1, ease: "easeInOut" }}
                 className="group relative bg-white h-[300px] flex flex-col"
               >
                 <div className="relative h-[200px] overflow-hidden">
-                  <img
+                  <motion.img
                     src={plant.image}
                     alt={plant.name}
                     loading="lazy"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 1, ease: "easeInOut" }}
                     className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
