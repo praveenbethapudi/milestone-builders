@@ -21,21 +21,18 @@ type Unit = {
 };
 
 // Floor level mapping
-const FLOOR_LEVELS = ["Ground", "First", "Second", "Third", "Fourth"] as const;
-type FloorLevel = typeof FLOOR_LEVELS[number];
+const FLOOR_LABELS = ["Ground", "First", "Second", "Third", "Fourth"] as const;
+type FloorLabel = typeof FLOOR_LABELS[number];
 
 // Parse units data
 const units: Unit[] = unitsData.split('\n')
   .slice(1) // Skip header row
   .map(row => {
     const [unit_number, block, floor, area, size, price, face, balcony_count, available, image_link] = row.split(',');
-    // Map numeric floor to string label
-    const floorLevel = FLOOR_LEVELS[Number(floor)] || "Ground";
-
     return {
       unit_number,
       block,
-      floor: floorLevel,
+      floor,
       area: Number(area),
       size,
       price: Number(price),
@@ -47,7 +44,7 @@ const units: Unit[] = unitsData.split('\n')
   });
 
 export default function FloorPlans() {
-  const [selectedFloor, setSelectedFloor] = useState<FloorLevel>("Ground");
+  const [selectedFloor, setSelectedFloor] = useState<FloorLabel>("Ground");
   const [selectedType, setSelectedType] = useState("2bhk");
 
   // Filter units based on selected floor and type
@@ -84,14 +81,14 @@ export default function FloorPlans() {
             and functionality.
           </p>
 
-          <Tabs defaultValue="Ground" className="w-full" onValueChange={(value) => setSelectedFloor(value as FloorLevel)}>
+          <Tabs defaultValue="Ground" className="w-full" onValueChange={(value) => setSelectedFloor(value as FloorLabel)}>
             <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-5 mb-8">
-              {FLOOR_LEVELS.map((floor) => (
+              {FLOOR_LABELS.map((floor) => (
                 <TabsTrigger key={floor} value={floor}>{floor} Floor</TabsTrigger>
               ))}
             </TabsList>
 
-            {FLOOR_LEVELS.map((floor) => (
+            {FLOOR_LABELS.map((floor) => (
               <TabsContent key={floor} value={floor}>
                 <Tabs defaultValue="2bhk" onValueChange={setSelectedType}>
                   <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-8">
