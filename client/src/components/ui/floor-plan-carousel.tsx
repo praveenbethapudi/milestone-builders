@@ -1,7 +1,18 @@
 import { useState, useCallback, useEffect } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { Button } from './button';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { 
+  ChevronLeft, 
+  ChevronRight,
+  BedDouble,
+  Bath,
+  Maximize,
+  Compass,
+  Building,
+  Home,
+  IndianRupee,
+  CheckCircle2
+} from 'lucide-react';
 
 type FloorPlanCarouselProps = {
   plans: {
@@ -11,6 +22,13 @@ type FloorPlanCarouselProps = {
     size: string;
     area: number;
     price: number;
+    block: string;
+    floor: string;
+    face: string;
+    bedrooms: number;
+    bathrooms: number;
+    balcony: number;
+    available: string;
   }[];
 };
 
@@ -66,14 +84,51 @@ export default function FloorPlanCarousel({ plans }: FloorPlanCarouselProps) {
               <div className="relative h-full rounded-lg overflow-hidden">
                 <img 
                   src={plan.image} 
-                  alt={plan.title} 
+                  alt={`Floor plan ${plan.unit_id}`} 
                   className="w-full h-full object-contain rounded-md"
                 />
-                <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white p-2">
-                  <h3 className="text-lg font-semibold">{plan.title}</h3>
-                  <p className="text-sm">Area: {plan.area} sq.ft</p>
-                  <p className="text-sm">Price: ₹{plan.price.toLocaleString('en-IN')}</p>
-                  <p className="text-xs">Unit: {plan.unit_id}</p>
+                <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white p-2 space-y-1">
+                  <div className="flex items-center gap-2">
+                    <Home className="h-4 w-4" />
+                    <span className="text-sm font-semibold">Unit {plan.unit_id}</span>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-x-4 gap-y-1">
+                    <div className="flex items-center gap-2">
+                      <Building className="h-4 w-4" />
+                      <span className="text-xs">Block {plan.block}</span>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      <Maximize className="h-4 w-4" />
+                      <span className="text-xs">{plan.area} sq.ft</span>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      <BedDouble className="h-4 w-4" />
+                      <span className="text-xs">{plan.bedrooms} Beds</span>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      <Bath className="h-4 w-4" />
+                      <span className="text-xs">{plan.bathrooms} Baths</span>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      <Compass className="h-4 w-4" />
+                      <span className="text-xs">{plan.face}</span>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      <IndianRupee className="h-4 w-4" />
+                      <span className="text-xs">{plan.price.toLocaleString('en-IN')}</span>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-2 pt-1">
+                    <CheckCircle2 className="h-4 w-4 text-green-400" />
+                    <span className="text-xs text-green-400">Available</span>
+                  </div>
                 </div>
               </div>
             </div>
