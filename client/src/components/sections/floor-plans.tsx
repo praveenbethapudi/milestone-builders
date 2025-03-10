@@ -30,6 +30,13 @@ interface FilteredUnit {
   size: string;
   area: number;
   price: number;
+  block: string;
+  floor: string;
+  face: string;
+  bedrooms: number;
+  bathrooms: number;
+  balcony: number;
+  available: string;
 }
 
 const floorOptions = ["G", "1", "2", "3", "4"];
@@ -78,8 +85,15 @@ export default function FloorPlans() {
         image: unit.image_link || `/images/${selectedType}/block-${selectedBlock.toLowerCase()}/${selectedBlock}-${unit.unit_id}.jpg`,
         title: `${selectedBlock}-${unit.unit_id}`,
         size: `${unit.type} Unit`,
-        area: unit.area,
-        price: unit.area * 5000 // ₹5000 per sq.ft
+        area: parseInt(unit.area.toString()),
+        price: parseInt(unit.area.toString()) * 5000,
+        block: unit.block,
+        floor: unit.floor,
+        face: unit.face,
+        bedrooms: parseInt(unit.bedrooms.toString()),
+        bathrooms: parseInt(unit.bathrooms.toString()),
+        balcony: parseInt(unit.balcony.toString()),
+        available: unit.available
       }));
   };
 

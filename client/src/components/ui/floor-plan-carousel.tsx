@@ -88,9 +88,15 @@ export default function FloorPlanCarousel({ plans }: FloorPlanCarouselProps) {
                   className="w-full h-full object-contain rounded-md"
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white p-2 space-y-1">
-                  <div className="flex items-center gap-2">
-                    <Home className="h-4 w-4" />
-                    <span className="text-sm font-semibold">Unit {plan.unit_id}</span>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <Home className="h-4 w-4" />
+                      <span className="text-sm font-semibold">Unit {plan.unit_id}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Building className="h-4 w-4" />
+                      <span className="text-xs">Floor {plan.floor}</span>
+                    </div>
                   </div>
 
                   <div className="grid grid-cols-2 gap-x-4 gap-y-1">
