@@ -43,10 +43,10 @@ export default function FloorPlanCarousel({ plans }: FloorPlanCarouselProps) {
 
     emblaApi.on('select', onSelect);
 
-    // Auto-scroll every 3 seconds
+    // Auto-scroll every 5 seconds
     const autoplayInterval = setInterval(() => {
       emblaApi.scrollNext();
-    }, 3000);
+    }, 5000);
 
     return () => {
       emblaApi.off('select', onSelect);
