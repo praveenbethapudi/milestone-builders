@@ -61,7 +61,7 @@ export default function FloorPlanCarousel({ plans }: FloorPlanCarouselProps) {
           {plans.map((plan, index) => (
             <div 
               key={index} 
-              className="relative flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_33.333%] min-w-0 h-full p-2"
+              className="relative flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_33.333%] min-w-0 h-full p-1"
             >
               <div className="relative h-full rounded-lg overflow-hidden">
                 <img 
@@ -69,7 +69,7 @@ export default function FloorPlanCarousel({ plans }: FloorPlanCarouselProps) {
                   alt={plan.title} 
                   className="w-full h-full object-contain rounded-md"
                 />
-                <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white p-4">
+                <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white p-2">
                   <h3 className="text-lg font-semibold">{plan.title}</h3>
                   <p className="text-sm">Area: {plan.area} sq.ft</p>
                   <p className="text-sm">Price: ₹{plan.price.toLocaleString('en-IN')}</p>
