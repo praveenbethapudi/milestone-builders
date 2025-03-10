@@ -154,7 +154,7 @@ export default function Botanical() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 1, ease: "easeInOut" }}
+                transition={{ duration: 1, delay: index * 0.1, ease: [0.4, 0, 0.2, 1] }}
                 className="group relative bg-white h-[300px] flex flex-col"
               >
                 <div className="relative h-[200px] overflow-hidden">
@@ -164,7 +164,7 @@ export default function Botanical() {
                     loading="lazy"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ duration: 1, ease: "easeInOut" }}
+                    transition={{ duration: 1, ease: [0.4, 0, 0.2, 1] }}
                     className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
