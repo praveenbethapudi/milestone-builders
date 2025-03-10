@@ -7,28 +7,20 @@ import { BedDouble, Bath, Maximize } from "lucide-react";
 import FloorPlanCarousel from "@/components/ui/floor-plan-carousel";
 
 interface Unit {
-  unit: string;
+  unit_id: string;
   block: string;
-  type: string;
-  floor: number;
+  floor: string;
   area: number;
-  price: number;
-  available: string;
-}
-
-const floorOptions = ["1", "2", "3", "4"];
-
-interface FloorPlan {
-  id: string;
-  title: string;
   type: string;
+  price: number;
+  face: string;
   bedrooms: number;
   bathrooms: number;
-  area: string;
-  price: string;
-  image: string;
+  balcony: number;
   description: string;
-  features: string[];
+  features: string;
+  available: string;
+  image_link: string;
 }
 
 const blockAPlans = [
@@ -73,7 +65,7 @@ const blockAPlans = [
     size: "2 BHK Unit",
     area: 1115,
     units: ["208", "308", "408"]
-  }
+  },
 ];
 
 const blockBPlans = [
@@ -118,7 +110,7 @@ const blockBPlans = [
     size: "2 BHK Unit",
     area: 1111,
     units: ["208", "308", "408"]
-  }
+  },
 ];
 
 const block3APlans = [
@@ -155,101 +147,10 @@ const block3BPlans = [
   }
 ];
 
-const floorPlans: Record<string, FloorPlan[]> = {
-  "2bhk": [
-    {
-      id: "2bhk-block-a",
-      title: "Block A",
-      type: "2 BHK Premium",
-      bedrooms: 2,
-      bathrooms: 2,
-      area: "893-1116 sq.ft",
-      price: `₹${(893 * 5000).toLocaleString('en-IN')} - ${(1116 * 5000).toLocaleString('en-IN')}`,
-      image: "/images/2bhk/block-a/A-103.jpg",
-      description: "Premium 2 BHK apartments in Block A with modern amenities and spacious layouts. Features multiple unit configurations to suit your needs.",
-      features: [
-        "Multiple layout options from 893 to 1116 sq.ft",
-        "Well-ventilated rooms with ample natural light",
-        "Modern kitchen with premium fittings",
-        "Private balcony with garden view",
-        "Premium flooring and finishes"
-      ]
-    },
-    {
-      id: "2bhk-block-b",
-      title: "Block B",
-      type: "2 BHK Luxury",
-      bedrooms: 2,
-      bathrooms: 2,
-      area: "893-1111 sq.ft",
-      price: `₹${(893 * 5000).toLocaleString('en-IN')} - ${(1111 * 5000).toLocaleString('en-IN')}`,
-      image: "/images/2bhk/block-b/B-103.jpg",
-      description: "Luxury 2 BHK apartments in Block B with premium finishes and thoughtfully designed spaces. Choose from various configurations for your perfect home.",
-      features: [
-        "Spacious layouts from 893 to 1111 sq.ft",
-        "Premium bathroom fittings",
-        "Elegant kitchen design",
-        "Multiple balcony options",
-        "High-quality construction materials"
-      ]
-    }
-  ],
-  "3bhk": [
-    {
-      id: "3bhk-block-a",
-      title: "Block A",
-      type: "3 BHK Premium",
-      bedrooms: 3,
-      bathrooms: 3,
-      area: "1450-1491 sq.ft",
-      price: `₹${(1450 * 5000).toLocaleString('en-IN')} - ${(1491 * 5000).toLocaleString('en-IN')}`,
-      image: "/images/3bhk/block-a/A-101.jpg",
-      description: "Premium 3 BHK apartments in Block A with luxurious amenities and spacious layouts. Features large bedrooms and modern design.",
-      features: [
-        "Spacious layouts from 1450 to 1491 sq.ft",
-        "Master bedroom with walk-in closet",
-        "Modern kitchen with premium appliances",
-        "Multiple balconies with panoramic views",
-        "Premium flooring and designer finishes"
-      ]
-    },
-    {
-      id: "3bhk-block-b",
-      title: "Block B",
-      type: "3 BHK Luxury",
-      bedrooms: 3,
-      bathrooms: 3,
-      area: "1351-1420 sq.ft",
-      price: `₹${(1351 * 5000).toLocaleString('en-IN')} - ${(1420 * 5000).toLocaleString('en-IN')}`,
-      image: "/images/3bhk/block-b/B-101.jpg",
-      description: "Luxury 3 BHK apartments in Block B with premium finishes and thoughtfully designed spaces. Perfect for families seeking comfort and elegance.",
-      features: [
-        "Elegant layouts from 1351 to 1420 sq.ft",
-        "Spacious bedrooms with attached bathrooms",
-        "Designer kitchen with modern amenities",
-        "Private balconies with garden views",
-        "High-end finishes throughout"
-      ]
-    }
-  ]
-};
-
-
-const getAvailableUnits = (block: string, type: string) => {
-    // This function will be implemented later to fetch data from CSV
-    return [];
-};
-
-const getFilteredPlans = (blockPlans: any[], block: string, type: string) => {
-    const availableUnits = getAvailableUnits(block, type);
-    return blockPlans.filter(plan => {
-      const unitNumber = plan.title.split('-')[1];
-      return availableUnits.includes(unitNumber);
-    });
-};
+const floorOptions = ["G", "1", "2", "3", "4"];
 
 export default function FloorPlans() {
-  const [selectedPlan, setSelectedPlan] = useState<FloorPlan | null>(null);
+  const [selectedPlan, setSelectedPlan] = useState<any>(null);
   const [selectedFloor, setSelectedFloor] = useState("1");
   const [unitData, setUnitData] = useState<Unit[]>([]);
   const [loading, setLoading] = useState(true);
@@ -266,7 +167,7 @@ export default function FloorPlans() {
             obj[header.trim()] = values[index]?.trim();
             return obj;
           }, {});
-        }).filter(unit => unit.unit); // Filter out empty lines
+        }).filter(unit => unit.unit_id); 
         setUnitData(data);
         setLoading(false);
       });
@@ -274,20 +175,24 @@ export default function FloorPlans() {
 
   const getAvailableUnits = (block: string, type: string) => {
     return unitData
-      .filter(unit => 
-        unit.block === block && 
-        unit.type === type && 
-        unit.floor === parseInt(selectedFloor) &&
-        unit.available === 'yes'
-      )
-      .map(unit => unit.unit);
+      .filter(unit => {
+        const floorMatch = selectedFloor === "G" ? 
+          unit.floor === "G" : 
+          unit.floor === selectedFloor;
+
+        return unit.block === block && 
+               unit.type === `${type}-BHK` && 
+               floorMatch &&
+               unit.available === 'yes';
+      })
+      .map(unit => unit.unit_id);
   };
 
   const getFilteredPlans = (blockPlans: any[], block: string, type: string) => {
     const availableUnits = getAvailableUnits(block, type);
     return blockPlans.filter(plan => {
-      const unitNumber = plan.title.split('-')[1];
-      return availableUnits.includes(unitNumber);
+      const unitNumbers = plan.units.map((unitNum: string) => unitNum);
+      return unitNumbers.some(num => availableUnits.includes(num));
     });
   };
 
@@ -310,15 +215,15 @@ export default function FloorPlans() {
             <div className="text-center">Loading floor plans...</div>
           ) : (
             <Tabs defaultValue="1" value={selectedFloor} onValueChange={setSelectedFloor}>
-              <TabsList className="grid w-full max-w-md mx-auto grid-cols-4 mb-8">
-                {floorOptions.map(floor => (
-                  <TabsTrigger key={floor} value={floor}>
-                    Floor {floor}
-                  </TabsTrigger>
-                ))}
+              <TabsList className="grid w-full max-w-md mx-auto grid-cols-5 mb-8">
+                <TabsTrigger value="G">Ground</TabsTrigger>
+                <TabsTrigger value="1">Floor 1</TabsTrigger>
+                <TabsTrigger value="2">Floor 2</TabsTrigger>
+                <TabsTrigger value="3">Floor 3</TabsTrigger>
+                <TabsTrigger value="4">Floor 4</TabsTrigger>
               </TabsList>
 
-              {floorOptions.map(floor => (
+              {floorOptions.map((floor) => (
                 <TabsContent key={floor} value={floor}>
                   <Tabs defaultValue="2bhk" className="w-full">
                     <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-8">
@@ -331,7 +236,7 @@ export default function FloorPlans() {
                         <Card className="overflow-hidden">
                           <div className="aspect-[4/3] overflow-hidden">
                             <FloorPlanCarousel 
-                              plans={getFilteredPlans(blockAPlans, "A", "2BHK")} 
+                              plans={getFilteredPlans(blockAPlans, "A", "2")} 
                             />
                           </div>
                           <CardContent className="p-6">
@@ -358,7 +263,7 @@ export default function FloorPlans() {
                         <Card className="overflow-hidden">
                           <div className="aspect-[4/3] overflow-hidden">
                             <FloorPlanCarousel 
-                              plans={getFilteredPlans(blockBPlans, "B", "2BHK")} 
+                              plans={getFilteredPlans(blockBPlans, "B", "2")} 
                             />
                           </div>
                           <CardContent className="p-6">
@@ -389,7 +294,7 @@ export default function FloorPlans() {
                         <Card className="overflow-hidden">
                           <div className="aspect-[4/3] overflow-hidden">
                             <FloorPlanCarousel 
-                              plans={getFilteredPlans(block3APlans, "A", "3BHK")} 
+                              plans={getFilteredPlans(block3APlans, "A", "3")} 
                             />
                           </div>
                           <CardContent className="p-6">
@@ -416,7 +321,7 @@ export default function FloorPlans() {
                         <Card className="overflow-hidden">
                           <div className="aspect-[4/3] overflow-hidden">
                             <FloorPlanCarousel 
-                              plans={getFilteredPlans(block3BPlans, "B", "3BHK")} 
+                              plans={getFilteredPlans(block3BPlans, "B", "3")} 
                             />
                           </div>
                           <CardContent className="p-6">
