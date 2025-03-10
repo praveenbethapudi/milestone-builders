@@ -3,7 +3,8 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "./lib/queryClient";
 import { Toaster } from "@/components/ui/toaster";
 import NotFound from "@/pages/not-found";
-import Home from "@/pages/home";
+import Landing from "@/pages/landing";
+import ComingSoon from "@/pages/coming-soon";
 import Hero from "./components/sections/hero";
 import Logo from "./components/sections/logo";
 import Features from "./components/sections/features";
@@ -19,9 +20,8 @@ import Botanical from "./components/sections/botanical";
 import Footer from "./components/sections/footer";
 import WhatsAppButton from "./components/ui/whatsapp-button";
 import FloorPlans from "./components/sections/floor-plans";
-import VirtualTour from "./components/sections/virtual-tour";
 
-function HomePage() {
+function MeridianPage() {
   return (
     <>
       <Hero />
@@ -31,7 +31,6 @@ function HomePage() {
       <FloorPlans />
       <Differentiators />
       <Features />
-      {/* <VirtualTour /> */}
       <Botanical />
       <Location />
       <Contact />
@@ -46,7 +45,9 @@ function Router() {
     <QueryClientProvider client={queryClient}>
       <HashRouter>
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<Landing />} />
+          <Route path="/meridian" element={<MeridianPage />} />
+          <Route path="/coming-soon" element={<ComingSoon />} />
           <Route path="/terms" element={<TermsOfUse />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/refund" element={<RefundPolicy />} />

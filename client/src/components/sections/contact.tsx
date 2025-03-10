@@ -163,7 +163,7 @@ export default function Contact() {
                       <FormLabel>Name</FormLabel>
                       <FormControl>
                         <Input
-                          placeholder="First & Last name. Ex: Ram Singh"
+                          placeholder="First & Last name. Example: Ram Singh"
                           {...field}
                         />
                       </FormControl>
@@ -181,7 +181,7 @@ export default function Contact() {
                       <FormControl>
                         <Input
                           type="email"
-                          placeholder="Email address. Ex: ram@example.com"
+                          placeholder="Email address. Example: ram@example.com"
                           {...field}
                         />
                       </FormControl>
@@ -198,7 +198,7 @@ export default function Contact() {
                       <FormLabel>Phone</FormLabel>
                       <FormControl>
                         <Input
-                          placeholder="10 digit mobile number. Ex: 9876543210"
+                          placeholder="10 digit mobile number. Example: 9876543210"
                           {...field}
                         />
                       </FormControl>
@@ -215,7 +215,7 @@ export default function Contact() {
                       <FormLabel>Message</FormLabel>
                       <FormControl>
                         <Textarea
-                          placeholder="Tell about your type of apartment, budget and floor choices. Ex: I am looking for a 3-bedroom apartment in a budget of Rs. 70 Lakhs"
+                          placeholder="Tell about your type of apartment, budget and floor choices. Example: I am looking for a 3-bedroom apartment in a budget of Rs. 70 Lakhs"
                           className="resize-none"
                           {...field}
                         />
