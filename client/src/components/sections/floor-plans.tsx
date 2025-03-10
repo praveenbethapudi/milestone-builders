@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { BedDouble, Bath, Maximize } from "lucide-react";
+import { BedDouble, Bath, Maximize, ChevronLeft } from "lucide-react";
 import FloorPlanCarousel from "@/components/ui/floor-plan-carousel";
 
 interface Unit {
@@ -37,14 +37,17 @@ interface FilteredUnit {
   bathrooms: number;
   balcony: number;
   available: string;
+  description: string;
+  features: string[];
 }
 
 const floorOptions = ["G", "1", "2", "3", "4"];
 
 export default function FloorPlans() {
-  const [selectedBlock, setSelectedBlock] = useState("B"); 
+  const [selectedBlock, setSelectedBlock] = useState("B");
   const [selectedFloor, setSelectedFloor] = useState("1");
   const [selectedType, setSelectedType] = useState("2bhk");
+  const [selectedUnit, setSelectedUnit] = useState<FilteredUnit | null>(null);
   const [unitData, setUnitData] = useState<Unit[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -93,7 +96,15 @@ export default function FloorPlans() {
         bedrooms: parseInt(unit.bedrooms.toString()),
         bathrooms: parseInt(unit.bathrooms.toString()),
         balcony: parseInt(unit.balcony.toString()),
-        available: unit.available
+        available: unit.available,
+        description: unit.description || "Luxurious apartment with modern amenities and thoughtfully designed spaces.",
+        features: unit.features ? unit.features.split(';') : [
+          "Premium flooring",
+          "Modern kitchen with quality fittings",
+          "Well-ventilated rooms",
+          "Ample natural light",
+          "Private balcony"
+        ]
       }));
   };
 
@@ -117,13 +128,159 @@ export default function FloorPlans() {
 
             <TabsContent value="2bhk" className="mt-0">
               <div className="sm:h-auto">
-                <FloorPlanCarousel plans={getFilteredUnits()} />
+                {selectedUnit ? (
+                  <div className="bg-card rounded-lg overflow-hidden">
+                    <div className="flex items-center gap-2 p-4 border-b">
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={() => setSelectedUnit(null)}
+                      >
+                        <ChevronLeft className="h-4 w-4" />
+                      </Button>
+                      <h3 className="text-xl font-semibold">Unit Details</h3>
+                    </div>
+                    <div className="grid md:grid-cols-2 gap-6 p-6">
+                      <div className="aspect-[4/3] relative rounded-lg overflow-hidden">
+                        <img 
+                          src={selectedUnit.image} 
+                          alt={`Floor plan ${selectedUnit.unit_id}`}
+                          className="w-full h-full object-contain" 
+                        />
+                      </div>
+                      <div className="space-y-6">
+                        <div>
+                          <h4 className="text-lg font-semibold mb-2">Unit Information</h4>
+                          <div className="grid grid-cols-2 gap-4">
+                            <div className="flex items-center gap-2">
+                              <BedDouble className="h-4 w-4 text-muted-foreground" />
+                              <span>{selectedUnit.bedrooms} Bedrooms</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <Bath className="h-4 w-4 text-muted-foreground" />
+                              <span>{selectedUnit.bathrooms} Bathrooms</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <Maximize className="h-4 w-4 text-muted-foreground" />
+                              <span>{selectedUnit.area} sq.ft</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <span className="font-semibold">₹</span>
+                              <span>{selectedUnit.price.toLocaleString('en-IN')}</span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div>
+                          <h4 className="text-lg font-semibold mb-2">Description</h4>
+                          <p className="text-muted-foreground">{selectedUnit.description}</p>
+                        </div>
+
+                        <div>
+                          <h4 className="text-lg font-semibold mb-2">Features</h4>
+                          <ul className="list-disc list-inside space-y-1">
+                            {selectedUnit.features.map((feature, index) => (
+                              <li key={index} className="text-muted-foreground">{feature}</li>
+                            ))}
+                          </ul>
+                        </div>
+
+                        <Button 
+                          className="w-full"
+                          onClick={() => {
+                            document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                          }}
+                        >
+                          Schedule a Visit
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <FloorPlanCarousel 
+                    plans={getFilteredUnits()} 
+                    onUnitClick={setSelectedUnit}
+                  />
+                )}
               </div>
             </TabsContent>
 
             <TabsContent value="3bhk" className="mt-0">
               <div className="sm:h-auto">
-                <FloorPlanCarousel plans={getFilteredUnits()} />
+                {selectedUnit ? (
+                  <div className="bg-card rounded-lg overflow-hidden">
+                    <div className="flex items-center gap-2 p-4 border-b">
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={() => setSelectedUnit(null)}
+                      >
+                        <ChevronLeft className="h-4 w-4" />
+                      </Button>
+                      <h3 className="text-xl font-semibold">Unit Details</h3>
+                    </div>
+                    <div className="grid md:grid-cols-2 gap-6 p-6">
+                      <div className="aspect-[4/3] relative rounded-lg overflow-hidden">
+                        <img 
+                          src={selectedUnit.image} 
+                          alt={`Floor plan ${selectedUnit.unit_id}`}
+                          className="w-full h-full object-contain" 
+                        />
+                      </div>
+                      <div className="space-y-6">
+                        <div>
+                          <h4 className="text-lg font-semibold mb-2">Unit Information</h4>
+                          <div className="grid grid-cols-2 gap-4">
+                            <div className="flex items-center gap-2">
+                              <BedDouble className="h-4 w-4 text-muted-foreground" />
+                              <span>{selectedUnit.bedrooms} Bedrooms</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <Bath className="h-4 w-4 text-muted-foreground" />
+                              <span>{selectedUnit.bathrooms} Bathrooms</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <Maximize className="h-4 w-4 text-muted-foreground" />
+                              <span>{selectedUnit.area} sq.ft</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <span className="font-semibold">₹</span>
+                              <span>{selectedUnit.price.toLocaleString('en-IN')}</span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div>
+                          <h4 className="text-lg font-semibold mb-2">Description</h4>
+                          <p className="text-muted-foreground">{selectedUnit.description}</p>
+                        </div>
+
+                        <div>
+                          <h4 className="text-lg font-semibold mb-2">Features</h4>
+                          <ul className="list-disc list-inside space-y-1">
+                            {selectedUnit.features.map((feature, index) => (
+                              <li key={index} className="text-muted-foreground">{feature}</li>
+                            ))}
+                          </ul>
+                        </div>
+
+                        <Button 
+                          className="w-full"
+                          onClick={() => {
+                            document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                          }}
+                        >
+                          Schedule a Visit
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <FloorPlanCarousel 
+                    plans={getFilteredUnits()} 
+                    onUnitClick={setSelectedUnit}
+                  />
+                )}
               </div>
             </TabsContent>
           </Tabs>

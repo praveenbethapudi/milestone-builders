@@ -29,10 +29,13 @@ type FloorPlanCarouselProps = {
     bathrooms: number;
     balcony: number;
     available: string;
+    description?: string;
+    features?: string[];
   }[];
+  onUnitClick?: (unit: any) => void;
 };
 
-export default function FloorPlanCarousel({ plans }: FloorPlanCarouselProps) {
+export default function FloorPlanCarousel({ plans, onUnitClick }: FloorPlanCarouselProps) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ 
     loop: true,
     slidesToScroll: 1,
@@ -79,7 +82,8 @@ export default function FloorPlanCarousel({ plans }: FloorPlanCarouselProps) {
           {plans.map((plan, index) => (
             <div 
               key={index} 
-              className="relative flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_33.333%] min-w-0 p-1"
+              className="relative flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_33.333%] min-w-0 p-1 cursor-pointer"
+              onClick={() => onUnitClick?.(plan)}
             >
               <div className="relative rounded-lg overflow-hidden">
                 <img 
@@ -162,3 +166,105 @@ export default function FloorPlanCarousel({ plans }: FloorPlanCarouselProps) {
     </div>
   );
 }
+
+// Detailed view component (needs to be implemented separately)
+type DetailedViewProps = {
+  unit: any;
+  onClose: () => void;
+};
+
+const DetailedView: React.FC<DetailedViewProps> = ({ unit, onClose }) => {
+  return (
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+      <div className="bg-white rounded-lg p-6 w-full max-w-xl">
+        <button className="absolute top-2 right-2" onClick={onClose}>
+          &times;
+        </button>
+        <div className="flex">
+          <img src={unit.image} alt={`Unit ${unit.unit_id}`} className="w-48 h-48 rounded-md object-cover mr-4" />
+          <div>
+            <h2>Unit {unit.unit_id}</h2>
+            <p><strong>Description:</strong> {unit.description || 'No description provided'}</p>
+            <p><strong>Features:</strong> {unit.features?.join(', ') || 'No features provided'}</p>
+            {/* Add other details here */}
+            <p>Size: {unit.size}</p>
+            <p>Area: {unit.area} sq.ft</p>
+            <p>Price: {unit.price.toLocaleString('en-IN')}</p>
+            <p>Block: {unit.block}</p>
+            <p>Floor: {unit.floor}</p>
+            <p>Face: {unit.face}</p>
+            <p>Bedrooms: {unit.bedrooms}</p>
+            <p>Bathrooms: {unit.bathrooms}</p>
+            <p>Balcony: {unit.balcony}</p>
+            <p>Availability: {unit.available}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// Example usage of FloorPlanCarousel and DetailedView:
+
+const App = () => {
+  const [showDetailedView, setShowDetailedView] = useState(false);
+  const [selectedUnit, setSelectedUnit] = useState<any>(null);
+
+  const handleUnitClick = (unit) => {
+    setSelectedUnit(unit);
+    setShowDetailedView(true);
+  };
+
+  const handleCloseDetailedView = () => {
+    setShowDetailedView(false);
+  };
+
+  const examplePlans = [
+    // Add your plan data here
+    {
+      unit_id: 'A101',
+      image: '/path/to/image1.jpg',
+      title: 'Unit A101',
+      size: '1000 sq ft',
+      area: 1000,
+      price: 10000000,
+      block: 'A',
+      floor: '1',
+      face: 'East',
+      bedrooms: 2,
+      bathrooms: 2,
+      balcony: 1,
+      available: 'Yes',
+      description: 'A spacious 2BHK unit with a balcony.',
+      features: ['AC', 'Modular Kitchen', 'Balcony']
+    },
+    {
+      unit_id: 'B202',
+      image: '/path/to/image2.jpg',
+      title: 'Unit B202',
+      size: '1200 sq ft',
+      area: 1200,
+      price: 12000000,
+      block: 'B',
+      floor: '2',
+      face: 'West',
+      bedrooms: 3,
+      bathrooms: 2,
+      balcony: 2,
+      available: 'Yes',
+      description: 'A large 3BHK unit with two balconies.',
+      features: ['AC', 'Modular Kitchen', 'Balcony', 'Parking']
+    }
+    // Add more plans...
+  ];
+
+  return (
+    <div>
+      <FloorPlanCarousel plans={examplePlans} onUnitClick={handleUnitClick} />
+      {showDetailedView && <DetailedView unit={selectedUnit} onClose={handleCloseDetailedView} />}
+    </div>
+  );
+};
+
+
+export { App, DetailedView };
