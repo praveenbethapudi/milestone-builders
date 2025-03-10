@@ -72,13 +72,13 @@ export default function FloorPlans() {
   const getFilteredUnits = (): FilteredUnit[] => {
     return unitData
       .filter(unit => {
-        const floorMatch = selectedFloor === "G" ? 
-          unit.floor === "G" : 
+        const floorMatch = selectedFloor === "G" ?
+          unit.floor === "G" :
           unit.floor === selectedFloor;
 
         const typeMatch = unit.type === `${selectedType.slice(0, 1)}-BHK`;
 
-        return unit.block === selectedBlock && 
+        return unit.block === selectedBlock &&
                typeMatch &&
                floorMatch &&
                unit.available === 'yes';
@@ -130,22 +130,23 @@ export default function FloorPlans() {
               <div className="sm:h-auto">
                 {selectedUnit ? (
                   <div className="bg-card rounded-lg overflow-hidden">
-                    <div className="flex items-center gap-2 p-4 border-b">
+                    <div className="flex items-center gap-2 p-4 border-b bg-muted">
                       <Button
-                        variant="ghost"
-                        size="icon"
+                        variant="outline"
+                        className="gap-2"
                         onClick={() => setSelectedUnit(null)}
                       >
                         <ChevronLeft className="h-4 w-4" />
+                        Back to Floor Plans
                       </Button>
                       <h3 className="text-xl font-semibold">Unit Details</h3>
                     </div>
                     <div className="grid md:grid-cols-2 gap-6 p-6">
                       <div className="aspect-[4/3] relative rounded-lg overflow-hidden">
-                        <img 
-                          src={selectedUnit.image} 
+                        <img
+                          src={selectedUnit.image}
                           alt={`Floor plan ${selectedUnit.unit_id}`}
-                          className="w-full h-full object-contain" 
+                          className="w-full h-full object-contain"
                         />
                       </div>
                       <div className="space-y-6">
@@ -185,20 +186,30 @@ export default function FloorPlans() {
                           </ul>
                         </div>
 
-                        <Button 
-                          className="w-full"
-                          onClick={() => {
-                            document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-                          }}
-                        >
-                          Schedule a Visit
-                        </Button>
+                        <div className="space-y-2">
+                          <Button
+                            variant="outline"
+                            className="w-full gap-2"
+                            onClick={() => setSelectedUnit(null)}
+                          >
+                            <ChevronLeft className="h-4 w-4" />
+                            Back to Floor Plans
+                          </Button>
+                          <Button
+                            className="w-full"
+                            onClick={() => {
+                              document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                            }}
+                          >
+                            Schedule a Visit
+                          </Button>
+                        </div>
                       </div>
                     </div>
                   </div>
                 ) : (
-                  <FloorPlanCarousel 
-                    plans={getFilteredUnits()} 
+                  <FloorPlanCarousel
+                    plans={getFilteredUnits()}
                     onUnitClick={setSelectedUnit}
                   />
                 )}
@@ -209,22 +220,23 @@ export default function FloorPlans() {
               <div className="sm:h-auto">
                 {selectedUnit ? (
                   <div className="bg-card rounded-lg overflow-hidden">
-                    <div className="flex items-center gap-2 p-4 border-b">
+                    <div className="flex items-center gap-2 p-4 border-b bg-muted">
                       <Button
-                        variant="ghost"
-                        size="icon"
+                        variant="outline"
+                        className="gap-2"
                         onClick={() => setSelectedUnit(null)}
                       >
                         <ChevronLeft className="h-4 w-4" />
+                        Back to Floor Plans
                       </Button>
                       <h3 className="text-xl font-semibold">Unit Details</h3>
                     </div>
                     <div className="grid md:grid-cols-2 gap-6 p-6">
                       <div className="aspect-[4/3] relative rounded-lg overflow-hidden">
-                        <img 
-                          src={selectedUnit.image} 
+                        <img
+                          src={selectedUnit.image}
                           alt={`Floor plan ${selectedUnit.unit_id}`}
-                          className="w-full h-full object-contain" 
+                          className="w-full h-full object-contain"
                         />
                       </div>
                       <div className="space-y-6">
@@ -264,20 +276,30 @@ export default function FloorPlans() {
                           </ul>
                         </div>
 
-                        <Button 
-                          className="w-full"
-                          onClick={() => {
-                            document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-                          }}
-                        >
-                          Schedule a Visit
-                        </Button>
+                        <div className="space-y-2">
+                          <Button
+                            variant="outline"
+                            className="w-full gap-2"
+                            onClick={() => setSelectedUnit(null)}
+                          >
+                            <ChevronLeft className="h-4 w-4" />
+                            Back to Floor Plans
+                          </Button>
+                          <Button
+                            className="w-full"
+                            onClick={() => {
+                              document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                            }}
+                          >
+                            Schedule a Visit
+                          </Button>
+                        </div>
                       </div>
                     </div>
                   </div>
                 ) : (
-                  <FloorPlanCarousel 
-                    plans={getFilteredUnits()} 
+                  <FloorPlanCarousel
+                    plans={getFilteredUnits()}
                     onUnitClick={setSelectedUnit}
                   />
                 )}
