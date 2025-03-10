@@ -8,42 +8,42 @@ import FloorPlanCarousel from "@/components/ui/floor-plan-carousel";
 
 const blockAPlans = [
   {
-    image: "/images/2bhk/block-a/A-103.webp",
+    image: "/images/2bhk/block-a/A-103 .jpg",
     title: "A-103",
     size: "2 BHK Unit",
     area: 1116,
     units: ["203", "303", "403"]
   },
   {
-    image: "/images/2bhk/block-a/A-104.webp",
+    image: "/images/2bhk/block-a/A-104.jpg",
     title: "A-104",
     size: "2 BHK Unit",
     area: 893,
     units: ["204", "304", "404"]
   },
   {
-    image: "/images/2bhk/block-a/A-105.webp",
+    image: "/images/2bhk/block-a/A-105.jpg",
     title: "A-105",
     size: "2 BHK Unit",
     area: 930,
     units: ["205", "305", "405"]
   },
   {
-    image: "/images/2bhk/block-a/A-106.webp",
+    image: "/images/2bhk/block-a/A-106.jpg",
     title: "A-106",
     size: "2 BHK Unit",
     area: 964,
     units: ["206", "306", "406"]
   },
   {
-    image: "/images/2bhk/block-a/A-107.webp",
+    image: "/images/2bhk/block-a/A-107.jpg",
     title: "A-107",
     size: "2 BHK Unit",
     area: 983,
     units: ["207", "307", "407"]
   },
   {
-    image: "/images/2bhk/block-a/A-108.webp",
+    image: "/images/2bhk/block-a/A-108.jpg",
     title: "A-108",
     size: "2 BHK Unit",
     area: 1115,
@@ -53,42 +53,42 @@ const blockAPlans = [
 
 const blockBPlans = [
   {
-    image: "/images/2bhk/block-b/B-103.webp",
+    image: "/images/2bhk/block-b/B-103.jpg",
     title: "B-103",
     size: "2 BHK Unit",
     area: 1111,
     units: ["203", "303", "403"]
   },
   {
-    image: "/images/2bhk/block-b/B-104.webp",
+    image: "/images/2bhk/block-b/B-104 .jpg",
     title: "B-104",
     size: "2 BHK Unit",
     area: 893,
     units: ["204", "304", "404"]
   },
   {
-    image: "/images/2bhk/block-b/B-105.webp",
+    image: "/images/2bhk/block-b/B-105.jpg",
     title: "B-105",
     size: "2 BHK Unit",
     area: 930,
     units: ["205", "305", "405"]
   },
   {
-    image: "/images/2bhk/block-b/B-106.webp",
+    image: "/images/2bhk/block-b/B-106.jpg",
     title: "B-106",
     size: "2 BHK Unit",
     area: 964,
     units: ["206", "306", "406"]
   },
   {
-    image: "/images/2bhk/block-b/B-107.webp",
+    image: "/images/2bhk/block-b/B-107 .jpg",
     title: "B-107",
     size: "2 BHK Unit",
     area: 983,
     units: ["207", "307", "407"]
   },
   {
-    image: "/images/2bhk/block-b/B-108.webp",
+    image: "/images/2bhk/block-b/B-108.jpg",
     title: "B-108",
     size: "2 BHK Unit",
     area: 1111,
