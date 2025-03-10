@@ -162,7 +162,10 @@ export default function Contact() {
                     <FormItem>
                       <FormLabel>Name</FormLabel>
                       <FormControl>
-                        <Input placeholder="Eg. Raman Singh" {...field} />
+                        <Input
+                          placeholder="First & Last name. Ex: Ram Singh"
+                          {...field}
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -178,7 +181,7 @@ export default function Contact() {
                       <FormControl>
                         <Input
                           type="email"
-                          placeholder="Your email"
+                          placeholder="Email address. Ex: ram@example.com"
                           {...field}
                         />
                       </FormControl>
@@ -194,7 +197,10 @@ export default function Contact() {
                     <FormItem>
                       <FormLabel>Phone</FormLabel>
                       <FormControl>
-                        <Input placeholder="Your phone number" {...field} />
+                        <Input
+                          placeholder="10 digit mobile number. Ex: 9876543210"
+                          {...field}
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -209,7 +215,7 @@ export default function Contact() {
                       <FormLabel>Message</FormLabel>
                       <FormControl>
                         <Textarea
-                          placeholder="Tell us about your requirements"
+                          placeholder="Tell about your type of apartment, budget and floor choices. Ex: I am looking for a 3-bedroom apartment in a budget of Rs. 70 Lakhs"
                           className="resize-none"
                           {...field}
                         />
