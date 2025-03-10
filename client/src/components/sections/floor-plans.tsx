@@ -121,7 +121,7 @@ export default function FloorPlans() {
       {floorOptions.map((floor) => (
         <TabsContent key={floor} value={floor}>
           <Tabs defaultValue="2bhk" value={selectedType} onValueChange={setSelectedType} className="w-full">
-            <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-6 sm:mb-8 lg:mb-10">
+            <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-8">
               <TabsTrigger value="2bhk">2 BHK</TabsTrigger>
               <TabsTrigger value="3bhk">3 BHK</TabsTrigger>
             </TabsList>
@@ -309,5 +309,43 @@ export default function FloorPlans() {
         </TabsContent>
       ))}
     </Tabs>
+  );
+
+  return (
+    <section id="floor-plans" className="py-20 px-4 bg-background">
+      <div className="max-w-7xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <h2 className="text-4xl font-bold text-center mb-6">Floor Plans</h2>
+          <p className="text-center text-muted-foreground max-w-3xl mx-auto mb-12">
+            Explore our thoughtfully designed floor plans that maximize space
+            and functionality. Filter by block, floor, and type to see available units.
+          </p>
+
+          {loading ? (
+            <div className="text-center">Loading floor plans...</div>
+          ) : (
+            <Tabs defaultValue="B" value={selectedBlock} onValueChange={setSelectedBlock}>
+              <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-8">
+                <TabsTrigger value="A">Block A</TabsTrigger>
+                <TabsTrigger value="B">Block B</TabsTrigger>
+              </TabsList>
+
+              <TabsContent value="A">
+                {renderBlockContent()}
+              </TabsContent>
+
+              <TabsContent value="B">
+                {renderBlockContent()}
+              </TabsContent>
+            </Tabs>
+          )}
+        </motion.div>
+      </div>
+    </section>
   );
 }
