@@ -23,6 +23,8 @@ interface Unit {
   image_link: string;
 }
 
+const floorOptions = ["G", "1", "2", "3", "4"];
+
 const blockAPlans = [
   {
     image: "/images/2bhk/block-a/A-103.jpg",
@@ -147,11 +149,10 @@ const block3BPlans = [
   }
 ];
 
-const floorOptions = ["G", "1", "2", "3", "4"];
-
 export default function FloorPlans() {
   const [selectedPlan, setSelectedPlan] = useState<any>(null);
   const [selectedFloor, setSelectedFloor] = useState("1");
+  const [selectedBlock, setSelectedBlock] = useState("B"); // Default to Block B
   const [unitData, setUnitData] = useState<Unit[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -167,7 +168,7 @@ export default function FloorPlans() {
             obj[header.trim()] = values[index]?.trim();
             return obj;
           }, {});
-        }).filter(unit => unit.unit_id); 
+        }).filter(unit => unit.unit_id);
         setUnitData(data);
         setLoading(false);
       });
@@ -176,12 +177,12 @@ export default function FloorPlans() {
   const getAvailableUnits = (block: string, type: string) => {
     return unitData
       .filter(unit => {
-        const floorMatch = selectedFloor === "G" ? 
-          unit.floor === "G" : 
+        const floorMatch = selectedFloor === "G" ?
+          unit.floor === "G" :
           unit.floor === selectedFloor;
 
-        return unit.block === block && 
-               unit.type === `${type}-BHK` && 
+        return unit.block === block &&
+               unit.type === `${type}-BHK` &&
                floorMatch &&
                unit.available === 'yes';
       })
@@ -196,6 +197,45 @@ export default function FloorPlans() {
     });
   };
 
+  const renderBlockContent = (block: string) => (
+    <Tabs defaultValue="1" value={selectedFloor} onValueChange={setSelectedFloor}>
+      <TabsList className="grid w-full max-w-md mx-auto grid-cols-5 mb-8">
+        <TabsTrigger value="G">Ground</TabsTrigger>
+        <TabsTrigger value="1">Floor 1</TabsTrigger>
+        <TabsTrigger value="2">Floor 2</TabsTrigger>
+        <TabsTrigger value="3">Floor 3</TabsTrigger>
+        <TabsTrigger value="4">Floor 4</TabsTrigger>
+      </TabsList>
+
+      {floorOptions.map((floor) => (
+        <TabsContent key={floor} value={floor}>
+          <Tabs defaultValue="2bhk" className="w-full">
+            <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-8">
+              <TabsTrigger value="2bhk">2 BHK</TabsTrigger>
+              <TabsTrigger value="3bhk">3 BHK</TabsTrigger>
+            </TabsList>
+
+            <TabsContent value="2bhk" className="mt-0">
+              <div className="aspect-[4/3] overflow-hidden">
+                <FloorPlanCarousel
+                  plans={getFilteredPlans(block === "A" ? blockAPlans : blockBPlans, block, "2")}
+                />
+              </div>
+            </TabsContent>
+
+            <TabsContent value="3bhk" className="mt-0">
+              <div className="aspect-[4/3] overflow-hidden">
+                <FloorPlanCarousel
+                  plans={getFilteredPlans(block === "A" ? block3APlans : block3BPlans, block, "3")}
+                />
+              </div>
+            </TabsContent>
+          </Tabs>
+        </TabsContent>
+      ))}
+    </Tabs>
+  );
+
   return (
     <section id="floor-plans" className="py-20 px-4 bg-background">
       <div className="max-w-7xl mx-auto">
@@ -208,147 +248,25 @@ export default function FloorPlans() {
           <h2 className="text-4xl font-bold text-center mb-6">Floor Plans</h2>
           <p className="text-center text-muted-foreground max-w-3xl mx-auto mb-12">
             Explore our thoughtfully designed floor plans that maximize space
-            and functionality. Filter by floor to see available units.
+            and functionality. Filter by block, floor, and type to see available units.
           </p>
 
           {loading ? (
             <div className="text-center">Loading floor plans...</div>
           ) : (
-            <Tabs defaultValue="1" value={selectedFloor} onValueChange={setSelectedFloor}>
-              <TabsList className="grid w-full max-w-md mx-auto grid-cols-5 mb-8">
-                <TabsTrigger value="G">Ground</TabsTrigger>
-                <TabsTrigger value="1">Floor 1</TabsTrigger>
-                <TabsTrigger value="2">Floor 2</TabsTrigger>
-                <TabsTrigger value="3">Floor 3</TabsTrigger>
-                <TabsTrigger value="4">Floor 4</TabsTrigger>
+            <Tabs defaultValue="B" value={selectedBlock} onValueChange={setSelectedBlock}>
+              <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-8">
+                <TabsTrigger value="A">Block A</TabsTrigger>
+                <TabsTrigger value="B">Block B</TabsTrigger>
               </TabsList>
 
-              {floorOptions.map((floor) => (
-                <TabsContent key={floor} value={floor}>
-                  <Tabs defaultValue="2bhk" className="w-full">
-                    <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-8">
-                      <TabsTrigger value="2bhk">2 BHK</TabsTrigger>
-                      <TabsTrigger value="3bhk">3 BHK</TabsTrigger>
-                    </TabsList>
+              <TabsContent value="A">
+                {renderBlockContent("A")}
+              </TabsContent>
 
-                    <TabsContent value="2bhk" className="mt-0">
-                      <div className="grid md:grid-cols-2 gap-6">
-                        <Card className="overflow-hidden">
-                          <div className="aspect-[4/3] overflow-hidden">
-                            <FloorPlanCarousel 
-                              plans={getFilteredPlans(blockAPlans, "A", "2")} 
-                            />
-                          </div>
-                          <CardContent className="p-6">
-                            <h3 className="text-xl font-semibold mb-1">Block A</h3>
-                            <p className="text-primary font-medium mb-3">2 BHK Premium</p>
-                            <div className="flex gap-4 mb-4">
-                              <div className="flex items-center gap-2">
-                                <BedDouble className="h-4 w-4 text-muted-foreground" />
-                                <span className="text-sm">2</span>
-                              </div>
-                              <div className="flex items-center gap-2">
-                                <Bath className="h-4 w-4 text-muted-foreground" />
-                                <span className="text-sm">2</span>
-                              </div>
-                              <div className="flex items-center gap-2">
-                                <Maximize className="h-4 w-4 text-muted-foreground" />
-                                <span className="text-sm">893-1116 sq.ft</span>
-                              </div>
-                            </div>
-                            <Button className="w-full">View Details</Button>
-                          </CardContent>
-                        </Card>
-
-                        <Card className="overflow-hidden">
-                          <div className="aspect-[4/3] overflow-hidden">
-                            <FloorPlanCarousel 
-                              plans={getFilteredPlans(blockBPlans, "B", "2")} 
-                            />
-                          </div>
-                          <CardContent className="p-6">
-                            <h3 className="text-xl font-semibold mb-1">Block B</h3>
-                            <p className="text-primary font-medium mb-3">2 BHK Luxury</p>
-                            <div className="flex gap-4 mb-4">
-                              <div className="flex items-center gap-2">
-                                <BedDouble className="h-4 w-4 text-muted-foreground" />
-                                <span className="text-sm">2</span>
-                              </div>
-                              <div className="flex items-center gap-2">
-                                <Bath className="h-4 w-4 text-muted-foreground" />
-                                <span className="text-sm">2</span>
-                              </div>
-                              <div className="flex items-center gap-2">
-                                <Maximize className="h-4 w-4 text-muted-foreground" />
-                                <span className="text-sm">893-1111 sq.ft</span>
-                              </div>
-                            </div>
-                            <Button className="w-full">View Details</Button>
-                          </CardContent>
-                        </Card>
-                      </div>
-                    </TabsContent>
-
-                    <TabsContent value="3bhk" className="mt-0">
-                      <div className="grid md:grid-cols-2 gap-6">
-                        <Card className="overflow-hidden">
-                          <div className="aspect-[4/3] overflow-hidden">
-                            <FloorPlanCarousel 
-                              plans={getFilteredPlans(block3APlans, "A", "3")} 
-                            />
-                          </div>
-                          <CardContent className="p-6">
-                            <h3 className="text-xl font-semibold mb-1">Block A</h3>
-                            <p className="text-primary font-medium mb-3">3 BHK Premium</p>
-                            <div className="flex gap-4 mb-4">
-                              <div className="flex items-center gap-2">
-                                <BedDouble className="h-4 w-4 text-muted-foreground" />
-                                <span className="text-sm">3</span>
-                              </div>
-                              <div className="flex items-center gap-2">
-                                <Bath className="h-4 w-4 text-muted-foreground" />
-                                <span className="text-sm">3</span>
-                              </div>
-                              <div className="flex items-center gap-2">
-                                <Maximize className="h-4 w-4 text-muted-foreground" />
-                                <span className="text-sm">1450-1491 sq.ft</span>
-                              </div>
-                            </div>
-                            <Button className="w-full">View Details</Button>
-                          </CardContent>
-                        </Card>
-
-                        <Card className="overflow-hidden">
-                          <div className="aspect-[4/3] overflow-hidden">
-                            <FloorPlanCarousel 
-                              plans={getFilteredPlans(block3BPlans, "B", "3")} 
-                            />
-                          </div>
-                          <CardContent className="p-6">
-                            <h3 className="text-xl font-semibold mb-1">Block B</h3>
-                            <p className="text-primary font-medium mb-3">3 BHK Luxury</p>
-                            <div className="flex gap-4 mb-4">
-                              <div className="flex items-center gap-2">
-                                <BedDouble className="h-4 w-4 text-muted-foreground" />
-                                <span className="text-sm">3</span>
-                              </div>
-                              <div className="flex items-center gap-2">
-                                <Bath className="h-4 w-4 text-muted-foreground" />
-                                <span className="text-sm">3</span>
-                              </div>
-                              <div className="flex items-center gap-2">
-                                <Maximize className="h-4 w-4 text-muted-foreground" />
-                                <span className="text-sm">1351-1420 sq.ft</span>
-                              </div>
-                            </div>
-                            <Button className="w-full">View Details</Button>
-                          </CardContent>
-                        </Card>
-                      </div>
-                    </TabsContent>
-                  </Tabs>
-                </TabsContent>
-              ))}
+              <TabsContent value="B">
+                {renderBlockContent("B")}
+              </TabsContent>
             </Tabs>
           )}
         </motion.div>
