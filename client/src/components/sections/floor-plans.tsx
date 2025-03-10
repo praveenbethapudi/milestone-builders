@@ -72,13 +72,13 @@ export default function FloorPlans() {
   const getFilteredUnits = (): FilteredUnit[] => {
     return unitData
       .filter(unit => {
-        const floorMatch = selectedFloor === "G" ? 
-          unit.floor === "G" : 
+        const floorMatch = selectedFloor === "G" ?
+          unit.floor === "G" :
           unit.floor === selectedFloor;
 
         const typeMatch = unit.type === `${selectedType.slice(0, 1)}-BHK`;
 
-        return unit.block === selectedBlock && 
+        return unit.block === selectedBlock &&
                typeMatch &&
                floorMatch &&
                unit.available === 'yes';
@@ -138,14 +138,17 @@ export default function FloorPlans() {
                       >
                         <ChevronLeft className="h-4 w-4" />
                       </Button>
-                      <h3 className="text-xl font-semibold">Unit Details</h3>
+                      <div className="flex items-center gap-4">
+                        <h3 className="text-xl font-semibold">Block {selectedUnit.block}-{selectedUnit.unit_id}</h3>
+                        <span className="text-muted-foreground">Floor {selectedUnit.floor}</span>
+                      </div>
                     </div>
                     <div className="grid md:grid-cols-2 gap-6 p-6">
                       <div className="aspect-[4/3] relative rounded-lg overflow-hidden">
-                        <img 
-                          src={selectedUnit.image} 
+                        <img
+                          src={selectedUnit.image}
                           alt={`Floor plan ${selectedUnit.unit_id}`}
-                          className="w-full h-full object-contain" 
+                          className="w-full h-full object-contain"
                         />
                       </div>
                       <div className="space-y-6">
@@ -185,7 +188,7 @@ export default function FloorPlans() {
                           </ul>
                         </div>
 
-                        <Button 
+                        <Button
                           className="w-full"
                           onClick={() => {
                             document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
@@ -197,8 +200,8 @@ export default function FloorPlans() {
                     </div>
                   </div>
                 ) : (
-                  <FloorPlanCarousel 
-                    plans={getFilteredUnits()} 
+                  <FloorPlanCarousel
+                    plans={getFilteredUnits()}
                     onUnitClick={setSelectedUnit}
                   />
                 )}
@@ -217,14 +220,17 @@ export default function FloorPlans() {
                       >
                         <ChevronLeft className="h-4 w-4" />
                       </Button>
-                      <h3 className="text-xl font-semibold">Unit Details</h3>
+                      <div className="flex items-center gap-4">
+                        <h3 className="text-xl font-semibold">Block {selectedUnit.block}-{selectedUnit.unit_id}</h3>
+                        <span className="text-muted-foreground">Floor {selectedUnit.floor}</span>
+                      </div>
                     </div>
                     <div className="grid md:grid-cols-2 gap-6 p-6">
                       <div className="aspect-[4/3] relative rounded-lg overflow-hidden">
-                        <img 
-                          src={selectedUnit.image} 
+                        <img
+                          src={selectedUnit.image}
                           alt={`Floor plan ${selectedUnit.unit_id}`}
-                          className="w-full h-full object-contain" 
+                          className="w-full h-full object-contain"
                         />
                       </div>
                       <div className="space-y-6">
@@ -264,7 +270,7 @@ export default function FloorPlans() {
                           </ul>
                         </div>
 
-                        <Button 
+                        <Button
                           className="w-full"
                           onClick={() => {
                             document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
@@ -276,8 +282,8 @@ export default function FloorPlans() {
                     </div>
                   </div>
                 ) : (
-                  <FloorPlanCarousel 
-                    plans={getFilteredUnits()} 
+                  <FloorPlanCarousel
+                    plans={getFilteredUnits()}
                     onUnitClick={setSelectedUnit}
                   />
                 )}
