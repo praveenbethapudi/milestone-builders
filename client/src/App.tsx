@@ -31,7 +31,7 @@ function HomePage() {
       <FloorPlans />
       <Differentiators />
       <Features />
-      <VirtualTour />
+      {/* <VirtualTour /> */}
       <Botanical />
       <Location />
       <Contact />
