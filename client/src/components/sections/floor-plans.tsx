@@ -96,6 +96,40 @@ const blockBPlans = [
   }
 ];
 
+const block3APlans = [
+  {
+    image: "/images/3bhk/block-a/A-101.jpg",
+    title: "A-101",
+    size: "3 BHK Unit",
+    area: 1491,
+    units: ["201", "301", "401"]
+  },
+  {
+    image: "/images/3bhk/block-a/A-102.jpg",
+    title: "A-102",
+    size: "3 BHK Unit",
+    area: 1450,
+    units: ["202", "302", "402"]
+  }
+];
+
+const block3BPlans = [
+  {
+    image: "/images/3bhk/block-b/B-101.jpg",
+    title: "B-101",
+    size: "3 BHK Unit",
+    area: 1420,
+    units: ["201", "301", "401"]
+  },
+  {
+    image: "/images/3bhk/block-b/B-102.jpg",
+    title: "B-102",
+    size: "3 BHK Unit",
+    area: 1351,
+    units: ["202", "302", "402"]
+  }
+];
+
 const floorPlans: Record<string, FloorPlan[]> = {
   "2bhk": [
     {
@@ -106,7 +140,7 @@ const floorPlans: Record<string, FloorPlan[]> = {
       bathrooms: 2,
       area: "893-1116 sq.ft",
       price: `₹${(893 * 5000).toLocaleString('en-IN')} - ${(1116 * 5000).toLocaleString('en-IN')}`,
-      image: "/images/2bhk/block-a/A-103.webp",
+      image: "/images/2bhk/block-a/A-103.jpg",
       description: "Premium 2 BHK apartments in Block A with modern amenities and spacious layouts. Features multiple unit configurations to suit your needs.",
       features: [
         "Multiple layout options from 893 to 1116 sq.ft",
@@ -124,7 +158,7 @@ const floorPlans: Record<string, FloorPlan[]> = {
       bathrooms: 2,
       area: "893-1111 sq.ft",
       price: `₹${(893 * 5000).toLocaleString('en-IN')} - ${(1111 * 5000).toLocaleString('en-IN')}`,
-      image: "/images/2bhk/block-b/B-103.webp",
+      image: "/images/2bhk/block-b/B-103.jpg",
       description: "Luxury 2 BHK apartments in Block B with premium finishes and thoughtfully designed spaces. Choose from various configurations for your perfect home.",
       features: [
         "Spacious layouts from 893 to 1111 sq.ft",
@@ -137,41 +171,39 @@ const floorPlans: Record<string, FloorPlan[]> = {
   ],
   "3bhk": [
     {
-      id: "3bhk-type-a",
-      title: "Elegance Suite",
-      type: "3 BHK",
-      bedrooms: 3,
-      bathrooms: 3,
-      area: "1550 sq.ft",
-      price: "₹1.1Cr onwards",
-      image: "/images/floor-plan.jpg",
-      description:
-        "A luxurious 3 BHK with premium finishes and spacious living areas. Features a modern kitchen and multiple balconies.",
-      features: [
-        "Master bedroom with walk-in closet and en-suite bathroom",
-        "Two additional well-appointed bedrooms",
-        "Spacious living and dining area",
-        "Modern kitchen with premium appliances",
-        "Multiple balconies with panoramic views"
-      ]
-    },
-    {
-      id: "3bhk-type-b",
-      title: "Prestige Suite",
+      id: "3bhk-block-a",
+      title: "Block A",
       type: "3 BHK Premium",
       bedrooms: 3,
       bathrooms: 3,
-      area: "1750 sq.ft",
-      price: "₹1.25Cr onwards",
-      image: "/images/floor-plan.jpg",
-      description:
-        "Our premium 3 BHK offering with additional space and luxury amenities. Includes a separate dining area and home office space.",
+      area: "1450-1491 sq.ft",
+      price: `₹${(1450 * 5000).toLocaleString('en-IN')} - ${(1491 * 5000).toLocaleString('en-IN')}`,
+      image: "/images/3bhk/block-a/A-101.jpg",
+      description: "Premium 3 BHK apartments in Block A with luxurious amenities and spacious layouts. Features large bedrooms and modern design.",
       features: [
-        "Oversized master suite with dressing area",
-        "Two spacious bedrooms with attached bathrooms",
-        "Separate dining area for formal entertaining",
-        "Designated home office space",
-        "Large wrap-around balcony with city views"
+        "Spacious layouts from 1450 to 1491 sq.ft",
+        "Master bedroom with walk-in closet",
+        "Modern kitchen with premium appliances",
+        "Multiple balconies with panoramic views",
+        "Premium flooring and designer finishes"
+      ]
+    },
+    {
+      id: "3bhk-block-b",
+      title: "Block B",
+      type: "3 BHK Luxury",
+      bedrooms: 3,
+      bathrooms: 3,
+      area: "1351-1420 sq.ft",
+      price: `₹${(1351 * 5000).toLocaleString('en-IN')} - ${(1420 * 5000).toLocaleString('en-IN')}`,
+      image: "/images/3bhk/block-b/B-101.jpg",
+      description: "Luxury 3 BHK apartments in Block B with premium finishes and thoughtfully designed spaces. Perfect for families seeking comfort and elegance.",
+      features: [
+        "Elegant layouts from 1351 to 1420 sq.ft",
+        "Spacious bedrooms with attached bathrooms",
+        "Designer kitchen with modern amenities",
+        "Private balconies with garden views",
+        "High-end finishes throughout"
       ]
     }
   ]
@@ -369,19 +401,21 @@ export default function FloorPlans() {
                       onClick={() => setSelectedPlan(plan)}
                     >
                       <div className="aspect-[4/3] overflow-hidden">
-                        <img
-                          src={plan.image}
-                          alt={plan.title}
-                          className="w-full h-full object-cover"
-                        />
+                        {plan.id === "3bhk-block-a" ? (
+                          <FloorPlanCarousel plans={block3APlans} />
+                        ) : plan.id === "3bhk-block-b" ? (
+                          <FloorPlanCarousel plans={block3BPlans} />
+                        ) : (
+                          <img
+                            src={plan.image}
+                            alt={plan.title}
+                            className="w-full h-full object-cover"
+                          />
+                        )}
                       </div>
                       <CardContent className="p-6">
-                        <h3 className="text-xl font-semibold mb-1">
-                          {plan.title}
-                        </h3>
-                        <p className="text-primary font-medium mb-3">
-                          {plan.type}
-                        </p>
+                        <h3 className="text-xl font-semibold mb-1">{plan.title}</h3>
+                        <p className="text-primary font-medium mb-3">{plan.type}</p>
 
                         <div className="flex gap-4 mb-4">
                           <div className="flex items-center gap-2">
@@ -416,6 +450,7 @@ export default function FloorPlans() {
                   ))}
                 </div>
               </TabsContent>
+
             </Tabs>
           )}
         </motion.div>
