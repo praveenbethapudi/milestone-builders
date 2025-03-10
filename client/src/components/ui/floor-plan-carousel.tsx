@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { Button } from './button';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
@@ -9,6 +9,7 @@ type FloorPlanCarouselProps = {
     title: string;
     size: string;
     units: string[];
+    area: number;
   }[];
 };
 
@@ -29,6 +30,22 @@ export default function FloorPlanCarousel({ plans }: FloorPlanCarouselProps) {
     setSelectedIndex(emblaApi.selectedScrollSnap());
   }, [emblaApi]);
 
+  useEffect(() => {
+    if (!emblaApi) return;
+
+    emblaApi.on('select', onSelect);
+
+    // Auto-scroll every 3 seconds
+    const autoplayInterval = setInterval(() => {
+      emblaApi.scrollNext();
+    }, 3000);
+
+    return () => {
+      emblaApi.off('select', onSelect);
+      clearInterval(autoplayInterval);
+    };
+  }, [emblaApi, onSelect]);
+
   return (
     <div className="relative w-full h-full">
       <div className="overflow-hidden h-full" ref={emblaRef}>
@@ -41,9 +58,10 @@ export default function FloorPlanCarousel({ plans }: FloorPlanCarouselProps) {
                   alt={plan.title} 
                   className="w-full h-full object-contain rounded-md"
                 />
-                <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white p-2">
+                <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white p-4">
                   <h3 className="text-lg font-semibold">{plan.title}</h3>
-                  <p className="text-sm">{plan.size}</p>
+                  <p className="text-sm">Area: {plan.area} sq.ft</p>
+                  <p className="text-sm">Price: ₹{(plan.area * 5000).toLocaleString('en-IN')}</p>
                   <p className="text-xs">Units: {plan.units.join(', ')}</p>
                 </div>
               </div>

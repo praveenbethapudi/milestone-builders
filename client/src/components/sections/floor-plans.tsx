@@ -10,37 +10,43 @@ const blockAPlans = [
   {
     image: "/images/2bhk/block-a/A-103.webp",
     title: "A-103",
-    size: "2 BHK Unit | 1116 Sq.Ft.",
+    size: "2 BHK Unit",
+    area: 1116,
     units: ["203", "303", "403"]
   },
   {
     image: "/images/2bhk/block-a/A-104.webp",
     title: "A-104",
-    size: "2 BHK Unit | 893 Sq.Ft.",
+    size: "2 BHK Unit",
+    area: 893,
     units: ["204", "304", "404"]
   },
   {
     image: "/images/2bhk/block-a/A-105.webp",
     title: "A-105",
-    size: "2 BHK Unit | 930 Sq.Ft.",
+    size: "2 BHK Unit",
+    area: 930,
     units: ["205", "305", "405"]
   },
   {
     image: "/images/2bhk/block-a/A-106.webp",
     title: "A-106",
-    size: "2 BHK Unit | 964 Sq.Ft.",
+    size: "2 BHK Unit",
+    area: 964,
     units: ["206", "306", "406"]
   },
   {
     image: "/images/2bhk/block-a/A-107.webp",
     title: "A-107",
-    size: "2 BHK Unit | 983 Sq.Ft.",
+    size: "2 BHK Unit",
+    area: 983,
     units: ["207", "307", "407"]
   },
   {
     image: "/images/2bhk/block-a/A-108.webp",
     title: "A-108",
-    size: "2 BHK Unit | 1115 Sq.Ft.",
+    size: "2 BHK Unit",
+    area: 1115,
     units: ["208", "308", "408"]
   }
 ];
@@ -49,37 +55,43 @@ const blockBPlans = [
   {
     image: "/images/2bhk/block-b/B-103.webp",
     title: "B-103",
-    size: "2 BHK Unit | 1111 Sq.Ft.",
+    size: "2 BHK Unit",
+    area: 1111,
     units: ["203", "303", "403"]
   },
   {
     image: "/images/2bhk/block-b/B-104.webp",
     title: "B-104",
-    size: "2 BHK Unit | 893 Sq.Ft.",
+    size: "2 BHK Unit",
+    area: 893,
     units: ["204", "304", "404"]
   },
   {
     image: "/images/2bhk/block-b/B-105.webp",
     title: "B-105",
-    size: "2 BHK Unit | 930 Sq.Ft.",
+    size: "2 BHK Unit",
+    area: 930,
     units: ["205", "305", "405"]
   },
   {
     image: "/images/2bhk/block-b/B-106.webp",
     title: "B-106",
-    size: "2 BHK Unit | 964 Sq.Ft.",
+    size: "2 BHK Unit",
+    area: 964,
     units: ["206", "306", "406"]
   },
   {
     image: "/images/2bhk/block-b/B-107.webp",
     title: "B-107",
-    size: "2 BHK Unit | 983 Sq.Ft.",
+    size: "2 BHK Unit",
+    area: 983,
     units: ["207", "307", "407"]
   },
   {
     image: "/images/2bhk/block-b/B-108.webp",
     title: "B-108",
-    size: "2 BHK Unit | 1111 Sq.Ft.",
+    size: "2 BHK Unit",
+    area: 1111,
     units: ["208", "308", "408"]
   }
 ];
@@ -93,7 +105,7 @@ const floorPlans: Record<string, FloorPlan[]> = {
       bedrooms: 2,
       bathrooms: 2,
       area: "893-1116 sq.ft",
-      price: "₹75L onwards",
+      price: `₹${(893 * 5000).toLocaleString('en-IN')} - ${(1116 * 5000).toLocaleString('en-IN')}`,
       image: "/images/2bhk/block-a/A-103.webp",
       description: "Premium 2 BHK apartments in Block A with modern amenities and spacious layouts. Features multiple unit configurations to suit your needs.",
       features: [
@@ -111,7 +123,7 @@ const floorPlans: Record<string, FloorPlan[]> = {
       bedrooms: 2,
       bathrooms: 2,
       area: "893-1111 sq.ft",
-      price: "₹82L onwards",
+      price: `₹${(893 * 5000).toLocaleString('en-IN')} - ${(1111 * 5000).toLocaleString('en-IN')}`,
       image: "/images/2bhk/block-b/B-103.webp",
       description: "Luxury 2 BHK apartments in Block B with premium finishes and thoughtfully designed spaces. Choose from various configurations for your perfect home.",
       features: [
@@ -133,7 +145,8 @@ const floorPlans: Record<string, FloorPlan[]> = {
       area: "1550 sq.ft",
       price: "₹1.1Cr onwards",
       image: "/images/floor-plan.jpg",
-      description: "A luxurious 3 BHK with premium finishes and spacious living areas. Features a modern kitchen and multiple balconies.",
+      description:
+        "A luxurious 3 BHK with premium finishes and spacious living areas. Features a modern kitchen and multiple balconies.",
       features: [
         "Master bedroom with walk-in closet and en-suite bathroom",
         "Two additional well-appointed bedrooms",
@@ -151,7 +164,8 @@ const floorPlans: Record<string, FloorPlan[]> = {
       area: "1750 sq.ft",
       price: "₹1.25Cr onwards",
       image: "/images/floor-plan.jpg",
-      description: "Our premium 3 BHK offering with additional space and luxury amenities. Includes a separate dining area and home office space.",
+      description:
+        "Our premium 3 BHK offering with additional space and luxury amenities. Includes a separate dining area and home office space.",
       features: [
         "Oversized master suite with dressing area",
         "Two spacious bedrooms with attached bathrooms",
@@ -190,7 +204,8 @@ export default function FloorPlans() {
         >
           <h2 className="text-4xl font-bold text-center mb-6">Floor Plans</h2>
           <p className="text-center text-muted-foreground max-w-3xl mx-auto mb-12">
-            Explore our thoughtfully designed floor plans that maximize space and functionality.
+            Explore our thoughtfully designed floor plans that maximize space
+            and functionality.
           </p>
 
           {selectedPlan ? (
@@ -213,8 +228,12 @@ export default function FloorPlans() {
                   <CardContent className="p-6">
                     <div className="flex justify-between items-start mb-4">
                       <div>
-                        <h3 className="text-2xl font-semibold">{selectedPlan.title}</h3>
-                        <p className="text-primary font-medium">{selectedPlan.type}</p>
+                        <h3 className="text-2xl font-semibold">
+                          {selectedPlan.title}
+                        </h3>
+                        <p className="text-primary font-medium">
+                          {selectedPlan.type}
+                        </p>
                       </div>
                       <p className="text-xl font-bold">{selectedPlan.price}</p>
                     </div>
@@ -234,7 +253,9 @@ export default function FloorPlans() {
                       </div>
                     </div>
 
-                    <p className="text-muted-foreground mb-6">{selectedPlan.description}</p>
+                    <p className="text-muted-foreground mb-6">
+                      {selectedPlan.description}
+                    </p>
 
                     <h4 className="font-semibold mb-3">Key Features:</h4>
                     <ul className="space-y-2 mb-6">
@@ -298,8 +319,12 @@ export default function FloorPlans() {
                         )}
                       </div>
                       <CardContent className="p-6">
-                        <h3 className="text-xl font-semibold mb-1">{plan.title}</h3>
-                        <p className="text-primary font-medium mb-3">{plan.type}</p>
+                        <h3 className="text-xl font-semibold mb-1">
+                          {plan.title}
+                        </h3>
+                        <p className="text-primary font-medium mb-3">
+                          {plan.type}
+                        </p>
 
                         <div className="flex gap-4 mb-4">
                           <div className="flex items-center gap-2">
@@ -351,8 +376,12 @@ export default function FloorPlans() {
                         />
                       </div>
                       <CardContent className="p-6">
-                        <h3 className="text-xl font-semibold mb-1">{plan.title}</h3>
-                        <p className="text-primary font-medium mb-3">{plan.type}</p>
+                        <h3 className="text-xl font-semibold mb-1">
+                          {plan.title}
+                        </h3>
+                        <p className="text-primary font-medium mb-3">
+                          {plan.type}
+                        </p>
 
                         <div className="flex gap-4 mb-4">
                           <div className="flex items-center gap-2">
