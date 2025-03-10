@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const plants = [
   {
@@ -81,6 +81,13 @@ const plants = [
 export default function Botanical() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex - 1 + plants.length) % plants.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
   const getVisibleCount = () => {
     if (typeof window === 'undefined') return 6;
     if (window.innerWidth >= 1024) return 6;
@@ -142,14 +149,18 @@ export default function Botanical() {
 
           <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
             {visiblePlants.map((plant, index) => (
-              <div
+              <motion.div
                 key={`${plant.name}-${index}`}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
                 className="group relative bg-white h-[300px] flex flex-col"
               >
                 <div className="relative h-[200px] overflow-hidden">
                   <img
                     src={plant.image}
                     alt={plant.name}
+                    loading="lazy"
                     className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -162,7 +173,7 @@ export default function Botanical() {
                     {plant.description}
                   </p>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
