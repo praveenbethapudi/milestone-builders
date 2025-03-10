@@ -187,15 +187,23 @@ export default function FloorPlans() {
                             ))}
                           </ul>
                         </div>
-
-                        <Button
-                          className="w-full"
-                          onClick={() => {
-                            document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-                          }}
-                        >
-                          Schedule a Visit
-                        </Button>
+                        <div className="grid grid-cols-2 gap-4">
+                          <Button 
+                            variant="outline"
+                            className="w-full"
+                            onClick={() => setSelectedUnit(null)}
+                          >
+                            Back to Units
+                          </Button>
+                          <Button 
+                            className="w-full"
+                            onClick={() => {
+                              document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                            }}
+                          >
+                            Schedule a Visit
+                          </Button>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -269,15 +277,23 @@ export default function FloorPlans() {
                             ))}
                           </ul>
                         </div>
-
-                        <Button
-                          className="w-full"
-                          onClick={() => {
-                            document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-                          }}
-                        >
-                          Schedule a Visit
-                        </Button>
+                        <div className="grid grid-cols-2 gap-4">
+                          <Button 
+                            variant="outline"
+                            className="w-full"
+                            onClick={() => setSelectedUnit(null)}
+                          >
+                            Back to Units
+                          </Button>
+                          <Button 
+                            className="w-full"
+                            onClick={() => {
+                              document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                            }}
+                          >
+                            Schedule a Visit
+                          </Button>
+                        </div>
                       </div>
                     </div>
                   </div>
