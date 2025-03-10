@@ -82,26 +82,21 @@ export default function Botanical() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const getVisibleCount = () => {
-    if (typeof window === "undefined") return 6;
+    if (typeof window === 'undefined') return 6;
     if (window.innerWidth >= 1024) return 6;
     if (window.innerWidth >= 768) return 4;
     return 3;
   };
 
   const rotateLeft = () => {
-    setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + plants.length) % plants.length,
-    );
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + plants.length) % plants.length);
   };
 
   const rotateRight = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % plants.length);
   };
 
-  const visiblePlants = [
-    ...plants.slice(currentIndex),
-    ...plants.slice(0, currentIndex),
-  ].slice(0, getVisibleCount());
+  const visiblePlants = [...plants.slice(currentIndex), ...plants.slice(0, currentIndex)].slice(0, getVisibleCount());
 
   return (
     <section className="py-20 px-4 bg-accent">
@@ -110,7 +105,7 @@ export default function Botanical() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className=" text-center text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 text-primary"
+          className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 text-primary"
         >
           Botanical Haven
         </motion.h2>
@@ -121,9 +116,9 @@ export default function Botanical() {
           viewport={{ once: true }}
           className="text-base md:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto text-center mb-8"
         >
-          A carefully curated selection of nature's finest specimens, chosen to
-          create a living tapestry of colors, textures, and sustainable beauty
-          throughout our property.
+          A carefully curated selection of nature's finest specimens, chosen
+          to create a living tapestry of colors, textures, and sustainable
+          beauty throughout our property.
         </motion.p>
 
         <div className="relative overflow-hidden">
@@ -149,17 +144,9 @@ export default function Botanical() {
             {visiblePlants.map((plant, index) => (
               <div
                 key={`${plant.name}-${index}`}
-                className="group relative bg-white"
+                className="group relative bg-white h-[300px] flex flex-col"
               >
-                <div
-                  className={`relative ${
-                    plant.size === "large"
-                      ? "aspect-[16/9]"
-                      : plant.size === "medium"
-                        ? "aspect-[4/3]"
-                        : "aspect-square"
-                  }`}
-                >
+                <div className="relative h-[200px] overflow-hidden">
                   <img
                     src={plant.image}
                     alt={plant.name}
@@ -167,8 +154,8 @@ export default function Botanical() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
-                <div className="p-2 bg-white">
-                  <h3 className="text-xs sm:text-sm md:text-base font-semibold mb-1 text-primary group-hover:text-primary/80 transition-colors truncate">
+                <div className="p-2 bg-white flex-1 flex flex-col justify-between">
+                  <h3 className="text-xs sm:text-sm md:text-base font-semibold text-primary group-hover:text-primary/80 transition-colors truncate">
                     {plant.name}
                   </h3>
                   <p className="text-[10px] sm:text-xs md:text-sm text-muted-foreground leading-relaxed line-clamp-2">
