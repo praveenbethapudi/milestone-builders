@@ -112,7 +112,7 @@ export default function Botanical() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 text-primary"
+          className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 text-primary text-center"
         >
           Botanical Haven
         </motion.h2>
