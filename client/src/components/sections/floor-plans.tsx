@@ -1,0 +1,255 @@
+
+import { motion } from "framer-motion";
+import { useState } from "react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { BedDouble, Bath, Maximize, Home } from "lucide-react";
+
+interface FloorPlan {
+  id: string;
+  title: string;
+  type: string;
+  bedrooms: number;
+  bathrooms: number;
+  area: string;
+  price: string;
+  image: string;
+  description: string;
+  features: string[];
+}
+
+const floorPlans: Record<string, FloorPlan[]> = {
+  "2bhk": [
+    {
+      id: "2bhk-type-a",
+      title: "Harmony Suite",
+      type: "2 BHK",
+      bedrooms: 2,
+      bathrooms: 2,
+      area: "1050 sq.ft",
+      price: "₹75L onwards",
+      image: "/images/floor-plan.jpg",
+      description: "A spacious 2 BHK with premium finishes and ample natural light. Features a modern kitchen and private balcony.",
+      features: [
+        "Spacious master bedroom with attached bathroom",
+        "Second bedroom with large windows",
+        "Modern kitchen with granite countertops",
+        "Private balcony with garden view",
+        "Utility area for washing machine"
+      ]
+    },
+    {
+      id: "2bhk-type-b",
+      title: "Serenity Suite",
+      type: "2 BHK Premium",
+      bedrooms: 2,
+      bathrooms: 2,
+      area: "1150 sq.ft",
+      price: "₹82L onwards",
+      image: "/images/floor-plan.jpg",
+      description: "A premium 2 BHK with larger bedrooms and an additional study area. Perfect for families who need extra space.",
+      features: [
+        "Larger master bedroom with walk-in wardrobe",
+        "Second bedroom with built-in storage",
+        "Additional study nook for work-from-home",
+        "Extended balcony with sit-out area",
+        "Modern kitchen with breakfast counter"
+      ]
+    }
+  ],
+  "3bhk": [
+    {
+      id: "3bhk-type-a",
+      title: "Elegance Suite",
+      type: "3 BHK",
+      bedrooms: 3,
+      bathrooms: 3,
+      area: "1550 sq.ft",
+      price: "₹1.1Cr onwards",
+      image: "/images/floor-plan.jpg",
+      description: "A luxurious 3 BHK with premium finishes and spacious living areas. Features a modern kitchen and multiple balconies.",
+      features: [
+        "Master bedroom with walk-in closet and en-suite bathroom",
+        "Two additional well-appointed bedrooms",
+        "Spacious living and dining area",
+        "Modern kitchen with premium appliances",
+        "Multiple balconies with panoramic views"
+      ]
+    },
+    {
+      id: "3bhk-type-b",
+      title: "Prestige Suite",
+      type: "3 BHK Premium",
+      bedrooms: 3,
+      bathrooms: 3,
+      area: "1750 sq.ft",
+      price: "₹1.25Cr onwards",
+      image: "/images/floor-plan.jpg",
+      description: "Our premium 3 BHK offering with additional space and luxury amenities. Includes a separate dining area and home office space.",
+      features: [
+        "Oversized master suite with dressing area",
+        "Two spacious bedrooms with attached bathrooms",
+        "Separate dining area for formal entertaining",
+        "Designated home office space",
+        "Large wrap-around balcony with city views"
+      ]
+    }
+  ]
+};
+
+export default function FloorPlans() {
+  const [selectedPlan, setSelectedPlan] = useState<FloorPlan | null>(null);
+  
+  return (
+    <section id="floor-plans" className="py-20 px-4 bg-background">
+      <div className="max-w-7xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <h2 className="text-4xl font-bold text-center mb-6">Floor Plans</h2>
+          <p className="text-center text-muted-foreground max-w-3xl mx-auto mb-12">
+            Explore our thoughtfully designed floor plans that maximize space and functionality.
+          </p>
+
+          {selectedPlan ? (
+            <div className="mb-8">
+              <Card className="bg-card overflow-hidden shadow-lg">
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="p-6">
+                    <img 
+                      src={selectedPlan.image} 
+                      alt={selectedPlan.title}
+                      className="w-full h-full object-contain rounded-md"
+                    />
+                  </div>
+                  <CardContent className="p-6">
+                    <div className="flex justify-between items-start mb-4">
+                      <div>
+                        <h3 className="text-2xl font-semibold">{selectedPlan.title}</h3>
+                        <p className="text-primary font-medium">{selectedPlan.type}</p>
+                      </div>
+                      <p className="text-xl font-bold">{selectedPlan.price}</p>
+                    </div>
+                    
+                    <div className="flex gap-4 mb-6">
+                      <div className="flex items-center gap-2">
+                        <BedDouble className="h-5 w-5 text-muted-foreground" />
+                        <span>{selectedPlan.bedrooms} Beds</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Bath className="h-5 w-5 text-muted-foreground" />
+                        <span>{selectedPlan.bathrooms} Baths</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Maximize className="h-5 w-5 text-muted-foreground" />
+                        <span>{selectedPlan.area}</span>
+                      </div>
+                    </div>
+                    
+                    <p className="text-muted-foreground mb-6">{selectedPlan.description}</p>
+                    
+                    <h4 className="font-semibold mb-3">Key Features:</h4>
+                    <ul className="space-y-2 mb-6">
+                      {selectedPlan.features.map((feature, index) => (
+                        <li key={index} className="flex items-start gap-2">
+                          <span className="text-primary">•</span>
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    
+                    <div className="flex gap-4">
+                      <Button 
+                        variant="outline"
+                        onClick={() => setSelectedPlan(null)}
+                        className="flex-1"
+                      >
+                        Back to Plans
+                      </Button>
+                      <Button 
+                        className="flex-1"
+                        onClick={() => {
+                          document
+                            .getElementById("contact")
+                            ?.scrollIntoView({ behavior: "smooth" });
+                        }}
+                      >
+                        Schedule a Visit
+                      </Button>
+                    </div>
+                  </CardContent>
+                </div>
+              </Card>
+            </div>
+          ) : (
+            <Tabs defaultValue="2bhk" className="w-full">
+              <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-8">
+                <TabsTrigger value="2bhk">2 BHK</TabsTrigger>
+                <TabsTrigger value="3bhk">3 BHK</TabsTrigger>
+              </TabsList>
+              
+              {Object.entries(floorPlans).map(([type, plans]) => (
+                <TabsContent key={type} value={type} className="mt-0">
+                  <div className="grid md:grid-cols-2 gap-6">
+                    {plans.map((plan) => (
+                      <Card 
+                        key={plan.id} 
+                        className="overflow-hidden cursor-pointer hover:shadow-lg transition-shadow"
+                        onClick={() => setSelectedPlan(plan)}
+                      >
+                        <div className="aspect-[4/3] overflow-hidden">
+                          <img 
+                            src={plan.image} 
+                            alt={plan.title} 
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                        <CardContent className="p-6">
+                          <h3 className="text-xl font-semibold mb-1">{plan.title}</h3>
+                          <p className="text-primary font-medium mb-3">{plan.type}</p>
+                          
+                          <div className="flex gap-4 mb-4">
+                            <div className="flex items-center gap-2">
+                              <BedDouble className="h-4 w-4 text-muted-foreground" />
+                              <span className="text-sm">{plan.bedrooms}</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <Bath className="h-4 w-4 text-muted-foreground" />
+                              <span className="text-sm">{plan.bathrooms}</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <Maximize className="h-4 w-4 text-muted-foreground" />
+                              <span className="text-sm">{plan.area}</span>
+                            </div>
+                          </div>
+                          
+                          <div className="flex justify-between items-center">
+                            <p className="font-bold">{plan.price}</p>
+                            <Button 
+                              variant="outline" 
+                              size="sm"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setSelectedPlan(plan);
+                              }}
+                            >
+                              View Details
+                            </Button>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    ))}
+                  </div>
+                </TabsContent>
+              ))}
+            </Tabs>
+          )}
+        </motion.div>
+      </div>
+    </section>
+  );
+}

@@ -18,6 +18,8 @@ import Amenities from "./components/sections/amenities";
 import Botanical from "./components/sections/botanical";
 import Footer from "./components/sections/footer";
 import WhatsAppButton from "./components/ui/whatsapp-button";
+import FloorPlans from "./components/sections/floor-plans";
+import VirtualTour from "./components/sections/virtual-tour";
 
 function HomePage() {
   return (
@@ -26,8 +28,10 @@ function HomePage() {
       <Logo />
       <Information />
       <Amenities />
+      <FloorPlans />
       <Differentiators />
       <Features />
+      <VirtualTour />
       <Botanical />
       <Location />
       <Contact />
