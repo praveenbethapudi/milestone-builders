@@ -5,11 +5,12 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 type FloorPlanCarouselProps = {
   plans: {
+    unit_id: string;
     image: string;
     title: string;
     size: string;
-    units: string[];
     area: number;
+    price: number;
   }[];
 };
 
@@ -61,8 +62,8 @@ export default function FloorPlanCarousel({ plans }: FloorPlanCarouselProps) {
                 <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white p-4">
                   <h3 className="text-lg font-semibold">{plan.title}</h3>
                   <p className="text-sm">Area: {plan.area} sq.ft</p>
-                  <p className="text-sm">Price: ₹{(plan.area * 5000).toLocaleString('en-IN')}</p>
-                  <p className="text-xs">Units: {plan.units.join(', ')}</p>
+                  <p className="text-sm">Price: ₹{plan.price.toLocaleString('en-IN')}</p>
+                  <p className="text-xs">Unit: {plan.unit_id}</p>
                 </div>
               </div>
             </div>

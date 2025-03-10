@@ -23,136 +23,21 @@ interface Unit {
   image_link: string;
 }
 
+interface FilteredUnit {
+  unit_id: string;
+  image: string;
+  title: string;
+  size: string;
+  area: number;
+  price: number;
+}
+
 const floorOptions = ["G", "1", "2", "3", "4"];
 
-const blockAPlans = [
-  {
-    image: "/images/2bhk/block-a/A-103.jpg",
-    title: "A-103",
-    size: "2 BHK Unit",
-    area: 1116,
-    units: ["203", "303", "403"]
-  },
-  {
-    image: "/images/2bhk/block-a/A-104.jpg",
-    title: "A-104",
-    size: "2 BHK Unit",
-    area: 893,
-    units: ["204", "304", "404"]
-  },
-  {
-    image: "/images/2bhk/block-a/A-105.jpg",
-    title: "A-105",
-    size: "2 BHK Unit",
-    area: 930,
-    units: ["205", "305", "405"]
-  },
-  {
-    image: "/images/2bhk/block-a/A-106.jpg",
-    title: "A-106",
-    size: "2 BHK Unit",
-    area: 964,
-    units: ["206", "306", "406"]
-  },
-  {
-    image: "/images/2bhk/block-a/A-107.jpg",
-    title: "A-107",
-    size: "2 BHK Unit",
-    area: 983,
-    units: ["207", "307", "407"]
-  },
-  {
-    image: "/images/2bhk/block-a/A-108.jpg",
-    title: "A-108",
-    size: "2 BHK Unit",
-    area: 1115,
-    units: ["208", "308", "408"]
-  },
-];
-
-const blockBPlans = [
-  {
-    image: "/images/2bhk/block-b/B-103.jpg",
-    title: "B-103",
-    size: "2 BHK Unit",
-    area: 1111,
-    units: ["203", "303", "403"]
-  },
-  {
-    image: "/images/2bhk/block-b/B-104.jpg",
-    title: "B-104",
-    size: "2 BHK Unit",
-    area: 893,
-    units: ["204", "304", "404"]
-  },
-  {
-    image: "/images/2bhk/block-b/B-105.jpg",
-    title: "B-105",
-    size: "2 BHK Unit",
-    area: 930,
-    units: ["205", "305", "405"]
-  },
-  {
-    image: "/images/2bhk/block-b/B-106.jpg",
-    title: "B-106",
-    size: "2 BHK Unit",
-    area: 964,
-    units: ["206", "306", "406"]
-  },
-  {
-    image: "/images/2bhk/block-b/B-107.jpg",
-    title: "B-107",
-    size: "2 BHK Unit",
-    area: 983,
-    units: ["207", "307", "407"]
-  },
-  {
-    image: "/images/2bhk/block-b/B-108.jpg",
-    title: "B-108",
-    size: "2 BHK Unit",
-    area: 1111,
-    units: ["208", "308", "408"]
-  },
-];
-
-const block3APlans = [
-  {
-    image: "/images/3bhk/block-a/A-101.jpg",
-    title: "A-101",
-    size: "3 BHK Unit",
-    area: 1491,
-    units: ["201", "301", "401"]
-  },
-  {
-    image: "/images/3bhk/block-a/A-102.jpg",
-    title: "A-102",
-    size: "3 BHK Unit",
-    area: 1450,
-    units: ["202", "302", "402"]
-  }
-];
-
-const block3BPlans = [
-  {
-    image: "/images/3bhk/block-b/B-101.jpg",
-    title: "B-101",
-    size: "3 BHK Unit",
-    area: 1420,
-    units: ["201", "301", "401"]
-  },
-  {
-    image: "/images/3bhk/block-b/B-102.jpg",
-    title: "B-102",
-    size: "3 BHK Unit",
-    area: 1351,
-    units: ["202", "302", "402"]
-  }
-];
-
 export default function FloorPlans() {
-  const [selectedPlan, setSelectedPlan] = useState<any>(null);
-  const [selectedFloor, setSelectedFloor] = useState("1");
   const [selectedBlock, setSelectedBlock] = useState("B"); // Default to Block B
+  const [selectedFloor, setSelectedFloor] = useState("1");
+  const [selectedType, setSelectedType] = useState("2bhk");
   const [unitData, setUnitData] = useState<Unit[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -174,30 +59,31 @@ export default function FloorPlans() {
       });
   }, []);
 
-  const getAvailableUnits = (block: string, type: string) => {
+  const getFilteredUnits = (): FilteredUnit[] => {
     return unitData
       .filter(unit => {
-        const floorMatch = selectedFloor === "G" ?
-          unit.floor === "G" :
+        const floorMatch = selectedFloor === "G" ? 
+          unit.floor === "G" : 
           unit.floor === selectedFloor;
 
-        return unit.block === block &&
-               unit.type === `${type}-BHK` &&
+        const typeMatch = unit.type === `${selectedType.slice(0, 1)}-BHK`;
+
+        return unit.block === selectedBlock && 
+               typeMatch &&
                floorMatch &&
                unit.available === 'yes';
       })
-      .map(unit => unit.unit_id);
+      .map(unit => ({
+        unit_id: unit.unit_id,
+        image: unit.image_link || `/images/${selectedType}/block-${selectedBlock.toLowerCase()}/${selectedBlock}-${unit.unit_id}.jpg`,
+        title: `${selectedBlock}-${unit.unit_id}`,
+        size: `${unit.type} Unit`,
+        area: unit.area,
+        price: unit.area * 5000 // ₹5000 per sq.ft
+      }));
   };
 
-  const getFilteredPlans = (blockPlans: any[], block: string, type: string) => {
-    const availableUnits = getAvailableUnits(block, type);
-    return blockPlans.filter(plan => {
-      const unitNumbers = plan.units.map((unitNum: string) => unitNum);
-      return unitNumbers.some(num => availableUnits.includes(num));
-    });
-  };
-
-  const renderBlockContent = (block: string) => (
+  const renderBlockContent = () => (
     <Tabs defaultValue="1" value={selectedFloor} onValueChange={setSelectedFloor}>
       <TabsList className="grid w-full max-w-md mx-auto grid-cols-5 mb-8">
         <TabsTrigger value="G">Ground</TabsTrigger>
@@ -209,7 +95,7 @@ export default function FloorPlans() {
 
       {floorOptions.map((floor) => (
         <TabsContent key={floor} value={floor}>
-          <Tabs defaultValue="2bhk" className="w-full">
+          <Tabs defaultValue="2bhk" value={selectedType} onValueChange={setSelectedType} className="w-full">
             <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-8">
               <TabsTrigger value="2bhk">2 BHK</TabsTrigger>
               <TabsTrigger value="3bhk">3 BHK</TabsTrigger>
@@ -217,17 +103,13 @@ export default function FloorPlans() {
 
             <TabsContent value="2bhk" className="mt-0">
               <div className="aspect-[4/3] overflow-hidden">
-                <FloorPlanCarousel
-                  plans={getFilteredPlans(block === "A" ? blockAPlans : blockBPlans, block, "2")}
-                />
+                <FloorPlanCarousel plans={getFilteredUnits()} />
               </div>
             </TabsContent>
 
             <TabsContent value="3bhk" className="mt-0">
               <div className="aspect-[4/3] overflow-hidden">
-                <FloorPlanCarousel
-                  plans={getFilteredPlans(block === "A" ? block3APlans : block3BPlans, block, "3")}
-                />
+                <FloorPlanCarousel plans={getFilteredUnits()} />
               </div>
             </TabsContent>
           </Tabs>
@@ -261,11 +143,11 @@ export default function FloorPlans() {
               </TabsList>
 
               <TabsContent value="A">
-                {renderBlockContent("A")}
+                {renderBlockContent()}
               </TabsContent>
 
               <TabsContent value="B">
-                {renderBlockContent("B")}
+                {renderBlockContent()}
               </TabsContent>
             </Tabs>
           )}
