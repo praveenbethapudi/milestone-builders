@@ -97,7 +97,7 @@ export default function Botanical() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+        <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 [&>*]:border-0">
           {plants.map((plant, index) => (
             <motion.div
               key={plant.name}
@@ -107,7 +107,7 @@ export default function Botanical() {
               transition={{ delay: index * 0.1 }}
               className="group"
             >
-              <Card className="overflow-hidden bg-white border-none rounded-none">
+              <Card className="overflow-hidden bg-white border-none rounded-none [&:not(:last-child)]:mb-0">
                 <div className={`relative overflow-hidden ${
                   plant.size === "large"
                     ? "aspect-[16/9]"
