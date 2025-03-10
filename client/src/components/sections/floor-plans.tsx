@@ -10,7 +10,7 @@ import unitsData from "@/lib/units.csv";
 type Unit = {
   unit_number: string;
   block: string;
-  floor: string;
+  floor: number;
   area: number;
   size: string;
   price: number;
@@ -20,9 +20,15 @@ type Unit = {
   image_link: string;
 };
 
-// Floor level mapping
-const FLOOR_LABELS = ["Ground", "First", "Second", "Third", "Fourth"] as const;
-type FloorLabel = typeof FLOOR_LABELS[number];
+// Floor mapping
+type FloorLevel = 1 | 2 | 3 | 4 | 5;
+const FLOOR_MAPPING: Record<FloorLevel, string> = {
+  1: "Ground",
+  2: "First",
+  3: "Second",
+  4: "Third",
+  5: "Fourth"
+};
 
 // Parse units data
 const units: Unit[] = unitsData.split('\n')
@@ -32,7 +38,7 @@ const units: Unit[] = unitsData.split('\n')
     return {
       unit_number: unit_number.replace(/"/g, ''),
       block,
-      floor: floor.replace(/"/g, ''),
+      floor: Number(floor) as FloorLevel,
       area: Number(area),
       size: size.replace(/"/g, ''),
       price: Number(price),
@@ -44,7 +50,7 @@ const units: Unit[] = unitsData.split('\n')
   });
 
 export default function FloorPlans() {
-  const [selectedFloor, setSelectedFloor] = useState<FloorLabel>("Ground");
+  const [selectedFloor, setSelectedFloor] = useState<FloorLevel>(1);
   const [selectedType, setSelectedType] = useState("2bhk");
 
   // Filter units based on selected floor and type
@@ -81,15 +87,21 @@ export default function FloorPlans() {
             and functionality.
           </p>
 
-          <Tabs defaultValue="Ground" className="w-full" onValueChange={(value) => setSelectedFloor(value as FloorLabel)}>
+          <Tabs 
+            defaultValue="1" 
+            className="w-full" 
+            onValueChange={(value) => setSelectedFloor(Number(value) as FloorLevel)}
+          >
             <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-5 mb-8">
-              {FLOOR_LABELS.map((floor) => (
-                <TabsTrigger key={floor} value={floor}>{floor} Floor</TabsTrigger>
+              {(Object.entries(FLOOR_MAPPING) as [string, string][]).map(([value, label]) => (
+                <TabsTrigger key={value} value={value}>
+                  {label} Floor
+                </TabsTrigger>
               ))}
             </TabsList>
 
-            {FLOOR_LABELS.map((floor) => (
-              <TabsContent key={floor} value={floor}>
+            {(Object.keys(FLOOR_MAPPING) as unknown as FloorLevel[]).map((floor) => (
+              <TabsContent key={floor} value={floor.toString()}>
                 <Tabs defaultValue="2bhk" onValueChange={setSelectedType}>
                   <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-8">
                     <TabsTrigger value="2bhk">2 BHK</TabsTrigger>
