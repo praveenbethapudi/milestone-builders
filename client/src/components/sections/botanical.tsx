@@ -98,21 +98,25 @@ export default function Botanical() {
   return (
     <section className="py-20 px-4 bg-accent">
       <div className="max-w-7xl mx-auto">
-        <motion.div
+        <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-8"
+          className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 text-primary"
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 text-primary">
-            Botanical Haven
-          </h2>
-          <p className="text-base md:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto">
-            A carefully curated selection of nature's finest specimens, chosen
-            to create a living tapestry of colors, textures, and sustainable
-            beauty throughout our property.
-          </p>
-        </motion.div>
+          Botanical Haven
+        </motion.h2>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-base md:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto text-center mb-8"
+        >
+          A carefully curated selection of nature's finest specimens, chosen
+          to create a living tapestry of colors, textures, and sustainable
+          beauty throughout our property.
+        </motion.p>
 
         <div className="relative overflow-hidden">
           <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
@@ -120,9 +124,9 @@ export default function Botanical() {
               {visiblePlants.map((plant, index) => (
                 <motion.div
                   key={`${plant.name}-${index}`}
-                  initial={{ opacity: 0, x: 100 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -100 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
                   transition={{ duration: 0.5 }}
                   className="group relative bg-white"
                 >
