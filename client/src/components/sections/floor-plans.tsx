@@ -8,7 +8,7 @@ import FloorPlanCarousel from "@/components/ui/floor-plan-carousel";
 
 const blockAPlans = [
   {
-    image: "/images/2bhk/block-a/A-103 .jpg",
+    image: "/images/2bhk/block-a/A-103.jpg",
     title: "A-103",
     size: "2 BHK Unit",
     area: 1116,
@@ -60,7 +60,7 @@ const blockBPlans = [
     units: ["203", "303", "403"]
   },
   {
-    image: "/images/2bhk/block-b/B-104 .jpg",
+    image: "/images/2bhk/block-b/B-104.jpg",
     title: "B-104",
     size: "2 BHK Unit",
     area: 893,
@@ -81,7 +81,7 @@ const blockBPlans = [
     units: ["206", "306", "406"]
   },
   {
-    image: "/images/2bhk/block-b/B-107 .jpg",
+    image: "/images/2bhk/block-b/B-107.jpg",
     title: "B-107",
     size: "2 BHK Unit",
     area: 983,
