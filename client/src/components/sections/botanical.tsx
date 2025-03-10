@@ -1,7 +1,5 @@
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { ChevronLeft } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const plants = [
   {
@@ -81,11 +79,21 @@ const plants = [
 export default function Botanical() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const rotateLeft = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + plants.length) % plants.length);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex - 1 + plants.length) % plants.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const getVisibleCount = () => {
+    if (typeof window === 'undefined') return 6;
+    if (window.innerWidth >= 1024) return 6;
+    if (window.innerWidth >= 768) return 4;
+    return 3;
   };
 
-  const visiblePlants = [...plants.slice(currentIndex), ...plants.slice(0, currentIndex)].slice(0, 6);
+  const visiblePlants = [...plants.slice(currentIndex), ...plants.slice(0, currentIndex)].slice(0, getVisibleCount());
 
   return (
     <section className="py-20 px-4 bg-accent">
@@ -107,16 +115,7 @@ export default function Botanical() {
         </motion.div>
 
         <div className="relative">
-          <Button
-            variant="outline"
-            size="icon"
-            className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm"
-            onClick={rotateLeft}
-          >
-            <ChevronLeft className="h-4 w-4" />
-          </Button>
-
-          <div className="grid grid-cols-6 overflow-hidden">
+          <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 overflow-hidden">
             {visiblePlants.map((plant, index) => (
               <motion.div
                 key={`${plant.name}-${index}`}
