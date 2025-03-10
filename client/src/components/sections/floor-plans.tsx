@@ -30,16 +30,16 @@ const units: Unit[] = unitsData.split('\n')
   .map(row => {
     const [unit_number, block, floor, area, size, price, face, balcony_count, available, image_link] = row.split(',');
     return {
-      unit_number,
+      unit_number: unit_number.replace(/"/g, ''),
       block,
-      floor,
+      floor: floor.replace(/"/g, ''),
       area: Number(area),
-      size,
+      size: size.replace(/"/g, ''),
       price: Number(price),
       face,
       balcony_count: Number(balcony_count),
       available,
-      image_link
+      image_link: image_link.trim()
     };
   });
 
@@ -50,7 +50,7 @@ export default function FloorPlans() {
   // Filter units based on selected floor and type
   const filteredUnits = units.filter(unit =>
     unit.floor === selectedFloor &&
-    unit.size.startsWith(selectedType.charAt(0))
+    unit.size.toLowerCase().startsWith(selectedType.charAt(0))
   );
 
   // Group units by block
