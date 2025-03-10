@@ -36,14 +36,29 @@ type FloorPlanCarouselProps = {
 };
 
 export default function FloorPlanCarousel({ plans, onUnitClick }: FloorPlanCarouselProps) {
+  // Calculate slides per view based on screen size and number of plans
+  const getSlidesPerView = () => {
+    if (plans.length === 0) return 1;
+
+    const breakpoints = {
+      sm: { minWidth: 640, slides: Math.min(2, plans.length) },
+      lg: { minWidth: 1024, slides: Math.min(3, plans.length) }
+    };
+
+    return {
+      slidesToScroll: 1,
+      breakpoints: {
+        [`(min-width: ${breakpoints.sm.minWidth}px)`]: { slidesToScroll: breakpoints.sm.slides },
+        [`(min-width: ${breakpoints.lg.minWidth}px)`]: { slidesToScroll: breakpoints.lg.slides }
+      }
+    };
+  };
+
   const [emblaRef, emblaApi] = useEmblaCarousel({ 
-    loop: true,
-    slidesToScroll: 1,
-    breakpoints: {
-      '(min-width: 640px)': { slidesToScroll: 2 },
-      '(min-width: 1024px)': { slidesToScroll: 3 }
-    }
+    loop: plans.length > 1,
+    ...getSlidesPerView()
   });
+
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   const scrollPrev = useCallback(() => {
@@ -64,21 +79,28 @@ export default function FloorPlanCarousel({ plans, onUnitClick }: FloorPlanCarou
 
     emblaApi.on('select', onSelect);
 
-    // Auto-scroll every 5 seconds
-    const autoplayInterval = setInterval(() => {
-      emblaApi.scrollNext();
-    }, 5000);
+    // Auto-scroll every 5 seconds if more than one plan
+    let autoplayInterval: NodeJS.Timeout | null = null;
+    if (plans.length > 1) {
+      autoplayInterval = setInterval(() => {
+        emblaApi.scrollNext();
+      }, 5000);
+    }
 
     return () => {
       emblaApi.off('select', onSelect);
-      clearInterval(autoplayInterval);
+      if (autoplayInterval) clearInterval(autoplayInterval);
     };
-  }, [emblaApi, onSelect]);
+  }, [emblaApi, onSelect, plans.length]);
+
+  if (plans.length === 0) {
+    return <div className="text-center p-4">No units available for the selected criteria.</div>;
+  }
 
   return (
     <div className="relative w-full">
       <div className="overflow-hidden" ref={emblaRef}>
-        <div className="flex">
+        <div className={`flex ${plans.length <= 3 ? 'justify-center' : ''}`}>
           {plans.map((plan, index) => (
             <div 
               key={index} 
@@ -146,28 +168,31 @@ export default function FloorPlanCarousel({ plans, onUnitClick }: FloorPlanCarou
         </div>
       </div>
 
-      <Button
-        variant="outline"
-        size="icon"
-        className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm"
-        onClick={scrollPrev}
-      >
-        <ChevronLeft className="h-4 w-4" />
-      </Button>
+      {plans.length > 1 && (
+        <>
+          <Button
+            variant="outline"
+            size="icon"
+            className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm"
+            onClick={scrollPrev}
+          >
+            <ChevronLeft className="h-4 w-4" />
+          </Button>
 
-      <Button
-        variant="outline"
-        size="icon"
-        className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm"
-        onClick={scrollNext}
-      >
-        <ChevronRight className="h-4 w-4" />
-      </Button>
+          <Button
+            variant="outline"
+            size="icon"
+            className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm"
+            onClick={scrollNext}
+          >
+            <ChevronRight className="h-4 w-4" />
+          </Button>
+        </>
+      )}
     </div>
   );
 }
 
-// Detailed view component (needs to be implemented separately)
 type DetailedViewProps = {
   unit: any;
   onClose: () => void;
@@ -204,7 +229,6 @@ const DetailedView: React.FC<DetailedViewProps> = ({ unit, onClose }) => {
   );
 };
 
-// Example usage of FloorPlanCarousel and DetailedView:
 
 const App = () => {
   const [showDetailedView, setShowDetailedView] = useState(false);
