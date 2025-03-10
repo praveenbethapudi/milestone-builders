@@ -15,7 +15,14 @@ type FloorPlanCarouselProps = {
 };
 
 export default function FloorPlanCarousel({ plans }: FloorPlanCarouselProps) {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
+  const [emblaRef, emblaApi] = useEmblaCarousel({ 
+    loop: true,
+    slidesToScroll: 1,
+    breakpoints: {
+      '(min-width: 640px)': { slidesToScroll: 2 },
+      '(min-width: 1024px)': { slidesToScroll: 3 }
+    }
+  });
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   const scrollPrev = useCallback(() => {
@@ -52,8 +59,11 @@ export default function FloorPlanCarousel({ plans }: FloorPlanCarouselProps) {
       <div className="overflow-hidden h-full" ref={emblaRef}>
         <div className="flex h-full">
           {plans.map((plan, index) => (
-            <div key={index} className="relative flex-[0_0_100%] min-w-0 h-full">
-              <div className="p-2 h-full">
+            <div 
+              key={index} 
+              className="relative flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_33.333%] min-w-0 h-full p-2"
+            >
+              <div className="relative h-full rounded-lg overflow-hidden">
                 <img 
                   src={plan.image} 
                   alt={plan.title} 
