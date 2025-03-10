@@ -1,5 +1,7 @@
-import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useState } from "react";
 
 const plants = [
   {
@@ -79,18 +81,19 @@ const plants = [
 export default function Botanical() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % plants.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, []);
-
   const getVisibleCount = () => {
     if (typeof window === 'undefined') return 6;
     if (window.innerWidth >= 1024) return 6;
     if (window.innerWidth >= 768) return 4;
     return 3;
+  };
+
+  const rotateLeft = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + plants.length) % plants.length);
+  };
+
+  const rotateRight = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % plants.length);
   };
 
   const visiblePlants = [...plants.slice(currentIndex), ...plants.slice(0, currentIndex)].slice(0, getVisibleCount());
@@ -119,42 +122,54 @@ export default function Botanical() {
         </motion.p>
 
         <div className="relative overflow-hidden">
+          <Button
+            variant="outline"
+            size="icon"
+            className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm"
+            onClick={rotateLeft}
+          >
+            <ChevronLeft className="h-4 w-4" />
+          </Button>
+
+          <Button
+            variant="outline"
+            size="icon"
+            className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm"
+            onClick={rotateRight}
+          >
+            <ChevronRight className="h-4 w-4" />
+          </Button>
+
           <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-            <AnimatePresence initial={false}>
-              {visiblePlants.map((plant, index) => (
-                <motion.div
-                  key={`${plant.name}-${index}`}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.5 }}
-                  className="group relative bg-white"
-                >
-                  <div className={`relative ${
-                    plant.size === "large"
-                      ? "aspect-[16/9]"
-                      : plant.size === "medium"
-                      ? "aspect-[4/3]"
-                      : "aspect-square"
-                  }`}>
-                    <img
-                      src={plant.image}
-                      alt={plant.name}
-                      className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </div>
-                  <div className="p-2 bg-white">
-                    <h3 className="text-xs sm:text-sm md:text-base font-semibold mb-1 text-primary group-hover:text-primary/80 transition-colors truncate">
-                      {plant.name}
-                    </h3>
-                    <p className="text-[10px] sm:text-xs md:text-sm text-muted-foreground leading-relaxed line-clamp-2">
-                      {plant.description}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </AnimatePresence>
+            {visiblePlants.map((plant, index) => (
+              <div
+                key={`${plant.name}-${index}`}
+                className="group relative bg-white"
+              >
+                <div className={`relative ${
+                  plant.size === "large"
+                    ? "aspect-[16/9]"
+                    : plant.size === "medium"
+                    ? "aspect-[4/3]"
+                    : "aspect-square"
+                }`}>
+                  <img
+                    src={plant.image}
+                    alt={plant.name}
+                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </div>
+                <div className="p-2 bg-white">
+                  <h3 className="text-xs sm:text-sm md:text-base font-semibold mb-1 text-primary group-hover:text-primary/80 transition-colors truncate">
+                    {plant.name}
+                  </h3>
+                  <p className="text-[10px] sm:text-xs md:text-sm text-muted-foreground leading-relaxed line-clamp-2">
+                    {plant.description}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
