@@ -162,7 +162,7 @@ export default function Contact() {
                     <FormItem>
                       <FormLabel>Name</FormLabel>
                       <FormControl>
-                        <Input placeholder="Your name" {...field} />
+                        <Input placeholder="Eg. Raman Singh" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
