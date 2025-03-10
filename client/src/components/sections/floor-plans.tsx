@@ -43,7 +43,7 @@ interface FilteredUnit {
 
 const floorOptions = ["G", "1", "2", "3", "4"];
 
-export default function FloorPlans() {
+export function FloorPlans() {
   const [selectedBlock, setSelectedBlock] = useState("B");
   const [selectedFloor, setSelectedFloor] = useState("1");
   const [selectedType, setSelectedType] = useState("2bhk");
@@ -143,15 +143,15 @@ export default function FloorPlans() {
                         <span className="text-muted-foreground">Floor {selectedUnit.floor}</span>
                       </div>
                     </div>
-                    <div className="grid md:grid-cols-2 gap-6 p-6">
-                      <div className="aspect-[4/3] relative rounded-lg overflow-hidden">
+                    <div className="grid md:grid-cols-2">
+                      <div className="h-full">
                         <img
                           src={selectedUnit.image}
                           alt={`Floor plan ${selectedUnit.unit_id}`}
                           className="w-full h-full object-contain"
                         />
                       </div>
-                      <div className="space-y-6">
+                      <div className="p-6 space-y-6">
                         <div>
                           <h4 className="text-lg font-semibold mb-2">Unit Information</h4>
                           <div className="grid grid-cols-2 gap-4">
@@ -233,15 +233,15 @@ export default function FloorPlans() {
                         <span className="text-muted-foreground">Floor {selectedUnit.floor}</span>
                       </div>
                     </div>
-                    <div className="grid md:grid-cols-2 gap-6 p-6">
-                      <div className="aspect-[4/3] relative rounded-lg overflow-hidden">
+                    <div className="grid md:grid-cols-2">
+                      <div className="h-full">
                         <img
                           src={selectedUnit.image}
                           alt={`Floor plan ${selectedUnit.unit_id}`}
                           className="w-full h-full object-contain"
                         />
                       </div>
-                      <div className="space-y-6">
+                      <div className="p-6 space-y-6">
                         <div>
                           <h4 className="text-lg font-semibold mb-2">Unit Information</h4>
                           <div className="grid grid-cols-2 gap-4">
@@ -349,3 +349,5 @@ export default function FloorPlans() {
     </section>
   );
 }
+
+export default FloorPlans;
