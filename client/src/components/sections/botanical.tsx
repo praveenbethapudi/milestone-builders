@@ -27,10 +27,10 @@ const plants = [
     size: "medium",
   },
   {
-    name: "Anthurium",
-    image: "/images/botanical/anthurium-andraeanum-2.jpg",
-    description: "Tropical flowering plant adorning garden corners",
-    size: "small",
+    name: "Silver Oak",
+    image: "/images/botanical/silver-oaks-1.webp",
+    description: "Graceful evergreen providing year-round shade and beauty",
+    size: "large",
   },
   {
     name: "Aglaonema",
@@ -57,10 +57,10 @@ const plants = [
     size: "medium",
   },
   {
-    name: "Silver Oak",
-    image: "/images/botanical/silver-oaks-1.webp",
-    description: "Graceful evergreen providing year-round shade and beauty",
-    size: "large",
+    name: "Anthurium",
+    image: "/images/botanical/anthurium-andraeanum-2.jpg",
+    description: "Tropical flowering plant adorning garden corners",
+    size: "small",
   },
   {
     name: "Apple Tree",
