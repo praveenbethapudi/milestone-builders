@@ -1,5 +1,6 @@
 import { useState, useCallback, useEffect } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from './button';
 import { 
   ChevronLeft, 
@@ -36,7 +37,6 @@ type FloorPlanCarouselProps = {
 };
 
 export default function FloorPlanCarousel({ plans, onUnitClick }: FloorPlanCarouselProps) {
-  // Calculate slides per view based on screen size and number of plans
   const getSlidesPerView = () => {
     if (plans.length === 0) return 1;
 
@@ -79,7 +79,6 @@ export default function FloorPlanCarousel({ plans, onUnitClick }: FloorPlanCarou
 
     emblaApi.on('select', onSelect);
 
-    // Auto-scroll every 5 seconds if more than one plan
     let autoplayInterval: NodeJS.Timeout | null = null;
     if (plans.length > 1) {
       autoplayInterval = setInterval(() => {
@@ -102,15 +101,23 @@ export default function FloorPlanCarousel({ plans, onUnitClick }: FloorPlanCarou
       <div className="overflow-hidden" ref={emblaRef}>
         <div className={`flex ${plans.length <= 3 ? 'justify-center' : ''}`}>
           {plans.map((plan, index) => (
-            <div 
+            <motion.div 
               key={index} 
               className="relative flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_33.333%] min-w-0 p-1 cursor-pointer"
               onClick={() => onUnitClick?.(plan)}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               <div className="relative rounded-lg overflow-hidden">
-                <img 
+                <motion.img 
                   src={plan.image} 
-                  alt={`Floor plan ${plan.unit_id}`} 
+                  alt={`Floor plan ${plan.unit_id}`}
+                  loading="lazy"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5 }}
                   className="w-full object-contain rounded-md"
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white p-2 space-y-1">
@@ -163,7 +170,7 @@ export default function FloorPlanCarousel({ plans, onUnitClick }: FloorPlanCarou
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
@@ -244,7 +251,6 @@ const App = () => {
   };
 
   const examplePlans = [
-    // Add your plan data here
     {
       unit_id: 'A101',
       image: '/path/to/image1.jpg',
@@ -279,7 +285,6 @@ const App = () => {
       description: 'A large 3BHK unit with two balconies.',
       features: ['AC', 'Modular Kitchen', 'Balcony', 'Parking']
     }
-    // Add more plans...
   ];
 
   return (
