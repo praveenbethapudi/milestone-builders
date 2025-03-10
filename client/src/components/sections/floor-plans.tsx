@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -10,7 +10,7 @@ import unitsData from "@/lib/units.csv";
 type Unit = {
   unit_number: string;
   block: string;
-  floor: number;
+  floor: string;
   area: number;
   size: string;
   price: number;
@@ -20,43 +20,59 @@ type Unit = {
   image_link: string;
 };
 
-// Floor mapping
-type FloorLevel = 1 | 2 | 3 | 4 | 5;
-const FLOOR_MAPPING: Record<FloorLevel, string> = {
-  1: "Ground",
-  2: "First",
-  3: "Second",
-  4: "Third",
-  5: "Fourth"
-};
+interface FloorPlan {
+  id: string;
+  title: string;
+  type: string;
+  bedrooms: number;
+  bathrooms: number;
+  area: string;
+  price: string;
+  image: string;
+  description: string;
+  features: string[];
+}
 
 // Parse units data
 const units: Unit[] = unitsData.split('\n')
   .slice(1) // Skip header row
   .map(row => {
     const [unit_number, block, floor, area, size, price, face, balcony_count, available, image_link] = row.split(',');
+    // Convert floor number to string label using Number to avoid octal literal issues
+    const floorLabel = (() => {
+      const floorNum = Number(floor);
+      switch(floorNum) {
+        case 0: return 'Ground';
+        case 1: return 'First';
+        case 2: return 'Second';
+        case 3: return 'Third';
+        case 4: return 'Fourth';
+        default: return 'Ground';
+      }
+    })();
+
     return {
-      unit_number: unit_number.replace(/"/g, ''),
+      unit_number,
       block,
-      floor: Number(floor) as FloorLevel,
+      floor: floorLabel,
       area: Number(area),
-      size: size.replace(/"/g, ''),
+      size,
       price: Number(price),
       face,
       balcony_count: Number(balcony_count),
       available,
-      image_link: image_link.trim()
+      image_link
     };
   });
 
 export default function FloorPlans() {
-  const [selectedFloor, setSelectedFloor] = useState<FloorLevel>(1);
+  const [selectedFloor, setSelectedFloor] = useState("Ground");
   const [selectedType, setSelectedType] = useState("2bhk");
 
   // Filter units based on selected floor and type
   const filteredUnits = units.filter(unit =>
     unit.floor === selectedFloor &&
-    unit.size.toLowerCase().startsWith(selectedType.charAt(0))
+    unit.size.startsWith(selectedType.charAt(0))
   );
 
   // Group units by block
@@ -87,21 +103,17 @@ export default function FloorPlans() {
             and functionality.
           </p>
 
-          <Tabs 
-            defaultValue="1" 
-            className="w-full" 
-            onValueChange={(value) => setSelectedFloor(Number(value) as FloorLevel)}
-          >
+          <Tabs defaultValue="Ground" className="w-full" onValueChange={setSelectedFloor}>
             <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-5 mb-8">
-              {(Object.entries(FLOOR_MAPPING) as [string, string][]).map(([value, label]) => (
-                <TabsTrigger key={value} value={value}>
-                  {label} Floor
-                </TabsTrigger>
-              ))}
+              <TabsTrigger value="Ground">Ground Floor</TabsTrigger>
+              <TabsTrigger value="First">First Floor</TabsTrigger>
+              <TabsTrigger value="Second">Second Floor</TabsTrigger>
+              <TabsTrigger value="Third">Third Floor</TabsTrigger>
+              <TabsTrigger value="Fourth">Fourth Floor</TabsTrigger>
             </TabsList>
 
-            {(Object.keys(FLOOR_MAPPING) as unknown as FloorLevel[]).map((floor) => (
-              <TabsContent key={floor} value={floor.toString()}>
+            {["Ground", "First", "Second", "Third", "Fourth"].map((floor) => (
+              <TabsContent key={floor} value={floor}>
                 <Tabs defaultValue="2bhk" onValueChange={setSelectedType}>
                   <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-8">
                     <TabsTrigger value="2bhk">2 BHK</TabsTrigger>

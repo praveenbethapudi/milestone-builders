@@ -1,81 +1,81 @@
 unit_number,block,floor,area,size,price,face,balcony_count,available,image_link
-"001",A,1,1491,"3BHK",7455000,North-East,2,yes,/images/3bhk/block-a/A-101.jpg
-"002",A,1,1450,"3BHK",7250000,North-East,2,yes,/images/3bhk/block-a/A-102.jpg
-"003",A,1,1116,"2BHK",5580000,North-East,1,yes,/images/2bhk/block-a/A-103.jpg
-"004",A,1,893,"2BHK",4465000,North-East,1,yes,/images/2bhk/block-a/A-104.jpg
-"005",A,1,930,"2BHK",4650000,North-East,1,yes,/images/2bhk/block-a/A-105.jpg
-"006",A,1,964,"2BHK",4820000,North-East,1,yes,/images/2bhk/block-a/A-106.jpg
-"007",A,1,983,"2BHK",4915000,North-East,1,yes,/images/2bhk/block-a/A-107.jpg
-"008",A,1,1115,"2BHK",5575000,North-East,1,yes,/images/2bhk/block-a/A-108.jpg
-"101",A,2,1491,"3BHK",7455000,North-East,2,yes,/images/3bhk/block-a/A-101.jpg
-"102",A,2,1450,"3BHK",7250000,North-East,2,yes,/images/3bhk/block-a/A-102.jpg
-"103",A,2,1116,"2BHK",5580000,North-East,1,yes,/images/2bhk/block-a/A-103.jpg
-"104",A,2,893,"2BHK",4465000,North-East,1,yes,/images/2bhk/block-a/A-104.jpg
-"105",A,2,930,"2BHK",4650000,North-East,1,yes,/images/2bhk/block-a/A-105.jpg
-"106",A,2,964,"2BHK",4820000,North-East,1,yes,/images/2bhk/block-a/A-106.jpg
-"107",A,2,983,"2BHK",4915000,North-East,1,yes,/images/2bhk/block-a/A-107.jpg
-"108",A,2,1115,"2BHK",5575000,North-East,1,yes,/images/2bhk/block-a/A-108.jpg
-"201",A,3,1491,"3BHK",7455000,North-East,2,yes,/images/3bhk/block-a/A-101.jpg
-"301",A,4,1491,"3BHK",7455000,North-East,2,yes,/images/3bhk/block-a/A-101.jpg
-"401",A,5,1491,"3BHK",7455000,North-East,2,yes,/images/3bhk/block-a/A-101.jpg
-"202",A,3,1450,"3BHK",7250000,North-East,2,yes,/images/3bhk/block-a/A-102.jpg
-"302",A,4,1450,"3BHK",7250000,North-East,2,yes,/images/3bhk/block-a/A-102.jpg
-"402",A,5,1450,"3BHK",7250000,North-East,2,yes,/images/3bhk/block-a/A-102.jpg
-"203",A,3,1116,"2BHK",5580000,North-East,1,yes,/images/2bhk/block-a/A-103.jpg
-"303",A,4,1116,"2BHK",5580000,North-East,1,yes,/images/2bhk/block-a/A-103.jpg
-"403",A,5,1116,"2BHK",5580000,North-East,1,yes,/images/2bhk/block-a/A-103.jpg
-"204",A,3,893,"2BHK",4465000,North-East,1,yes,/images/2bhk/block-a/A-104.jpg
-"304",A,4,893,"2BHK",4465000,North-East,1,yes,/images/2bhk/block-a/A-104.jpg
-"404",A,5,893,"2BHK",4465000,North-East,1,yes,/images/2bhk/block-a/A-104.jpg
-"205",A,3,930,"2BHK",4650000,North-East,1,yes,/images/2bhk/block-a/A-105.jpg
-"305",A,4,930,"2BHK",4650000,North-East,1,yes,/images/2bhk/block-a/A-105.jpg
-"405",A,5,930,"2BHK",4650000,North-East,1,yes,/images/2bhk/block-a/A-105.jpg
-"206",A,3,964,"2BHK",4820000,North-East,1,yes,/images/2bhk/block-a/A-106.jpg
-"306",A,4,964,"2BHK",4820000,North-East,1,yes,/images/2bhk/block-a/A-106.jpg
-"406",A,5,964,"2BHK",4820000,North-East,1,yes,/images/2bhk/block-a/A-106.jpg
-"207",A,3,983,"2BHK",4915000,North-East,1,yes,/images/2bhk/block-a/A-107.jpg
-"307",A,4,983,"2BHK",4915000,North-East,1,yes,/images/2bhk/block-a/A-107.jpg
-"407",A,5,983,"2BHK",4915000,North-East,1,yes,/images/2bhk/block-a/A-107.jpg
-"208",A,3,1115,"2BHK",5575000,North-East,1,yes,/images/2bhk/block-a/A-108.jpg
-"308",A,4,1115,"2BHK",5575000,North-East,1,yes,/images/2bhk/block-a/A-108.jpg
-"408",A,5,1115,"2BHK",5575000,North-East,1,yes,/images/2bhk/block-a/A-108.jpg
-"001",B,1,1420,"3BHK",7100000,South-West,2,yes,/images/3bhk/block-b/B-101.jpg
-"002",B,1,1351,"3BHK",6755000,South-West,2,yes,/images/3bhk/block-b/B-102.jpg
-"003",B,1,1111,"2BHK",5555000,South-West,1,yes,/images/2bhk/block-b/B-103.jpg
-"004",B,1,893,"2BHK",4465000,South-West,1,yes,/images/2bhk/block-b/B-104.jpg
-"005",B,1,930,"2BHK",4650000,South-West,1,yes,/images/2bhk/block-b/B-105.jpg
-"006",B,1,964,"2BHK",4820000,South-West,1,yes,/images/2bhk/block-b/B-106.jpg
-"007",B,1,983,"2BHK",4915000,South-West,1,yes,/images/2bhk/block-b/B-107.jpg
-"008",B,1,1111,"2BHK",5555000,South-West,1,yes,/images/2bhk/block-b/B-108.jpg
-"101",B,2,1420,"3BHK",7100000,South-West,2,yes,/images/3bhk/block-b/B-101.jpg
-"102",B,2,1351,"3BHK",6755000,South-West,2,yes,/images/3bhk/block-b/B-102.jpg
-"103",B,2,1111,"2BHK",5555000,South-West,1,yes,/images/2bhk/block-b/B-103.jpg
-"104",B,2,893,"2BHK",4465000,South-West,1,yes,/images/2bhk/block-b/B-104.jpg
-"105",B,2,930,"2BHK",4650000,South-West,1,yes,/images/2bhk/block-b/B-105.jpg
-"106",B,2,964,"2BHK",4820000,South-West,1,yes,/images/2bhk/block-b/B-106.jpg
-"107",B,2,983,"2BHK",4915000,South-West,1,yes,/images/2bhk/block-b/B-107.jpg
-"108",B,2,1111,"2BHK",5555000,South-West,1,yes,/images/2bhk/block-b/B-108.jpg
-"201",B,3,1420,"3BHK",7100000,South-West,2,yes,/images/3bhk/block-b/B-101.jpg
-"301",B,4,1420,"3BHK",7100000,South-West,2,yes,/images/3bhk/block-b/B-101.jpg
-"401",B,5,1420,"3BHK",7100000,South-West,2,yes,/images/3bhk/block-b/B-101.jpg
-"202",B,3,1351,"3BHK",6755000,South-West,2,yes,/images/3bhk/block-b/B-102.jpg
-"302",B,4,1351,"3BHK",6755000,South-West,2,yes,/images/3bhk/block-b/B-102.jpg
-"402",B,5,1351,"3BHK",6755000,South-West,2,yes,/images/3bhk/block-b/B-102.jpg
-"203",B,3,1111,"2BHK",5555000,South-West,1,yes,/images/2bhk/block-b/B-103.jpg
-"303",B,4,1111,"2BHK",5555000,South-West,1,yes,/images/2bhk/block-b/B-103.jpg
-"403",B,5,1111,"2BHK",5555000,South-West,1,yes,/images/2bhk/block-b/B-103.jpg
-"204",B,3,893,"2BHK",4465000,South-West,1,yes,/images/2bhk/block-b/B-104.jpg
-"304",B,4,893,"2BHK",4465000,South-West,1,yes,/images/2bhk/block-b/B-104.jpg
-"404",B,5,893,"2BHK",4465000,South-West,1,yes,/images/2bhk/block-b/B-104.jpg
-"205",B,3,930,"2BHK",4650000,South-West,1,yes,/images/2bhk/block-b/B-105.jpg
-"305",B,4,930,"2BHK",4650000,South-West,1,yes,/images/2bhk/block-b/B-105.jpg
-"405",B,5,930,"2BHK",4650000,South-West,1,yes,/images/2bhk/block-b/B-105.jpg
-"206",B,3,964,"2BHK",4820000,South-West,1,yes,/images/2bhk/block-b/B-106.jpg
-"306",B,4,964,"2BHK",4820000,South-West,1,yes,/images/2bhk/block-b/B-106.jpg
-"406",B,5,964,"2BHK",4820000,South-West,1,yes,/images/2bhk/block-b/B-106.jpg
-"207",B,3,983,"2BHK",4915000,South-West,1,yes,/images/2bhk/block-b/B-107.jpg
-"307",B,4,983,"2BHK",4915000,South-West,1,yes,/images/2bhk/block-b/B-107.jpg
-"407",B,5,983,"2BHK",4915000,South-West,1,yes,/images/2bhk/block-b/B-107.jpg
-"208",B,3,1111,"2BHK",5555000,South-West,1,yes,/images/2bhk/block-b/B-108.jpg
-"308",B,4,1111,"2BHK",5555000,South-West,1,yes,/images/2bhk/block-b/B-108.jpg
-"408",B,5,1111,"2BHK",5555000,South-West,1,yes,/images/2bhk/block-b/B-108.jpg
+001,A,0,1491,3 BHK,7455000,North-East,2,yes,/images/3bhk/block-a/A-101.jpg
+002,A,0,1450,3 BHK,7250000,North-East,2,yes,/images/3bhk/block-a/A-102.jpg
+003,A,0,1116,2 BHK,5580000,North-East,1,yes,/images/2bhk/block-a/A-103.jpg
+004,A,0,893,2 BHK,4465000,North-East,1,yes,/images/2bhk/block-a/A-104.jpg
+005,A,0,930,2 BHK,4650000,North-East,1,yes,/images/2bhk/block-a/A-105.jpg
+006,A,0,964,2 BHK,4820000,North-East,1,yes,/images/2bhk/block-a/A-106.jpg
+007,A,0,983,2 BHK,4915000,North-East,1,yes,/images/2bhk/block-a/A-107.jpg
+008,A,0,1115,2 BHK,5575000,North-East,1,yes,/images/2bhk/block-a/A-108.jpg
+101,A,1,1491,3 BHK,7455000,North-East,2,yes,/images/3bhk/block-a/A-101.jpg
+102,A,1,1450,3 BHK,7250000,North-East,2,yes,/images/3bhk/block-a/A-102.jpg
+103,A,1,1116,2 BHK,5580000,North-East,1,yes,/images/2bhk/block-a/A-103.jpg
+104,A,1,893,2 BHK,4465000,North-East,1,yes,/images/2bhk/block-a/A-104.jpg
+105,A,1,930,2 BHK,4650000,North-East,1,yes,/images/2bhk/block-a/A-105.jpg
+106,A,1,964,2 BHK,4820000,North-East,1,yes,/images/2bhk/block-a/A-106.jpg
+107,A,1,983,2 BHK,4915000,North-East,1,yes,/images/2bhk/block-a/A-107.jpg
+108,A,1,1115,2 BHK,5575000,North-East,1,yes,/images/2bhk/block-a/A-108.jpg
+201,A,2,1491,3 BHK,7455000,North-East,2,yes,/images/3bhk/block-a/A-101.jpg
+301,A,3,1491,3 BHK,7455000,North-East,2,yes,/images/3bhk/block-a/A-101.jpg
+401,A,4,1491,3 BHK,7455000,North-East,2,yes,/images/3bhk/block-a/A-101.jpg
+202,A,2,1450,3 BHK,7250000,North-East,2,yes,/images/3bhk/block-a/A-102.jpg
+302,A,3,1450,3 BHK,7250000,North-East,2,yes,/images/3bhk/block-a/A-102.jpg
+402,A,4,1450,3 BHK,7250000,North-East,2,yes,/images/3bhk/block-a/A-102.jpg
+203,A,2,1116,2 BHK,5580000,North-East,1,yes,/images/2bhk/block-a/A-103.jpg
+303,A,3,1116,2 BHK,5580000,North-East,1,yes,/images/2bhk/block-a/A-103.jpg
+403,A,4,1116,2 BHK,5580000,North-East,1,yes,/images/2bhk/block-a/A-103.jpg
+204,A,2,893,2 BHK,4465000,North-East,1,yes,/images/2bhk/block-a/A-104.jpg
+304,A,3,893,2 BHK,4465000,North-East,1,yes,/images/2bhk/block-a/A-104.jpg
+404,A,4,893,2 BHK,4465000,North-East,1,yes,/images/2bhk/block-a/A-104.jpg
+205,A,2,930,2 BHK,4650000,North-East,1,yes,/images/2bhk/block-a/A-105.jpg
+305,A,3,930,2 BHK,4650000,North-East,1,yes,/images/2bhk/block-a/A-105.jpg
+405,A,4,930,2 BHK,4650000,North-East,1,yes,/images/2bhk/block-a/A-105.jpg
+206,A,2,964,2 BHK,4820000,North-East,1,yes,/images/2bhk/block-a/A-106.jpg
+306,A,3,964,2 BHK,4820000,North-East,1,yes,/images/2bhk/block-a/A-106.jpg
+406,A,4,964,2 BHK,4820000,North-East,1,yes,/images/2bhk/block-a/A-106.jpg
+207,A,2,983,2 BHK,4915000,North-East,1,yes,/images/2bhk/block-a/A-107.jpg
+307,A,3,983,2 BHK,4915000,North-East,1,yes,/images/2bhk/block-a/A-107.jpg
+407,A,4,983,2 BHK,4915000,North-East,1,yes,/images/2bhk/block-a/A-107.jpg
+208,A,2,1115,2 BHK,5575000,North-East,1,yes,/images/2bhk/block-a/A-108.jpg
+308,A,3,1115,2 BHK,5575000,North-East,1,yes,/images/2bhk/block-a/A-108.jpg
+408,A,4,1115,2 BHK,5575000,North-East,1,yes,/images/2bhk/block-a/A-108.jpg
+001,B,0,1420,3 BHK,7100000,South-West,2,yes,/images/3bhk/block-b/B-101.jpg
+002,B,0,1351,3 BHK,6755000,South-West,2,yes,/images/3bhk/block-b/B-102.jpg
+003,B,0,1111,2 BHK,5555000,South-West,1,yes,/images/2bhk/block-b/B-103.jpg
+004,B,0,893,2 BHK,4465000,South-West,1,yes,/images/2bhk/block-b/B-104.jpg
+005,B,0,930,2 BHK,4650000,South-West,1,yes,/images/2bhk/block-b/B-105.jpg
+006,B,0,964,2 BHK,4820000,South-West,1,yes,/images/2bhk/block-b/B-106.jpg
+007,B,0,983,2 BHK,4915000,South-West,1,yes,/images/2bhk/block-b/B-107.jpg
+008,B,0,1111,2 BHK,5555000,South-West,1,yes,/images/2bhk/block-b/B-108.jpg
+101,B,1,1420,3 BHK,7100000,South-West,2,yes,/images/3bhk/block-b/B-101.jpg
+102,B,1,1351,3 BHK,6755000,South-West,2,yes,/images/3bhk/block-b/B-102.jpg
+103,B,1,1111,2 BHK,5555000,South-West,1,yes,/images/2bhk/block-b/B-103.jpg
+104,B,1,893,2 BHK,4465000,South-West,1,yes,/images/2bhk/block-b/B-104.jpg
+105,B,1,930,2 BHK,4650000,South-West,1,yes,/images/2bhk/block-b/B-105.jpg
+106,B,1,964,2 BHK,4820000,South-West,1,yes,/images/2bhk/block-b/B-106.jpg
+107,B,1,983,2 BHK,4915000,South-West,1,yes,/images/2bhk/block-b/B-107.jpg
+108,B,1,1111,2 BHK,5555000,South-West,1,yes,/images/2bhk/block-b/B-108.jpg
+201,B,2,1420,3 BHK,7100000,South-West,2,yes,/images/3bhk/block-b/B-101.jpg
+301,B,3,1420,3 BHK,7100000,South-West,2,yes,/images/3bhk/block-b/B-101.jpg
+401,B,4,1420,3 BHK,7100000,South-West,2,yes,/images/3bhk/block-b/B-101.jpg
+202,B,2,1351,3 BHK,6755000,South-West,2,yes,/images/3bhk/block-b/B-102.jpg
+302,B,3,1351,3 BHK,6755000,South-West,2,yes,/images/3bhk/block-b/B-102.jpg
+402,B,4,1351,3 BHK,6755000,South-West,2,yes,/images/3bhk/block-b/B-102.jpg
+203,B,2,1111,2 BHK,5555000,South-West,1,yes,/images/2bhk/block-b/B-103.jpg
+303,B,3,1111,2 BHK,5555000,South-West,1,yes,/images/2bhk/block-b/B-103.jpg
+403,B,4,1111,2 BHK,5555000,South-West,1,yes,/images/2bhk/block-b/B-103.jpg
+204,B,2,893,2 BHK,4465000,South-West,1,yes,/images/2bhk/block-b/B-104.jpg
+304,B,3,893,2 BHK,4465000,South-West,1,yes,/images/2bhk/block-b/B-104.jpg
+404,B,4,893,2 BHK,4465000,South-West,1,yes,/images/2bhk/block-b/B-104.jpg
+205,B,2,930,2 BHK,4650000,South-West,1,yes,/images/2bhk/block-b/B-105.jpg
+305,B,3,930,2 BHK,4650000,South-West,1,yes,/images/2bhk/block-b/B-105.jpg
+405,B,4,930,2 BHK,4650000,South-West,1,yes,/images/2bhk/block-b/B-105.jpg
+206,B,2,964,2 BHK,4820000,South-West,1,yes,/images/2bhk/block-b/B-106.jpg
+306,B,3,964,2 BHK,4820000,South-West,1,yes,/images/2bhk/block-b/B-106.jpg
+406,B,4,964,2 BHK,4820000,South-West,1,yes,/images/2bhk/block-b/B-106.jpg
+207,B,2,983,2 BHK,4915000,South-West,1,yes,/images/2bhk/block-b/B-107.jpg
+307,B,3,983,2 BHK,4915000,South-West,1,yes,/images/2bhk/block-b/B-107.jpg
+407,B,4,983,2 BHK,4915000,South-West,1,yes,/images/2bhk/block-b/B-107.jpg
+208,B,2,1111,2 BHK,5555000,South-West,1,yes,/images/2bhk/block-b/B-108.jpg
+308,B,3,1111,2 BHK,5555000,South-West,1,yes,/images/2bhk/block-b/B-108.jpg
+408,B,4,1111,2 BHK,5555000,South-West,1,yes,/images/2bhk/block-b/B-108.jpg
