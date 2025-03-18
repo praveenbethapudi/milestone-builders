@@ -1,93 +1,124 @@
-
+import { Link } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
+import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
+import { Header } from "@/components/ui/header";
 
 export default function RefundPolicy() {
   return (
-    <div className="max-w-4xl mx-auto py-16 px-4">
+    <>
+      <Helmet>
+        <title>Refund & Cancellation Policy | Milestone Builders</title>
+        <meta 
+          name="description" 
+          content="Understand Milestone Builders' refund and cancellation policy for property bookings. Learn about our terms for cancellations, refunds, and booking amount."
+        />
+        <meta name="robots" content="noindex, follow" />
+        <link rel="canonical" href="https://milestone.builders/refund" />
+      </Helmet>
+
+      <Header />
+
+      <main className="py-20 px-4 bg-background">
+        <div className="max-w-4xl mx-auto">
       <motion.h1
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="text-3xl font-bold mb-8"
+            className="text-3xl md:text-4xl font-bold text-center mb-6 text-[#FFF3C4]"
       >
-        Refund Policy
+            Refund & Cancellation Policy
       </motion.h1>
 
-      <div className="space-y-6">
-        <section>
-          <h2 className="text-xl font-semibold mb-3">1. Booking Amount</h2>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="prose prose-lg max-w-none mt-8 prose-headings:text-[#FFF3C4] prose-p:text-gray-100 prose-li:text-gray-100 prose-strong:text-gray-100"
+          >
           <p className="text-muted-foreground">
-            When you book an apartment at The Meridian, you will be required to pay a booking amount. This booking amount confirms your interest in purchasing the property and reserves the selected unit for you.
-          </p>
-        </section>
+              Last Updated: {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+            </p>
 
-        <section>
-          <h2 className="text-xl font-semibold mb-3">2. Cancellation by Customer</h2>
-          <p className="text-muted-foreground">
-            If you decide to cancel your booking, the following refund policy will apply:
-          </p>
-          <ul className="list-disc pl-6 mt-2 text-muted-foreground">
-            <li>Cancellation within 15 days of booking: 90% of the booking amount will be refunded</li>
-            <li>Cancellation between 16-30 days of booking: 75% of the booking amount will be refunded</li>
-            <li>Cancellation between 31-60 days of booking: 50% of the booking amount will be refunded</li>
-            <li>Cancellation after 60 days of booking: No refund will be provided</li>
+            <h2 className="text-2xl font-semibold mt-8 mb-4">1. Booking Amount</h2>
+            <p>
+              When you make a property booking with Milestone Builders, a booking amount of 10% of the total property value is required to secure your unit. This amount is part of the total property cost and demonstrates your commitment to the purchase.
+            </p>
+
+            <h2 className="text-2xl font-semibold mt-8 mb-4">2. Cancellation Terms</h2>
+            <p>
+              If you wish to cancel your booking, the following terms apply:
+            </p>
+            <ul className="list-disc pl-6 my-4">
+              <li>Cancellation within 7 days of booking: Full refund of the booking amount</li>
+              <li>Cancellation between 8-30 days: 75% refund of the booking amount</li>
+              <li>Cancellation between 31-60 days: 50% refund of the booking amount</li>
+              <li>Cancellation after 60 days: No refund of the booking amount</li>
+            </ul>
+
+            <h2 className="text-2xl font-semibold mt-8 mb-4">3. Refund Process</h2>
+            <p>
+              Once your cancellation request is approved:
+            </p>
+            <ul className="list-disc pl-6 my-4">
+              <li>The applicable refund amount will be processed within 15 working days</li>
+              <li>The refund will be made to the same account/method used for the original payment</li>
+              <li>Any bank charges or transaction fees will be deducted from the refund amount</li>
+            </ul>
+
+            <h2 className="text-2xl font-semibold mt-8 mb-4">4. Special Circumstances</h2>
+            <p>
+              In case of special circumstances such as:
+            </p>
+            <ul className="list-disc pl-6 my-4">
+              <li>Project delays beyond the agreed timeline</li>
+              <li>Significant changes in project specifications</li>
+              <li>Force majeure events</li>
+              <li>Legal or regulatory issues affecting the project</li>
           </ul>
-        </section>
+            <p>
+              The refund terms may be revised in favor of the customer, subject to management discretion and applicable laws.
+            </p>
 
-        <section>
-          <h2 className="text-xl font-semibold mb-3">3. Cancellation Due to Rejection of Application</h2>
-          <p className="text-muted-foreground">
-            If your home loan application is rejected by financial institutions due to reasons beyond your control, and proper documentation is provided, we will refund 95% of the booking amount regardless of the time elapsed since booking.
-          </p>
-        </section>
+            <h2 className="text-2xl font-semibold mt-8 mb-4">5. Documentation Required</h2>
+            <p>
+              To process a cancellation and refund, please submit:
+            </p>
+            <ul className="list-disc pl-6 my-4">
+              <li>Written cancellation request with reason</li>
+              <li>Original booking receipt</li>
+              <li>Bank account details for refund transfer</li>
+              <li>Any other relevant documentation as requested</li>
+            </ul>
 
-        <section>
-          <h2 className="text-xl font-semibold mb-3">4. Refund Process</h2>
-          <p className="text-muted-foreground">
-            All refunds will be processed within 30 working days from the date of receiving a written cancellation request along with all necessary documents. The refund will be made to the same account from which the payment was originally made.
-          </p>
-        </section>
+            <h2 className="text-2xl font-semibold mt-8 mb-4">6. Contact for Refunds</h2>
+            <p>
+              For any queries regarding refunds or cancellations, please contact:
+            </p>
+            <p>
+              Milestone Builders<br />
+              Sy 98/2, 60' Road, Milestone Palms<br />
+              Haragadde, Jigani<br />
+              Bangalore, Karnataka 560105<br />
+              Email: refunds@milestone.builders<br />
+              Phone: +91 744 007 5000
+            </p>
+          </motion.div>
 
-        <section>
-          <h2 className="text-xl font-semibold mb-3">5. Project Delays</h2>
-          <p className="text-muted-foreground">
-            In the event of significant delays in the project completion beyond the date mentioned in the agreement:
-          </p>
-          <ul className="list-disc pl-6 mt-2 text-muted-foreground">
-            <li>Delay up to 6 months: No compensation will be provided as minor delays are common in construction</li>
-            <li>Delay between 6-12 months: Compensation as per the terms mentioned in the Sale Agreement</li>
-            <li>Delay beyond 12 months: Option to withdraw from the project with a full refund plus interest as specified in the Sale Agreement</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2 className="text-xl font-semibold mb-3">6. Force Majeure</h2>
-          <p className="text-muted-foreground">
-            The Meridian will not be liable for any delay or failure to perform due to circumstances beyond reasonable control, including but not limited to acts of God, natural disasters, pandemic, war, civil unrest, or governmental regulations. In such cases, timelines may be extended without compensation.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="text-xl font-semibold mb-3">7. Changes to This Policy</h2>
-          <p className="text-muted-foreground">
-            The Meridian reserves the right to modify this Refund Policy at any time. Any changes will be effective immediately upon posting on our website. For bookings already made, the Refund Policy that was in effect at the time of booking will apply.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="text-xl font-semibold mb-3">8. Contact Information</h2>
-          <p className="text-muted-foreground">
-            For any refund-related queries or to submit a refund request, please contact:
-          </p>
-          <p className="text-muted-foreground mt-2">
-            The Meridian Sales Office<br />
-            500m from Bommasandra Metro Station<br />
-            Electronic City Phase 2<br />
-            Bangalore, Karnataka 560100<br />
-            Email: refunds@themeridian.com<br />
-            Phone: +91 9876543210
-          </p>
-        </section>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="text-center mt-12"
+          >
+            <Link 
+              to="/" 
+              className="inline-flex items-center text-primary hover:text-primary/80 transition-colors"
+            >
+              <ArrowLeft className="mr-2 h-4 w-4" /> Back to Home
+            </Link>
+          </motion.div>
       </div>
-    </div>
+      </main>
+    </>
   );
 }

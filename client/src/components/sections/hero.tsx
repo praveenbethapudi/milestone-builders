@@ -4,12 +4,12 @@ import ImageCarousel from "@/components/ui/image-carousel";
 import { useState, useEffect } from "react";
 
 const exteriorImages = [
-  "/images/building-1.jpg",
-  "/images/building-2.jpg",
-  "/images/building-3.jpg",
-  "/images/building-4.jpg",
-  "/images/building-5.jpg",
-  "/images/building-6.jpg",
+  "/images/building-1.webp",
+  // "/images/building-2.jpg",
+  // "/images/building-3.jpg",
+  // "/images/building-4.jpg",
+  // "/images/building-5.jpg",
+  // "/images/building-6.jpg",
 ];
 
 interface TimeLeft {
@@ -44,8 +44,10 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative h-[75vh]">
-      <ImageCarousel images={exteriorImages} />
+    <section className="relative h-[80vh]">
+      <div className="absolute inset-0">
+        <ImageCarousel images={exteriorImages} />
+      </div>
       <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

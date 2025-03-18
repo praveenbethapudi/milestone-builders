@@ -1,5 +1,6 @@
 import { useState, useCallback, useEffect } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
+import type { EmblaCarouselType } from 'embla-carousel';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from './button';
 import { 
@@ -14,52 +15,124 @@ import {
   IndianRupee,
   CheckCircle2
 } from 'lucide-react';
+import OptimizedImage from "./optimized-image";
 
-type FloorPlanCarouselProps = {
-  plans: {
-    unit_id: string;
-    image: string;
-    title: string;
-    size: string;
-    area: number;
-    price: number;
-    block: string;
-    floor: string;
-    face: string;
-    bedrooms: number;
-    bathrooms: number;
-    balcony: number;
-    available: string;
-    description?: string;
-    features?: string[];
-  }[];
-  onUnitClick?: (unit: any) => void;
-};
+interface FloorPlan {
+  unit_id: string;
+  image: string;
+  title: string;
+  size: string;
+  area: number;
+  price: number;
+  block: string;
+  floor: string;
+  face: string;
+  bedrooms: number;
+  bathrooms: number;
+  balcony: number;
+  available: string;
+  description?: string;
+  features?: string[];
+}
+
+interface FloorPlanCarouselProps {
+  plans: FloorPlan[];
+  onUnitClick?: (unit: FloorPlan) => void;
+}
+
+interface DetailedViewProps {
+  unit: FloorPlan;
+  onClose: () => void;
+}
+
+function DetailedView({ unit, onClose }: DetailedViewProps) {
+  return (
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
+      <div className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+        <div className="p-6">
+          <div className="flex justify-between items-start mb-6">
+            <h2 className="text-2xl font-bold">{unit.title}</h2>
+            <button onClick={onClose} className="text-gray-500 hover:text-gray-700">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            <div>
+              <OptimizedImage
+                src={unit.image}
+                alt={unit.title}
+                className="w-full rounded-lg"
+                priority
+              />
+            </div>
+
+            <div className="space-y-4">
+              <div className="grid grid-cols-2 gap-4">
+                <div className="flex items-center gap-2">
+                  <BedDouble className="h-5 w-5 text-primary" />
+                  <span>{unit.bedrooms} Bedrooms</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Bath className="h-5 w-5 text-primary" />
+                  <span>{unit.bathrooms} Bathrooms</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Maximize className="h-5 w-5 text-primary" />
+                  <span>{unit.size}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Compass className="h-5 w-5 text-primary" />
+                  <span>{unit.face} Facing</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Building className="h-5 w-5 text-primary" />
+                  <span>Block {unit.block}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Home className="h-5 w-5 text-primary" />
+                  <span>Floor {unit.floor}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <IndianRupee className="h-5 w-5 text-primary" />
+                  <span>{unit.price.toLocaleString('en-IN')}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="h-5 w-5 text-primary" />
+                  <span>{unit.available}</span>
+                </div>
+              </div>
+
+              {unit.description && (
+                <div>
+                  <h3 className="font-semibold mb-2">Description</h3>
+                  <p className="text-gray-600">{unit.description}</p>
+                </div>
+              )}
+
+              {unit.features && unit.features.length > 0 && (
+                <div>
+                  <h3 className="font-semibold mb-2">Features</h3>
+                  <ul className="list-disc list-inside text-gray-600">
+                    {unit.features.map((feature, index) => (
+                      <li key={index}>{feature}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function FloorPlanCarousel({ plans, onUnitClick }: FloorPlanCarouselProps) {
-  const getSlidesPerView = () => {
-    if (plans.length === 0) return 1;
-
-    const breakpoints = {
-      sm: { minWidth: 640, slides: Math.min(2, plans.length) },
-      lg: { minWidth: 1024, slides: Math.min(3, plans.length) }
-    };
-
-    return {
-      slidesToScroll: 1,
-      breakpoints: {
-        [`(min-width: ${breakpoints.sm.minWidth}px)`]: { slidesToScroll: breakpoints.sm.slides },
-        [`(min-width: ${breakpoints.lg.minWidth}px)`]: { slidesToScroll: breakpoints.lg.slides }
-      }
-    };
-  };
-
-  const [emblaRef, emblaApi] = useEmblaCarousel({ 
-    loop: plans.length > 1,
-    ...getSlidesPerView()
-  });
-
-  const [selectedIndex, setSelectedIndex] = useState(0);
+  const options = { loop: true };
+  const [emblaRef, emblaApi] = useEmblaCarousel(options);
 
   const scrollPrev = useCallback(() => {
     if (emblaApi) emblaApi.scrollPrev();
@@ -68,29 +141,6 @@ export default function FloorPlanCarousel({ plans, onUnitClick }: FloorPlanCarou
   const scrollNext = useCallback(() => {
     if (emblaApi) emblaApi.scrollNext();
   }, [emblaApi]);
-
-  const onSelect = useCallback(() => {
-    if (!emblaApi) return;
-    setSelectedIndex(emblaApi.selectedScrollSnap());
-  }, [emblaApi]);
-
-  useEffect(() => {
-    if (!emblaApi) return;
-
-    emblaApi.on('select', onSelect);
-
-    let autoplayInterval: NodeJS.Timeout | null = null;
-    if (plans.length > 1) {
-      autoplayInterval = setInterval(() => {
-        emblaApi.scrollNext();
-      }, 5000);
-    }
-
-    return () => {
-      emblaApi.off('select', onSelect);
-      if (autoplayInterval) clearInterval(autoplayInterval);
-    };
-  }, [emblaApi, onSelect, plans.length]);
 
   if (plans.length === 0) {
     return <div className="text-center p-4">No units available for the selected criteria.</div>;
@@ -111,14 +161,14 @@ export default function FloorPlanCarousel({ plans, onUnitClick }: FloorPlanCarou
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               <div className="relative rounded-lg overflow-hidden">
-                <motion.img 
+                <OptimizedImage 
                   src={plan.image} 
                   alt={`Floor plan ${plan.unit_id}`}
-                  loading="lazy"
+                  priority={index === 0}
+                  className="w-full rounded-md"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5 }}
-                  className="w-full object-contain rounded-md"
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white p-2 space-y-1">
                   <div className="flex items-center justify-between">
@@ -174,74 +224,33 @@ export default function FloorPlanCarousel({ plans, onUnitClick }: FloorPlanCarou
           ))}
         </div>
       </div>
+      
+      <Button
+        variant="ghost"
+        size="icon"
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm"
+        onClick={scrollPrev}
+      >
+        <ChevronLeft className="h-4 w-4" />
+      </Button>
 
-      {plans.length > 1 && (
-        <>
-          <Button
-            variant="outline"
-            size="icon"
-            className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm"
-            onClick={scrollPrev}
-          >
-            <ChevronLeft className="h-4 w-4" />
-          </Button>
-
-          <Button
-            variant="outline"
-            size="icon"
-            className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm"
-            onClick={scrollNext}
-          >
-            <ChevronRight className="h-4 w-4" />
-          </Button>
-        </>
-      )}
+      <Button
+        variant="ghost"
+        size="icon"
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm"
+        onClick={scrollNext}
+      >
+        <ChevronRight className="h-4 w-4" />
+      </Button>
     </div>
   );
 }
 
-type DetailedViewProps = {
-  unit: any;
-  onClose: () => void;
-};
-
-const DetailedView: React.FC<DetailedViewProps> = ({ unit, onClose }) => {
-  return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-      <div className="bg-white rounded-lg p-6 w-full max-w-xl">
-        <button className="absolute top-2 right-2" onClick={onClose}>
-          &times;
-        </button>
-        <div className="flex">
-          <img src={unit.image} alt={`Unit ${unit.unit_id}`} className="w-48 h-48 rounded-md object-cover mr-4" />
-          <div>
-            <h2>Unit {unit.unit_id}</h2>
-            <p><strong>Description:</strong> {unit.description || 'No description provided'}</p>
-            <p><strong>Features:</strong> {unit.features?.join(', ') || 'No features provided'}</p>
-            {/* Add other details here */}
-            <p>Size: {unit.size}</p>
-            <p>Area: {unit.area} sq.ft</p>
-            <p>Price: {unit.price.toLocaleString('en-IN')}</p>
-            <p>Block: {unit.block}</p>
-            <p>Floor: {unit.floor}</p>
-            <p>Face: {unit.face}</p>
-            <p>Bedrooms: {unit.bedrooms}</p>
-            <p>Bathrooms: {unit.bathrooms}</p>
-            <p>Balcony: {unit.balcony}</p>
-            <p>Availability: {unit.available}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-
-const App = () => {
+function App() {
   const [showDetailedView, setShowDetailedView] = useState(false);
-  const [selectedUnit, setSelectedUnit] = useState<any>(null);
+  const [selectedUnit, setSelectedUnit] = useState<FloorPlan | null>(null);
 
-  const handleUnitClick = (unit) => {
+  const handleUnitClick = (unit: FloorPlan) => {
     setSelectedUnit(unit);
     setShowDetailedView(true);
   };
@@ -250,7 +259,7 @@ const App = () => {
     setShowDetailedView(false);
   };
 
-  const examplePlans = [
+  const examplePlans: FloorPlan[] = [
     {
       unit_id: 'A101',
       image: '/path/to/image1.jpg',
@@ -290,10 +299,11 @@ const App = () => {
   return (
     <div>
       <FloorPlanCarousel plans={examplePlans} onUnitClick={handleUnitClick} />
-      {showDetailedView && <DetailedView unit={selectedUnit} onClose={handleCloseDetailedView} />}
+      {showDetailedView && selectedUnit && (
+        <DetailedView unit={selectedUnit} onClose={handleCloseDetailedView} />
+      )}
     </div>
   );
-};
-
+}
 
 export { App, DetailedView };

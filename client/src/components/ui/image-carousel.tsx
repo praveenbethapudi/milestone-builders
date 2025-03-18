@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "./button";
+import OptimizedImage from "./optimized-image";
 
 interface ImageCarouselProps {
   images: string[];
@@ -30,15 +31,16 @@ export default function ImageCarousel({ images, interval = 5000 }: ImageCarousel
   return (
     <div className="relative w-full h-full overflow-hidden">
       <AnimatePresence initial={false}>
-        <motion.img
+        <OptimizedImage
           key={currentIndex}
           src={images[currentIndex]}
+          alt="Carousel image"
+          className="absolute inset-0 w-full h-full"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
-          className="absolute inset-0 w-full h-full object-cover"
-          alt="Carousel image"
+          priority={currentIndex === 0}
         />
       </AnimatePresence>
       
