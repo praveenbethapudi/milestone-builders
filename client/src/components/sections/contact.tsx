@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { insertInquirySchema } from "@shared/schema";
 import { Button } from "@/components/ui/button";
+import { event } from "@/lib/analytics";
 import {
   Form,
   FormControl,
@@ -69,6 +70,14 @@ export default function Contact() {
       }
     },
     onSuccess: () => {
+      // Track form submission event
+      event({
+        action: 'submit',
+        category: 'contact_form',
+        label: 'contact_form_submit',
+        value: 1
+      });
+      
       toast({
         title: "Success",
         description: "Your inquiry has been sent. We'll contact you soon!",
