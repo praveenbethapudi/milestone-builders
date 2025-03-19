@@ -1,0 +1,29 @@
+User-agent: *
+Allow: /
+Allow: /meridian
+Allow: /privacy
+Allow: /terms
+Allow: /refund
+Allow: /faq
+
+# Sitemap
+Sitemap: https://milestone.builders/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 10
+
+# Media files
+Allow: /*.js
+Allow: /*.css
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.gif
+Allow: /*.svg
+Allow: /*.ico
+
+# Disallow potentially sensitive areas
+Disallow: /api/
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /internal/ 
